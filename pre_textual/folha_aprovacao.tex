@@ -1,0 +1,68 @@
+% ----------------------------------------------
+% Inserir folha de aprovação
+% ----------------------------------------------
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+
+% \includepdf{folhadeaprovacao_final.pdf}
+
+\begin{folhadeaprovacao}
+% Gerada conforme instrucoes do PPGEE
+  \begin{center}
+  {\ABNTEXchapterfont\large\imprimirautor}
+
+  \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+    	\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+  \vspace*{\fill}
+
+  \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+    	\imprimirpreambulo 
+    \end{minipage}%
+
+  \vspace*{\fill}
+    \begin{flushleft}
+  	  Aprovado em x de y de 2016. \\
+    \end{flushleft}
+  \vspace*{\fill}
+    BANCA EXAMINADORA:% \imprimirlocal, \today :
+  \end{center}
+   
+   %\assinatura{\textbf{\imprimirorientador} \\ Orientador}
+   %\assinatura{\textbf{\imprimircoorientador} \\ Coorientador} 
+   \assinatura{Prof. Dr. Nome Sobrenome -- UNISINOS \\ Avaliador}
+   \assinatura{Prof. Dr. Nome Sobrenome -- UNISINOS \\ Avaliador}
+   \assinatura{Prof. Dr. Nome Sobrenome -- UNISINOS \\ Avaliador Externo}
+    \vspace*{\fill} \vspace*{\fill}
+    \hspace{.4\textwidth}
+    \begin{minipage}{.5\textwidth}
+    	\imprimirorientador~\\(Orientador) \\
+		%\imprimircoorientador~(Coorientador)
+    \end{minipage}%
+    
+    \vspace*{\fill}
+    \begin{flushleft}
+    	Visto e permitida a impressão\\
+        \imprimirlocal
+    \end{flushleft}
+    
+    \vspace*{\fill}
+    \hspace{.4\textwidth}
+    \begin{minipage}{.5\textwidth}
+    	Prof. Dr. Lúcio Rene Prade \\
+        Coordenador do Curso de Engenharia Elétrica
+    \end{minipage}%
+%    \begin{center}
+%     \vspace*{0.5cm}
+%       {\large\imprimirlocal}
+%       \par
+%       {\large\imprimirdata}
+%       \vspace*{1cm}
+%   \end{center}
+  
+\end{folhadeaprovacao}

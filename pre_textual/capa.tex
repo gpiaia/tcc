@@ -1,0 +1,29 @@
+%\imprimircapa
+% Capa personalizada sem o uso de \imprimircapa
+\begin{capa}
+
+% \renewcommand{\arraystretch}{0.9}%
+% \noindent\begin{tabularx}{\textwidth}{l @{\extracolsep{\fill}} >{\small} r}
+% \multirow{3}{*}{\includegraphics[width = 2.9cm]{images/unisinos_logo_bw.png}} 
+%  & \MakeUppercase{{Universidade do Vale do Rio dos Sinos}} \\ 
+%  & Escola Politécnica \\
+%  & Programa de Pós-Graduação em Engenharia Elétrica \\
+% \bottomrule
+% \end{tabularx}
+% \renewcommand{\arraystretch}{1}%
+    \center
+    \ABNTEXchapterfont\large{\imprimirinstituicao}
+    \vfill
+    %\vspace*{1cm}
+	\MakeUppercase{
+    \ABNTEXchapterfont\textsc{\imprimirautor}}
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vfill
+	\vspace*{5cm}
+    \large\imprimirlocal \\
+    \large\imprimirdata
+    \vspace*{1cm}
+\end{capa}

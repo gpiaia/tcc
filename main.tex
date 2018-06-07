@@ -1,5 +1,152 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+﻿\include{./config}
+% ||||||||||||||||||||||||||||||||||||||||||||||
+% Início do documento
+% ||||||||||||||||||||||||||||||||||||||||||||||
 \begin{document}
-(Type your content here.)
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+% Adiciona lista de correções no início do documento.
+% Comentar a linha abaixo quando o trabalho for concluído
+%\listoftodos
+\newpage
+% ==============================================
+% ELEMENTOS PRÉ-TEXTUAIS
+% ==============================================
+\pretextual
+% ----------------------------------------------
+% Capa
+% ----------------------------------------------
+\include{./pre_textual/capa} 
+% ----------------------------------------------
+% Folha de rosto (o * indica que haverá a ficha bibliográfica)
+% ----------------------------------------------
+\include{./pre_textual/folha_de_rosto}
+% Folha de rosto (o * indica que haverá a ficha bibliográfica)
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+\begin{center}
+  {\ABNTEXchapterfont\large\imprimirautor}
+  \vspace*{\fill}%\vspace*{\fill}
+  \begin{center}
+  \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+  \end{center}
+  \vspace*{\fill}
+  
+  \abntex@ifnotempty{\imprimirpreambulo}{%
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+    \SingleSpacing
+    \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+  }%
+
+  \abntex@ifnotempty{\imprimirorientador}{%
+  \hspace{.45\textwidth}
+  \begin{minipage}{.5\textwidth}
+	{\large\imprimirorientadorRotulo \\ 
+     \imprimirorientador
+     \par}%
+  \end{minipage}%
+  }%
+  
+  \abntex@ifnotempty{\imprimircoorientador}{%
+  \hspace{.45\textwidth}
+  \begin{minipage}{.5\textwidth}
+	{\large\imprimircoorientadorRotulo \\ 
+     \imprimircoorientador
+     \par}%
+  \end{minipage}%
+  }%
+  
+  \vspace*{\fill}
+%{\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
+  {\large\imprimirlocal}
+  \par
+  {\large\imprimirdata}
+  \vspace*{1cm}
+  \end{center}
+  }
+\makeatother
+% Folha de rosto (o * indica que haverá a ficha bibliográfica)
+ \imprimirfolhaderosto*
+
+% ----------------------------------------------
+% Inserir a ficha bibliografica catalográfica
+% ----------------------------------------------
+% \include{./pre_textual/catalografia} 
+% ----------------------------------------------
+% Inserir errata
+% ----------------------------------------------
+%\include{./pre_textual/errata} 
+% ----------------------------------------------
+% Folha de aprovação
+% ----------------------------------------------
+% \include{./pre_textual/folha_aprovacao} 
+% ----------------------------------------------
+% Dedicatória
+% ----------------------------------------------
+ \include{./pre_textual/dedicatoria} 
+% ----------------------------------------------
+% Agradecimentos
+% ----------------------------------------------
+ \include{./pre_textual/agradecimentos} 
+% ----------------------------------------------
+% Epígrafe
+% ----------------------------------------------
+ \include{./pre_textual/epigrafe} 
+% ||||||||||||||||||||||||||||||||||||||||||||||
+% RESUMOS
+% ||||||||||||||||||||||||||||||||||||||||||||||
+ \include{./pre_textual/resumos} 
+% ||||||||||||||||||||||||||||||||||||||||||||||
+% Listas
+% ||||||||||||||||||||||||||||||||||||||||||||||
+\include{./pre_textual/listas} 
+% ----------------------------------------------
+% inserir o sumario
+% ----------------------------------------------
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ==============================================
+% ELEMENTOS TEXTUAIS
+% ==============================================
+\textual
+\include{./textual/cap1} %esta ok, NAO EDITAR!!!
+\include{./textual/cap2} 
+\include{./textual/cap3}
+\include{./textual/cronograma}
+\phantompart
+\include{./textual/analise_resultados}
+\include{./textual/conclusao}
+% ==============================================
+% ELEMENTOS PÓS-TEXTUAIS
+% ==============================================
+\postextual
+% ==============================================
+% Referências bibliográficas
+% ==============================================
+\bibliography{references}
+% ==============================================
+% Glossário
+% ==============================================
+%\glossary
+% ||||||||||||||||||||||||||||||||||||||||||||||
+% Apêndices
+% ||||||||||||||||||||||||||||||||||||||||||||||
+%\include{./pos_textual/apendices}
+% ||||||||||||||||||||||||||||||||||||||||||||||
+% ANEXOS
+% ||||||||||||||||||||||||||||||||||||||||||||||
+%\include{./pos_textual/anexos}
+% ==============================================
+% INDICE REMISSIVO
+% ==============================================
+%\phantompart
+%\printindex
+% ----------------------------------------------
 \end{document}

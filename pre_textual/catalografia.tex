@@ -1,0 +1,52 @@
+% % Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de catalogação-na-publicação''. Você pode utilizar este modelo como referência. Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver com o documento, salve-o como PDF no diretório do seu projeto e substitua todo o conteúdo de implementação deste arquivo pelo comando abaixo:
+
+%%\begin{fichacatalografica}
+  %%  \includepdf{fig_ficha_catalografica.pdf}
+%%\end{fichacatalografica}
+
+\begin{fichacatalografica}
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+  	\begin{center}					% Minipage Centralizado
+	\fbox{
+    \begin{minipage}[t]{1,5cm} 
+    \vspace{0.5cm} 
+    D383m %Algum número que o bibliotecario ira gerar
+    \end{minipage}
+    
+    \begin{minipage}[t]{11cm}	% Largura
+	\small
+    \vspace{0.5cm}
+	%\imprimirautor		% ATENCAO - SUBSTITUIR POR %Sobrenome, Nome do autor
+    Cavalheiro, Guilherme Eduardo
+	
+	\hspace{0.5cm} 
+    \imprimirtitulo  / \imprimirautor. -- \imprimirdata.
+	
+	\hspace{0.5cm} 
+    \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+    \hspace{0.5cm}
+	\imprimirtipotrabalho~--~Universidade do Vale do Rio dos Sinos, Curso de Engenharia Elétrica, São Leopoldo, RS, \imprimirdata. \hfill 
+    
+    \hspace{0.5cm}
+    \imprimirorientadorRotulo~\imprimirorientador ;
+    \imprimircoorientadorRotulo~\imprimircoorientador\\
+	
+	\hspace{0.5cm}
+		1. Palavra-chave1
+		2. Palavra-chave1
+		3. Palavra-chave1
+        I. Título \\
+		%I. \imprimirtitulo \\
+        %II. \imprimirorientador \\
+    
+	\hspace{8.75cm} CDU 621.3 %algum outro numero
+	
+    \end{minipage}}
+    
+    \hspace{0.5cm}
+    Dados Internacionais de Catalogação na Publicação (CIP) \\  	(Bibliotecário: Nome Sobrenome – CRB 10/1298)
+	
+    \end{center}
+\end{fichacatalografica}

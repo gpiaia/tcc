@@ -1,0 +1,100 @@
+% ----------------------------------------------
+% INTRODUCAO
+% ----------------------------------------------
+\chapter[Introdução]{Introdução}
+%O LED (\textit{Light-Emmiting Diode} - Diodo Emissor de Luz) é, sem dúvida, um dos componentes eletrônicos mais utilizados na indústria. Geralmente o LED possui a função de indicação de estados, como por exemplo, a indicação de ligado ou desligado em alguns equipamentos. 
+
+%Com a evolução dos LEDs de alto brilho, desenvolveram-se novas aplicações e hoje esses dispositivos são capazes de trabalhar, tipicamente, de um a cinco watts e são conhecidos como LEDs de Potência (HP LEDs - \textit{High Power} LEDs). O comparativo entre os atributos dos LEDs convencionais frente aos HP LEDs elevam a demanda por produtos que utilizem esses dispositivos pois, os benefícios do uso dos LEDs são muitos. Pode-se citar vantagens como a redução de custos de manutenção, possuem alta eficiência, possuem boa resistência a impactos e vibrações, o acionamento é praticamente instantâneo, não há emissão de ultravioleta e infravermelho, possuem excelente vida útil e, é possível controlar a intensidade de fluxo luminoso dentre muitos outros benefícios. 
+
+%Atualmente o conjunto da demanda por economia de energia e os benefícios dos LEDs tornam os HP LEDs excelentes para a aplicação em iluminação industrial e iluminação pública. Contudo, é necessário avaliar o desempenho do sistema como um todo e, um dos elos fracos na iluminação a LED é o acionamento dos HP LEDs. Geralmente o \textit{driver}\footnote{circuito eletrônico para controle e/ou acionamento de outro circuito} possui uma vida útil e eficiência inferiores a do LED, causando uma perda significativa no sistema. Conforme aponta \citeonline{}, acionar um único LED, ou uma \textit{string}\footnote{arranjo do circuito a formar uma sequência de conexões entre os LEDs} de LEDs conectados em série é, relativamente fácil e apresenta poucos problemas quando a corrente elétrica é baixa. Para LEDs que demandam altas correntes como 350mA, 700mA, 1A ou mais o acionamento já não é tão simples como antes. A complexidade tende a aumentar ainda mais quando o dispositivo é conectado à rede elétrica, pois outros critérios como o Fator de Potência (FP) e distorção harmônica (THD - \textit{Total Harmonic Distortion}) começam a se tornar significativos. 
+
+%Diversas técnicas de acionamento têm sido desenvolvidas na tentativa de extrair o ótimo desempenho em eficiência energética no sistema de iluminação a LED. Essas técnicas buscam acionar os HP LEDs com o compromisso de obter melhores eficiências e sem que haja o comprometimento da Qualidade de Energia da rede elétrica em que o sistema está instalado. Os principais tópicos abordados neste trabalho são a análise e o desenvolvimento de um conversor AC/DC para acionamento dos LEDs de Potência, abordando os principais aspectos elétricos e ambientais relevantes no desenvolvimento de um \textit{driver} eletrônico para essa aplicação.
+
+% ----------------------------------------------
+% DEFINICAO DO TEMA
+% ----------------------------------------------
+\section{Definição do Tema ou Problema}
+%Dado o panorama nacional de geração de energia elétrica, os grandes consumidores buscam cada vez mais reduzir o consumo dessa energia. Uma das formas de se fazer isto é substituir a iluminação convencional por iluminação a LED. Essa substituição faz crescer cada vez mais a demanda no setor produtivo de iluminação. 
+
+%Uma das motivações deste trabalho basea-se no aumento significativo de demanda e procura por \textit{drivers} para acionamento de HP LEDs. O escopo deste trabalho envolve a análise e projeto de conversores chaveados para aplicação de acionamento de LEDs de Potência em luminárias LED com potências excedentes a 60W, conectadas diretamente à rede elétrica. %É, também, do escopo desse trabalho realizar uma análise crítica sobre o estado da arte em conversores chaveados para essa aplicação. Busca-se levantar parâmetros significativos para o projeto dos \textit{drivers} e, posteriormente, busca propor o desenvolvimento de um protótipo de \textit{driver} para HP LEDs.
+
+
+\section{Justificativa}
+
+%Do ponto de vista de sistemas eletrônicos o LED traz muitas vantagens, porém, é necessário analisar o desempenho do sistema de iluminação a LED como um todo. E, um dos pontos significativos para o bom funcionamento desse sistema é a utilização de um \textit{driver} para HP LED com eficiência e vida útil equivalentes a do LED utilizado.
+
+%No Brasil há uma tendência na utilização de \textit{drivers} importados para o acionamento dos HP LEDs. Geralmente esses \textit{drivers} são projetados para cenários que muitas vezes diferem do cenário nacional e acabam por  reduzir os benefícios da iluminação a LED. O cenário brasileiro eleva o nível de complexidade da especificação dos \textit{drivers} AC/DC para HP LED pois, é necessário considerar e analisar muitos fatores na aplicação, como por exemplo, transientes na rede elétrica, grande variação na tensão de alimentação, grande variação de temperatura entre os pontos consumidores (diferença de temperatura de estado para estado) e não normatização para iluminação a LED acima de 60W, foco deste trabalho.
+
+%Como motivação deste trabalho, têm-se a análise crítica do estado da arte de \textit{drivers} para a aplicação em iluminação industrial a LED. Além do levantamento de parâmetros críticos no projeto dos \textit{drivers}, como eficiência, fator de potência, geração de distorções harmônicas, necessidade de isolação galvânica e vida útil. Como justificativa secundária tem-se a análise e verificação do FP frente a alteração do fluxo luminoso no LED, o que é conhecido como dimerização. A dimerização do fluxo luminoso gerado pelo LED pode ser obtida da forma de modulação da corrente elétrica que circula no LED. Grande parte dos controladores utilizados nos \textit{drivers} de corrente não estão preparados para operar fora da faixa de máxima corrente, causando uma queda significativa no FP do sistema final. O FP é um parâmetro importante pois, o baixo FP reduz significativamente os benefícios dos LEDs na iluminação, uma vez que, uma das maiores vantagens em utilizar iluminação a LED é o baixo consumo de energia. 
+%%%
+% Como justificativa secundária tem-se a verificação do FP frente a dimerização\footnote{Controle de fluxo luminoso no LED} em drivers de corrente. Pois, notou-se uma redução significativa do FP em drivers comerciais. Onde, o FP é um parâmetro importante pois, o baixo FP reduz significativamente os benefícios dos LEDs, uma vez que, uma das maiores vantagens em utilizar iluminação à LED é o baixo consumo de energia. 
+
+
+% ----------------------------------------------
+% DELIMITACOES DO TRABALHO
+% ----------------------------------------------
+\section{Delimitações do Trabalho}
+%O escopo deste trabalho diz respeito ao \textit{driver} para acionamento dos LEDs de Potência baseado em um conversor AC/DC com saída em modo de corrente. Estão fora de escopo o projeto e análise do conjunto ótico, bem como o projeto termo-elétrico do mesmo. No desenvolvimento do protótipo serão utilizados conjuntos óticos previamente projetados.
+% ----------------------------------------------
+% OBJETIVOS
+% ----------------------------------------------
+\section{Objetivos}
+\subsection{Objetivo Geral}
+	%O objetivo geral deste trabalho é investigar a utilização de conversores chaveados (SMPS - \textit{Switched Mode Power Supply}) para a aplicação de acionamento de LEDs de Potência que operam em modo de corrente. Realizar análises sobre as atuais topologias de conversores chaveados e propor o desenvolvimento de um \textit{driver} para acionamento de LEDs. Serão realizadas análises sobre a eficiência, Fator de Potência e distorção harmônica de corrente (THD\textsubscript{i}) em um protótipo.% e uma boa viabilidade econômica.
+    
+ \subsection{Objetivos Específicos}
+ 	%Os objetivos específicos a serem alcançados neste trabalho são:
+% \begin{itemize}
+% \item Revisar e analisar as principais características dos LEDs de Potência;
+% \item Estudar os principais segmentos da Qualidade de Energia relevantes no desenvolvimento de SMPSs  AC/DC;
+% \item Revisar e analisar as principais topologias de SMPSs para aplicações AC/DC e DC/DC;
+% \item Estudar e analisar as principais formas de corrigir o FP em SMPSs;
+% \item Estudar e aplicar técnicas de projeto e simulação em SMPS;
+% \item Realizar a seleção da topologia mais adequada para o desenvolvimento do protótipo;
+% \item Levantar os critérios e especificações de projeto para o protótipo;
+% \item Construir um protótipo e realizar análise dos componentes que impactam na vida útil e eficiência de uma SMPS;
+% \item Efetuar ensaios de eficiência, FP, THD e vida útil do protótipo desenvolvido operando em carga plena;
+% \item Efetuar ensaios de caracterização do FP frente à dimerização.
+% \end{itemize}
+    
+\section{Organização do Trabalho}
+	%A seguir é apresentada uma breve descrição dos capítulos que compõem este trabalho de conclusão.
+    
+	%O capítulo 2 apresenta a revisão bibliográfica deste trabalho, onde serão abordados temas que contextualizam e justificam a abordagem do projeto de \textit{drivers} de corrente para HP LEDs. Na seção 2.1 será apresentado de forma breve o funcionamento dos LEDs de potência e serão salientadas as principais características que devem ser observadas no projeto. Do ponto de vista da carga a ser alimentada é necessário conhecer níveis de tensão, corrente e potência para poder especificar a faixa de operação de saída do \textit{driver}.   
+    
+    %Na seção 2.2 serão abordados os principais qualificadores da qualidade de energia que dizem respeito no desenvolvimento de conversores AC/DC, serão abordados qualificadores como distúrbios de amplitude, transitórios, distorções harmônicas e fator de potência. Os qualificadores da qualidade de energia são apresentados de forma a justificar e contextualizar as especificações de entrada do \textit{driver}. Será discorrido sobre a norma internacional IEC61000-3-2 Classe C, que diz respeito ao conteúdo espectral da corrente drenada pelo \textit{driver} eletrônico e, também, serão discutidos os custos da má qualidade de energia.
+    
+     %Na seção 2.3 serão apresentadas as principais soluções para acionamento de LEDs de potência. Inicia realizado um breve comparativo entre conversores estáticos e conversores chaveados e evolui para as principais topologias utilizadas em fontes chaveadas operando em modo de corrente para o acionamento dos HP LEDs. 
+     
+     %Serão discutidas algumas técnicas de controle com respeito ao PFC (\textit{Power Factor Correction} - Correção de Fator de Potência) em fontes chaveadas.
+    %O capítulo 3 apresenta a metodologia deste trabalho, onde serão discutidas as principais metodologias de estudo e desenvolvimento de \textit{drivers} de corrente. Serão discutidos os principais testes envolvendo o protótipo a ser desenvolvido e as principais análises que devem ser aplicadas no protótipo.  
+    %O capítulo 4 apresenta o cronograma de projeto. Por fim, serão discutidas as considerações finais deste trabalho.
+
+
+
+
+%%% SE NECESSARIO Adicionar tecnicas de controle de pfc
+
+%     onde será determinada uma topologia adequada à proposta de protótipo. Serão definidas todas as especificações do projeto do driver e, ao final, será proposto um controlador para a aplicação.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
