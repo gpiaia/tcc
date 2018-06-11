@@ -20,38 +20,42 @@ Esta seção explanará conceitos bás
 \subsection{Resposta ao Degrau}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Parâmetros de uma Resposta ao Degrau de um sistema de primeira ordem.}
   \begin{center}
       \includegraphics[scale=0.5]{img/transient_astrom_p17}
   \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \fonte{Adaptado de \citeonline{Astrom1995}.}
+  \label{fig:transient_astrom_p17}
 \end{figure}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
   \begin{center}
       \includegraphics[scale=0.5]{img/transient_ogata_p170}
   \end{center}
   \fonte{Adaptado de \citeonline{Ogata}.} 
+  \label{fig:transient_ogata_p170}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Controladores}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Representação do Modelo de Controlador com distúrbios \textit{l} e \textit{n}.}
   \begin{center}
       \includegraphics[scale=0.65]{img/feedback_loop_astrom_p65}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:feedback_loop_astrom_p65}
 \end{figure}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Respostas ao degrau com um controlador proporcional.}
   \begin{center}
       \includegraphics[scale=0.65]{img/proportional_astrom_p66}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:proportional_astrom_p66}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,67 +66,57 @@ Esta seção explanará conceitos bás
 \subsection{Controladores PID}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/nise_digitalinput_p761}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Nise}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/pi_astrom_p68}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/pi_twomotors_astrom_p308}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/pid_antiwindup_astrom_p83}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/pid_astrom_p70}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/pid_autotuning_relay_astrom_p239}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Representação do Modelo de Controlador PID com distúrbios.}
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_controller_Snider_p35}
   \end{center}
   \fonte{Adaptado de \citeonline{Snider}.} 
+  \label{fig:pid_controller_Snider_p35}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Respostas ao degrau com um controlador Proporcional e Integral.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/pi_astrom_p68}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pi_astrom_p68}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Respostas ao degrau com um controlador Proporcional e Derivativo.}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/pid_astrom_p70}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pid_astrom_p70}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Modelo de um Controlador com Auto-sintonia.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pid_adaptative_astrom_p233}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Modelo de um Controlador PID com Histerese}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/pid_antiwindup_astrom_p83}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pid_antiwindup_astrom_p83}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Modelo do Método de Auto Sintonia via Relé.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/pid_autotuning_relay_astrom_p239}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pid_autotuning_relay_astrom_p239}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,19 +137,57 @@ Esta seção explanará conceitos bás
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Satélites}
 
+\begin{figure}[htb]
+  \caption{Representação do Modelo de Controlador PI com dois motores.}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/pi_twomotors_astrom_p308}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pi_twomotors_astrom_p308}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dinâmica rotacional de um Satélite}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
   \begin{center}
       \includegraphics[scale=0.75]{img/satellite_controlhand_p1306}
   \end{center}
   \fonte{Adaptado de \citeonline{Levine1996}.} 
+  \label{fig:satellite_controlhand_p1306}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sistemas Embarcados}
+
+\begin{figure}[htb]
+  \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/kernel_user_space}
+  \end{center}
+  \fonte{Adaptado de Embarcados....} 
+  \label{fig:kernel_user_space}
+\end{figure}
+
+
+\begin{figure}[htb]
+  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \begin{center}
+      \includegraphics[scale=0.35]{img/sistema-linux-overview_embarcados}
+  \end{center}
+  \fonte{Adaptado de Embarcados....} 
+  \label{fig:sistema-linux-overview_embarcados}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Resposta ao degrau com diferentes períodos de amostragem.}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/nise_digitalinput_p761}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Nise}.} 
+  \label{fig:nise_digitalinput_p761}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comportamento Assíncrono}
@@ -170,27 +202,30 @@ Esta seção explanará conceitos bás
 \subsection{Sistemas Inteligentes de Sintonia de Controladores}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/feedforward_neural_astrom_p297}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-\end{figure}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Modelo de um Simples Neurônio.}
   \begin{center}
       \includegraphics[scale=0.6]{img/neuron_astrom_p295}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:neuron_astrom_p295}
 \end{figure}
 
 \begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
+  \caption{Representação de uma Rede Neural.}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/feedforward_neural_astrom_p297}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:feedforward_neural_astrom_p297}
+\end{figure}
+
+\begin{figure}[htb]
+  \caption{Proposta de \citeonline{Chen2004} para um Controlador PID com Redes Neurais}
   \begin{center}
       \includegraphics[scale=1]{img/pid_neural_Applying_p18}
   \end{center}
   \fonte{Adaptado de \citeonline{Chen2004}.} 
+  \label{fig:pid_neural_Applying_p18}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
