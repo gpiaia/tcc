@@ -4,29 +4,19 @@ No presente capítulo, são apresentados conceitos básico para a compreensão d
 
 \section{Conceitos Básicos}
 
-%Esta seção desenvolverá conceitos fundamentais para a compreensão da problemática resolvida com o sistema proposto. O objeto de estudo emerge à evidência quando observados dois atores opostos: a complexidade do sistema e sua robustez. Estes são primeiramente compreendidos pela natureza de um sistema embarcado.
-
-Esta seção explanará conceitos bás
+Esta seção explanará conceitos básicos de controle, modelagem da dinâmica de um satélite e sistemas embarcados que possibilitará a contextualização das ferramentas que serão utilizadas nesse trabalho.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sistemas de Controle}
-
 %conceitos de resposta em frequência
 % estabilidade de sistemas
 % em regime
 % diferentes tipos de sistemas
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Resposta ao Degrau}
+\subsection{Resposta ao Degrau do um Sistema}
 
-% \begin{figure}[htb]
-%   \caption{Parâmetros de uma Resposta ao Degrau de um sistema de primeira ordem.}
-%   \begin{center}
-%       \includegraphics[scale=0.5]{img/transient_astrom_p17}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Astrom1995}.}
-%   \label{fig:transient_astrom_p17}
-% \end{figure}
+Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}.
+
+Uma forma clássica de representar um resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal do da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
 \begin{figure}[htb]
   \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
@@ -36,6 +26,8 @@ Esta seção explanará conceitos bás
   \fonte{Adaptado de \citeonline{Ogata}.} 
   \label{fig:transient_ogata_p170}
 \end{figure}
+
+A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela podemos ver claramente a atuação dos \textit{polos} e \textit{zeros} dominantes e o ganho de baixa frequência da função de transferência do sistema. Os métodos clássicos para se calcular os parâmetros de controladores são baseados na resposta ao degrau \citeonline{Ogata}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Controladores}
@@ -49,14 +41,6 @@ Esta seção explanará conceitos bás
   \label{fig:feedback_loop_astrom_p65}
 \end{figure}
 
-% \begin{figure}[htb]
-%   \caption{Respostas ao degrau com um controlador proporcional.}
-%   \begin{center}
-%       \includegraphics[scale=0.65]{img/proportional_astrom_p66}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Astrom1995}.} 
-%   \label{fig:proportional_astrom_p66}
-% \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sintonia de Controladores}
@@ -70,27 +54,9 @@ Esta seção explanará conceitos bás
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_controller_Snider_p35}
   \end{center}
-  \fonte{Adaptado de \citeonline{Snider}.} 
+  \fonte{\citeonline{Snider}.} 
   \label{fig:pid_controller_Snider_p35}
 \end{figure}
-
-% \begin{figure}[htb]
-%   \caption{Respostas ao degrau com um controlador Proporcional e Integral.}
-%   \begin{center}
-%       \includegraphics[scale=0.75]{img/pi_astrom_p68}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Astrom1995}.} 
-%   \label{fig:pi_astrom_p68}
-% \end{figure}
-
-% \begin{figure}[htb]
-%   \caption{Respostas ao degrau com um controlador Proporcional e Derivativo.}
-%   \begin{center}
-%       \includegraphics[scale=0.65]{img/pid_astrom_p70}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Astrom1995}.} 
-%   \label{fig:pid_astrom_p70}
-% \end{figure}
 
 \begin{figure}[htb]
   \caption{Modelo de um Controlador com Auto-sintonia.}
@@ -254,5 +220,3 @@ Esta seção explanará conceitos bás
 \cite{Liu2011}
 \cite{Astrom1995}
 \cite{Behera2017}
-
-\lipsum[34-45]
