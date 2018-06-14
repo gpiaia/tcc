@@ -27,29 +27,41 @@ Uma forma clássica de representar um resposta de uma variável de interesse, é
   \label{fig:transient_ogata_p170}
 \end{figure}
 
-A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela podemos ver claramente a atuação dos \textit{polos} e \textit{zeros} dominantes e o ganho de baixa frequência da função de transferência do sistema. Os métodos clássicos para se calcular os parâmetros de controladores são baseados na resposta ao degrau \citeonline{Ogata}. 
+A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela podemos ver claramente a atuação dos \textit{polos} e \textit{zeros} dominantes e o ganho de baixa frequência da função de transferência do sistema. Os métodos clássicos para se calcular os parâmetros de controladores são baseados na resposta ao degrau \cite{Ogata}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Controladores}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador com distúrbios \textit{l} e \textit{n}.}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/feedback_loop_astrom_p65}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:feedback_loop_astrom_p65}
-\end{figure}
+%\section{Controladores}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sintonia de Controladores}
+% \begin{figure}[htb]
+%   \caption{Representação do Modelo de Controlador com distúrbios \textit{l} e \textit{n}.}
+%   \begin{center}
+%       \includegraphics[scale=0.65]{img/feedback_loop_astrom_p65}
+%   \end{center}
+%   \fonte{Adaptado de \citeonline{Astrom1995}.} 
+%   \label{fig:feedback_loop_astrom_p65}
+% \end{figure}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \subsection{Sintonia de Controladores}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Controladores PID}
 
-\begin{figure}[htb]
+O controlador proporcional-integral-derivativo é um dos controladores mais utilizados nas aplicações industriais. Essa topologia de controlador consegue, em diferentes configurações atender entre 90 e 95\% de todos os sistemas que necessitam de controladores \cite{Levine1996}. A forma descritiva matemática mais comum de se encontrar um controlador PID no domínio do tempo é a seguinte:
+
+\begin{gather}
+  u(t) = K\left((e(t)+\frac{1}{T_i}\int_{0}^{t}{e(\tau)}d\tau+T_d\frac{de(t)}{dt}\right) 
+\end{gather}
+
+Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995};
+
+
+Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{$G_e(s)$} é a função de transferência do controlador PID, \textit{$M_{c1}(s)$} é o sinal de erro tratado pelo controlador, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
+
+\begin{figure}[h!]
   \caption{Representação do Modelo de Controlador PID com distúrbios.}
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_controller_Snider_p35}
@@ -58,16 +70,9 @@ A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela pod
   \label{fig:pid_controller_Snider_p35}
 \end{figure}
 
-\begin{figure}[htb]
-  \caption{Modelo de um Controlador com Auto-sintonia.}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:pid_adaptative_astrom_p233}
-\end{figure}
+Como alguns sistemas podem admitir grandes e rápidas variações de sinais de referência, exigindo uma grande força de controle e energia no atuador, algumas topologias foram desenvolvidas para limitar a atuação de alguns fatores dos controladores. Um bom exemplo é o \textit{anti-windup}, onde essa topologia limita a saturação do atuador quando o sistema atinge o regime, causado pela ação integral. Essa topologia pode ser vista no modelo da figura \ref{fig:pid_antiwindup_astrom_p83} \cite{Astrom1995}.
 
-\begin{figure}[htb]
+\begin{figure}[h!]
   \caption{Modelo de um Controlador PID com Histerese}
   \begin{center}
       \includegraphics[scale=0.65]{img/pid_antiwindup_astrom_p83}
@@ -76,7 +81,40 @@ A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela pod
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
 
-\begin{figure}[htb]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sintonia de Controladores}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Método de sintonia de Ziegler-Nichols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Cohen-Coon}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Kappa-Tau Tuning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sintonia Automática de Controladores}
+
+Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana \cite{Astrom1995}.
+
+\begin{figure}[h!]
+  \caption{Modelo de um Controlador com Auto-sintonia.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pid_adaptative_astrom_p233}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Método do Relé}
+
+\begin{figure}[h!]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_autotuning_relay_astrom_p239}
@@ -86,10 +124,11 @@ A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela pod
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Método de sintonia de Ziegler-Nichols}
+\subsubsection{Método do Relé}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Outras configurações de controladores PID}
+\subsubsection{Método do Relé}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Controle Inteligente}
@@ -135,7 +174,7 @@ A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela pod
   \fonte{Adaptado de Embarcados....} 
   \label{fig:kernel_user_space}
 \end{figure}
-
+  
 
 \begin{figure}[htb]
   \caption{Representação do Modelo de Controlador PID com distúrbios}
