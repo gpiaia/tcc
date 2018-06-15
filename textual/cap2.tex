@@ -2,9 +2,38 @@
 
 No presente capítulo, são apresentados conceitos básico para a compreensão do presente trabalho. Nessa etapa, busca-se através da revisão de trabalhos já elucidados a contextualização do projeto proposto.
 
-\section{Conceitos Básicos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Satélites Artificiais}
 
-Esta seção explanará conceitos básicos de controle, modelagem da dinâmica de um satélite e sistemas embarcados que possibilitará a contextualização das ferramentas que serão utilizadas nesse trabalho.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Dinâmica de um Satélite}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Dinâmica de Corpo Rígido}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Dinâmica de Translação}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Dinâmica de Rotação}
+
+\subsubsection{Matriz de Rotação}
+
+\subsection{Controle Tridimensional do Satélite}
+
+\subsubsection{Rodas de Reação}
+
+\begin{figure}[!ht]
+  \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/satellite_controlhand_p1306}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Levine1996}.} 
+  \label{fig:satellite_controlhand_p1306}
+\end{figure}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %conceitos de resposta em frequência
@@ -12,13 +41,16 @@ Esta seção explanará conceitos básicos de controle, modelagem da dinâmica d
 % em regime
 % diferentes tipos de sistemas
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Controlador PID}
+
 \subsection{Resposta ao Degrau do um Sistema}
 
 Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}.
 
 Uma forma clássica de representar um resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal do da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
   \begin{center}
       \includegraphics[scale=0.5]{img/transient_ogata_p170}
@@ -29,26 +61,8 @@ Uma forma clássica de representar um resposta de uma variável de interesse, é
 
 A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela podemos ver claramente a atuação dos \textit{polos} e \textit{zeros} dominantes e o ganho de baixa frequência da função de transferência do sistema. Os métodos clássicos para se calcular os parâmetros de controladores são baseados na resposta ao degrau \cite{Ogata}. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Controladores}
-
-
-% \begin{figure}[htb]
-%   \caption{Representação do Modelo de Controlador com distúrbios \textit{l} e \textit{n}.}
-%   \begin{center}
-%       \includegraphics[scale=0.65]{img/feedback_loop_astrom_p65}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Astrom1995}.} 
-%   \label{fig:feedback_loop_astrom_p65}
-% \end{figure}
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Sintonia de Controladores}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Controladores PID}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Controlador PID}
 
 O controlador proporcional-integral-derivativo é um dos controladores mais utilizados nas aplicações industriais. Essa topologia de controlador consegue, em diferentes configurações atender entre 90 e 95\% de todos os sistemas que necessitam de controladores \cite{Levine1996}. A forma descritiva matemática mais comum de se encontrar um controlador PID no domínio do tempo é a seguinte:
 
@@ -61,7 +75,7 @@ Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$}
 
 Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{$G_e(s)$} é a função de transferência do controlador PID, \textit{$M_{c1}(s)$} é o sinal de erro tratado pelo controlador, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \caption{Representação do Modelo de Controlador PID com distúrbios.}
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_controller_Snider_p35}
@@ -72,7 +86,7 @@ Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais
 
 Como alguns sistemas podem admitir grandes e rápidas variações de sinais de referência, exigindo uma grande força de controle e energia no atuador, algumas topologias foram desenvolvidas para limitar a atuação de alguns fatores dos controladores. Um bom exemplo é o \textit{anti-windup}, onde essa topologia limita a saturação do atuador quando o sistema atinge o regime, causado pela ação integral. Essa topologia pode ser vista no modelo da figura \ref{fig:pid_antiwindup_astrom_p83} \cite{Astrom1995}.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \caption{Modelo de um Controlador PID com Histerese}
   \begin{center}
       \includegraphics[scale=0.65]{img/pid_antiwindup_astrom_p83}
@@ -81,27 +95,40 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
 
-
+\begin{figure}[!ht]
+  \caption{Representação do Modelo de Controlador PI com dois motores.}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/pi_twomotors_astrom_p308}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pi_twomotors_astrom_p308}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sintonia de Controladores}
+\section{Sintonia de Controladores}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Métodos Clássicos de Sintonia de Controladores}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Método de sintonia de Ziegler-Nichols}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Cohen-Coon}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Kappa-Tau Tuning}
+\subsubsection{Método de Cohen-Coon}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Método Kappa-Tau Tuning}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sintonia Automática de Controladores}
+\subsection{Sintonia Automática de Controladores e Controle Adaptativo}
 
 Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana \cite{Astrom1995}.
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \caption{Modelo de um Controlador com Auto-sintonia.}
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
@@ -114,7 +141,7 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Método do Relé}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
   \begin{center}
       \includegraphics[scale=0.75]{img/pid_autotuning_relay_astrom_p239}
@@ -124,49 +151,13 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Método do Relé}
+\subsubsection{Método Baseado em Regras} %Astron 241
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Método do Relé}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Controle Inteligente}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Lógica Fuzzy}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Controle com Redes Neurais}  %control hand p1017
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Satélites}
-
-\begin{figure}[htb]
-  \caption{Representação do Modelo de Controlador PI com dois motores.}
-  \begin{center}
-      \includegraphics[scale=0.65]{img/pi_twomotors_astrom_p308}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:pi_twomotors_astrom_p308}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Dinâmica rotacional de um Satélite}
-
-\begin{figure}[htb]
-  \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/satellite_controlhand_p1306}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Levine1996}.} 
-  \label{fig:satellite_controlhand_p1306}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sistemas Embarcados}
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
   \begin{center}
       \includegraphics[scale=0.75]{img/kernel_user_space}
@@ -175,8 +166,7 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:kernel_user_space}
 \end{figure}
   
-
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \caption{Representação do Modelo de Controlador PID com distúrbios}
   \begin{center}
       \includegraphics[scale=0.35]{img/sistema-linux-overview_embarcados}
@@ -185,7 +175,17 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:sistema-linux-overview_embarcados}
 \end{figure}
 
-\begin{figure}[htb]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comportamento Assíncrono}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Escalonamento de Tarefas}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Processamento Digital de Sinais}
+
+\begin{figure}[!ht]
   \caption{Resposta ao degrau com diferentes períodos de amostragem.}
   \begin{center}
       \includegraphics[scale=0.65]{img/nise_digitalinput_p761}
@@ -194,19 +194,21 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:nise_digitalinput_p761}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Comportamento Assíncrono}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Threds}
-
+\subsubsection{Protocolos de MQTT e I2C}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Estado da Arte}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sistemas Inteligentes de Sintonia de Controladores}
 
-\begin{figure}[htb]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Controle Fuzzy} %Astrom p298
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Controle com Redes Neurais}  %control hand p1017
+
+\begin{figure}[!ht]
   \caption{Modelo de um Simples Neurônio.}
   \begin{center}
       \includegraphics[scale=0.6]{img/neuron_astrom_p295}
@@ -215,7 +217,7 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:neuron_astrom_p295}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \caption{Representação de uma Rede Neural.}
   \begin{center}
       \includegraphics[scale=0.65]{img/feedforward_neural_astrom_p297}
@@ -224,7 +226,7 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:feedforward_neural_astrom_p297}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
   \caption{Proposta de \citeonline{Chen2004} para um Controlador PID com Redes Neurais}
   \begin{center}
       \includegraphics[scale=1]{img/pid_neural_Applying_p18}
@@ -259,3 +261,4 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 \cite{Liu2011}
 \cite{Astrom1995}
 \cite{Behera2017}
+\cite{Brown2002}
