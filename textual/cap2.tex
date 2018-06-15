@@ -3,7 +3,7 @@
 No presente capítulo, são apresentados conceitos básico para a compreensão do presente trabalho. Nessa etapa, busca-se através da revisão de trabalhos já elucidados a contextualização do projeto proposto.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Satélites Artificiais}
+\section{Satélites Artificiais} %ch 1303
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,9 +91,11 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
   \begin{center}
       \includegraphics[scale=0.65]{img/pid_antiwindup_astrom_p83}
   \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \fonte{\citeonline{Astrom1995}.} 
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
+
+Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a acão integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. Podemos ver um exemplo dessa configuração na imagem \ref{fig:pi_twomotors_astrom_p308}, onde apenas um controlador PI controla a velocidade angular (\textit{$\omega$})somada de dois motores (Motor 1 e Motor 2) a partir de uma velocidade de referência (\textit{$\omega_{sp}$}) \cite{Astrom1995}.
 
 \begin{figure}[!ht]
   \caption{Representação do Modelo de Controlador PI com dois motores.}
@@ -103,35 +105,78 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pi_twomotors_astrom_p308}
 \end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Sintonia de Controladores}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Métodos Clássicos de Sintonia de Controladores}
+Como podemos ver no modelo matemático e gráfico dos controladores PID, os valores de ajuste $K_p$, $T_i$ e $T_d$  podem assumir infinitos valores, sendo necessário a escolha do melhor conjunto desses valores para que a planta desempenhe o comportamento esperado \cite{Ogata}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Método de sintonia de Ziegler-Nichols}
+\subsection{Método de sintonia de Ziegler-Nichols}
 
+Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e o com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Método de Cohen-Coon}
+\begin{figure}[!ht]
+  \caption{Resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a).}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/ziegler-nichols_astrom_p135}
+  \end{center}
+  \fonte{\citeonline{Astrom1995}.} 
+  \label{fig:ziegler-nichols_astrom_p135}
+\end{figure}
 
+Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K_p$, $T_i$, $T_d$ e $T_p$ com os vistos na figura \ref{fig:ziegler-nichols_astrom_p135}.  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Método Kappa-Tau Tuning}
+\begin{table}
+  \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta ao Degrau}
+  \label{tab:Ziegler-Nichols}
+  \centering%
+  \begin{minipage}{.42\textwidth}
+    \begin{tabular*}{\textwidth}{lllll}
+      \hline
+      {Controlador} & {K} & {$T_i$} & {$T_d$}& {$T_p$}\\ \hline
+      \hline
+      P    &  1/a   &     &      & 4L  \\ 
+      PI   &  0.9/a & 3L  &      & 5.7L  \\
+      PID  &  1.2/a & 2L  & L/2  & 3.4L  \\ \hline
+    \end{tabular*}
+    \fonte{Adaptado de \citeonline{Astrom1995}}
+  \end{minipage}
+\end{table}
 
+O outro método de se estimar os valores do controlador, é através de duas características da resposta em frequência: uma delas que é o ganho que deixa o sistema marginalmente estável ($K_u$), e a outra, é o período do sinal de referência que deixa o sistema marginalmente estável ($T_u$). Podemos ver na tabela \ref{tab:Ziegler-Nichols-freq} as relações entre $K_p$, $T_i$, $T_d$, $T_p$ e ($K_u$) e ($T_u$) . 
 
+\begin{table}
+  \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta em Frequência}
+  \label{tab:Ziegler-Nichols-freq}
+  \centering%
+  \begin{minipage}{.6\textwidth}
+    \begin{tabular*}{\textwidth}{lllll}
+      \hline
+      {Controlador} & {K} & {$T_i$} & {$T_d$}& {$T_p$}\\ \hline
+      \hline
+      P    &  0.5$K_u$   &           &             & $T_u$  \\ 
+      PI   &  0.4$K_u$   & 0.8$T_u$  &             & 1.4$T_u$ \\
+      PID  &  0.6$K_u$   & 0.5$T_u$  & 0.125$T_u$  & 0.85$T_u$  \\ \hline
+    \end{tabular*}
+    \fonte{Adaptado de \citeonline{Astrom1995}}
+  \end{minipage}
+\end{table}
+
+%\subsection{Métodos de Otimização ????}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sintonia Automática de Controladores e Controle Adaptativo}
 
-Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana \cite{Astrom1995}.
+
+Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário.
+
+Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:pid_adaptative_astrom_p233}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
 \begin{figure}[!ht]
-  \caption{Modelo de um Controlador com Auto-sintonia.}
+  \caption{Fluxograma para a escolha do Método de Sintonia.}
   \begin{center}
-      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
+      \includegraphics[scale=0.75]{img/escolha_controle_astrom_p236}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pid_adaptative_astrom_p233}
@@ -141,6 +186,8 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Método do Relé}
 
+Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé.
+ 
 \begin{figure}[!ht]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
   \begin{center}
@@ -150,8 +197,25 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:pid_autotuning_relay_astrom_p239}
 \end{figure}
 
+O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação da sequência que é obtida através da transformada de Fourier:
+
+\begin{gather}
+  N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
+\end{gather}
+
+Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}.
+
+Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
+
+\begin{gather}
+  K_u \approx \frac{4d}{\pi a} \\
+  T_u = P_u
+\end{gather}
+
+Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Método Baseado em Regras} %Astron 241
+%\subsubsection{Método Baseado em Regras} %Astron 241
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -200,6 +264,17 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sistemas Inteligentes de Sintonia de Controladores}
+
+
+\begin{figure}[!ht]
+  \caption{Modelo de um Controlador com Auto-sintonia.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
+  \label{fig:pid_adaptative_astrom_p233}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Controle Fuzzy} %Astrom p298
