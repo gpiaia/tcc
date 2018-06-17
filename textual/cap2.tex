@@ -5,20 +5,180 @@ No presente capítulo, são apresentados conceitos básico para a compreensão d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Satélites Artificiais} %ch 1303
 
+Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta USSR no dia 4 de Outubro de 1957, muitas técnicas e novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
+
+\begin{figure}[!ht]
+  \caption{Movimento de Translação de um satélite Artificial.}
+  \begin{center}
+      \includegraphics[scale=0.5]{img/rotational_brown_p256}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Brown2002}.} 
+  \label{fig:rotational_brown_p256}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dinâmica de um Satélite}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Dinâmica de Corpo Rígido}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dinâmica de Translação}
+
+A dinâmica de translação de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a dinâmica de rotação \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
+
+\begin{gather} \label{eq:fma}
+  \vec{F}=\frac{d}{dt}\vec{p}\quad\quad\quad\quad\vec{p}=m\vec{v}\\
+  \vec{F}=m\vec{a} 
+\end{gather}
+
+Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração.
+
+
+\begin{gather}\label{eq:ILED}
+\vec{F_p}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
+\end{gather}
+
+
+\begin{gather}
+  \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j\quad=\quad}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
+\end{gather}
+
+\begin{gather}
+  \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
+\end{gather}
+
+\begin{gather}
+  \vec{F_{e}}=\sum_{i=1}^{N}{\vec{f_{ie}}}=\sum_{i=1}^{N}{m_i\vec{a_i}} 
+\end{gather}
+
+\begin{figure}[!ht]
+  \caption{Representação de $\vec{r_{com}}$}
+  \begin{center}
+      \includegraphics[scale=0.5]{img/translacao_referencial_snider_p15}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Snider}.} 
+  \label{fig:translacao_referencial_snider_p15}
+\end{figure}
+
+\begin{gather}
+  \vec{r_{com}}=\frac{1}{M_T}\sum_{i=1}^{N}{m_i\vec{r_i}} 
+\end{gather}
+
+\begin{gather}
+  M_T\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}}=\sum_{i=1}^{N}{m_i\vec{a_i}}
+\end{gather}
+
+\begin{gather}
+\vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}} 
+\end{gather}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dinâmica de Rotação}
 
+\begin{figure}[!ht]
+  \caption{Distribuição de Massa}
+  \begin{center}
+      \includegraphics[scale=0.5]{img/mass_snider_p16}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Snider}.} 
+  \label{fig:mass_snider_p16}
+\end{figure}
+
+\begin{gather}
+  I_{xx}=\sum_{i=1}^{N}{m_i({y_i}^{2}+{z_i}^{2})}\\
+  I_{yy}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{z_i}^{2})}\\
+  I_{zz}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{y_i}^{2})}\\
+\end{gather}
+
+\begin{gather}
+  I_{xy}=-\sum_{i=1}^{N}{m_ix_iy_i}=I_{xy}\\
+  I_{xz}=-\sum_{i=1}^{N}{m_ix_iz_i}=I_{zx}\\
+  I_{yz}=-\sum_{i=1}^{N}{m_iy_iz_i}=I_{zy}\\
+\end{gather}
+
+\begin{gather}
+I=\begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}\\
+\end{gather}
+
+Caso o satélite seja simétrico:
+
+\begin{gather}
+I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{bmatrix}=\begin{bmatrix} A & 0 & 0 \\ 0 & B & 0 \\ 0 & 0 & C \end{bmatrix}
+\end{gather}
+
+\begin{gather}
+\omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}\\
+\alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt} \\
+d\omega=\alpha dt \\
+\omega =\omega_{0}-\alpha (t-t_{0}) \\
+\beta=\beta_{0}+\omega_{0}(t-t_{0})+\frac{1}{2}\alpha{(t-t_{0})}^{2} \\
+{\omega}^{2}={\omega_0}^{2}+2\alpha(\beta-\beta_0) \\
+\vec{M}=\dot{\vec{H}}\\
+\vec{H}=I\vec{\omega}\\
+\vec{M}=I\dot{\vec{\omega}}=I\vec{\alpha}\\
+\dot{\vec{H}}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega} \\
+\vec{M}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega} \\
+\left|\vec{\omega}\right|=\begin{bmatrix}\omega_1\\\omega_2\\\omega_2\end{bmatrix}
+\end{gather}
+
+\begin{gather}
+\begin{bmatrix}M_{1}\\M_{2}\\M_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
+\end{gather}
+
+\begin{gather}
+  M_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 \\
+  M_2=B\dot{\omega_2}-(C-A)\omega_1\omega_3 \\
+  M_3=C\dot{\omega_3}-(A-B)\omega_1\omega_2
+\end{gather}
+
+\begin{gather}
+M_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})
+\end{gather}
+
+\begin{gather}
+  M_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})\\
+  M_{2}=I_{zz}\dot{\omega_{3}}-I_{yz}(\dot{\omega_{3}}-\omega_{1}\omega_{2})-I_{xy}(\dot{\omega_{1}}+\omega_{2}\omega_{3})\\-(I_{zz}-I_{xx})\omega_{1}\omega_{3}-I_{xz}({\omega_{3}}^{2}-{\omega_{1}}^{2})\\
+  M_{3}=I_{zz}\dot{\omega_{1}}-I_{xz}(\dot{\omega_{1}}-\omega_{2}\omega_{3})-I_{yz}(\dot{\omega_{2}}+\omega_{1}\omega_{3})\\-(I_{xx}-I_{yy})\omega_{1}\omega_{2}-I_{xy}({\omega_{1}}^{2}-{\omega_{2}}^{2})
+\end{gather}
+
+\begin{gather}
+  \dot{\omega_{1}}=\frac{M_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}\\
+  \dot{\omega_{2}}=\frac{M_{2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}\\
+  \dot{\omega_{3}}=\frac{M_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
+\end{gather}
+
 \subsubsection{Matriz de Rotação}
+
+\begin{gather}
+  cos\phi=\hat{i_{1}}\cdot\hat{b}\\
+  cos\theta=\hat{i_{2}}\cdot\hat{b}\\
+  cos\varphi=\hat{i_{3}}\cdot\hat{b}
+\end{gather}
+
+\begin{figure}[!ht]
+  \caption{Distribuição de Massa}
+  \begin{center}
+      \includegraphics[scale=0.5]{img/coordenadas_snider_p25}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Snider}.} 
+  \label{fig:coordenada}
+\end{figure}
+
+\begin{gather}
+R^{11} = \hat{i_{1}}\cdot\hat{b_1}
+\end{gather}
+
+Onde a matriz de rotação 
+\begin{gather}
+ R^{ib}=\begin{bmatrix}R_{11}&R_{12}&R_{13}\\R_{21}&R_{22}&R_{23}\\R_{31}&R_{32}&R_{33}\end{bmatrix}
+\end{gather}
+
+\begin{figure}[!ht]
+  \caption{Distribuição de Massa}
+  \begin{center}
+      \includegraphics[scale=0.5]{img/euler_snider_p28}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Snider}.} 
+  \label{fig:coordenada}
+\end{figure}
 
 \subsection{Controle Tridimensional do Satélite}
 
@@ -151,7 +311,7 @@ O outro método de se estimar os valores do controlador, é através de duas car
   \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta em Frequência}
   \label{tab:Ziegler-Nichols-freq}
   \centering%
-  \begin{minipage}{.6\textwidth}
+  \begin{minipage}{.52\textwidth}
     \begin{tabular*}{\textwidth}{lllll}
       \hline
       {Controlador} & {K} & {$T_i$} & {$T_d$}& {$T_p$}\\ \hline
@@ -203,7 +363,16 @@ O modelo matemático usado para descrever o comportamento de um relé, pode ser 
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{gather}
 
-Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}.
+Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}. Isso pode ser visto na figura \ref{fig:relay_signals}.
+
+\begin{figure}[!ht]
+  \caption{Sinais do Relé e da Saída do Sistema}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/relay_giap_p2}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Giap2014}} 
+  \label{fig:relay_signals}
+\end{figure}
 
 Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
