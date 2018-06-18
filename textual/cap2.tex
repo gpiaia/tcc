@@ -24,30 +24,33 @@ Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que f
 
 A dinâmica de translação de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a dinâmica de rotação \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
 
-\begin{gather} \label{eq:fma}
-  \vec{F}=\frac{d}{dt}\vec{p}\quad\quad\quad\quad\vec{p}=m\vec{v}\\
+\begin{equation} \label{eq:fma}
+  \vec{F}=\frac{d}{dt}\vec{p}\quad\quad\quad\quad\vec{p}=m\vec{v}
+\end{equation}
+
+\begin{equation}
   \vec{F}=m\vec{a} 
-\end{gather}
+\end{equation}
 
 Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração.
 
 
-\begin{gather}\label{eq:ILED}
+\begin{equation}\label{eq:ILED}
 \vec{F_p}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
-\end{gather}
+\end{equation}
 
 
-\begin{gather}
-  \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j\quad=\quad}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
-\end{gather}
-
-\begin{gather}
+\begin{equation}
   \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
-\end{gather}
+\end{equation}
 
-\begin{gather}
+\begin{equation}
+  \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
+\end{equation}
+
+\begin{equation}
   \vec{F_{e}}=\sum_{i=1}^{N}{\vec{f_{ie}}}=\sum_{i=1}^{N}{m_i\vec{a_i}} 
-\end{gather}
+\end{equation}
 
 \begin{figure}[!ht]
   \caption{Representação de $\vec{r_{com}}$}
@@ -58,17 +61,17 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   \label{fig:translacao_referencial_snider_p15}
 \end{figure}
 
-\begin{gather}
-  \vec{r_{com}}=\frac{1}{M_T}\sum_{i=1}^{N}{m_i\vec{r_i}} 
-\end{gather}
+\begin{equation}
+  \vec{r_{com}}=\frac{1}{_MT}\sum_{i=1}^{N}{m_i\vec{r_i}} 
+\end{equation}
 
-\begin{gather}
+\begin{equation}
   M_T\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}}=\sum_{i=1}^{N}{m_i\vec{a_i}}
-\end{gather}
+\end{equation}
 
-\begin{gather}
+\begin{equation}
 \vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}} 
-\end{gather}
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dinâmica de Rotação}
@@ -82,76 +85,145 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   \label{fig:mass_snider_p16}
 \end{figure}
 
-\begin{gather}
-  I_{xx}=\sum_{i=1}^{N}{m_i({y_i}^{2}+{z_i}^{2})}\\
-  I_{yy}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{z_i}^{2})}\\
-  I_{zz}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{y_i}^{2})}\\
-\end{gather}
+\begin{equation}
+  I_{xx}=\sum_{i=1}^{N}{m_i({y_i}^{2}+{z_i}^{2})}
+\end{equation}
 
-\begin{gather}
-  I_{xy}=-\sum_{i=1}^{N}{m_ix_iy_i}=I_{xy}\\
-  I_{xz}=-\sum_{i=1}^{N}{m_ix_iz_i}=I_{zx}\\
-  I_{yz}=-\sum_{i=1}^{N}{m_iy_iz_i}=I_{zy}\\
-\end{gather}
+\begin{equation}
+  I_{yy}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{z_i}^{2})}
+\end{equation}
 
-\begin{gather}
-I=\begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}\\
-\end{gather}
+\begin{equation}
+  I_{zz}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{y_i}^{2})}
+\end{equation}
+
+\begin{equation}
+  I_{xy}=-\sum_{i=1}^{N}{m_ix_iy_i}=I_{xy}
+\end{equation}
+
+\begin{equation}
+  I_{xz}=-\sum_{i=1}^{N}{m_ix_iz_i}=I_{zx}
+\end{equation}
+
+\begin{equation}
+  I_{yz}=-\sum_{i=1}^{N}{m_iy_iz_i}=I_{zy}
+\end{equation}
+
+\begin{equation}
+I=\begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}
+\end{equation}
 
 Caso o satélite seja simétrico:
 
-\begin{gather}
+\begin{equation}
 I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{bmatrix}=\begin{bmatrix} A & 0 & 0 \\ 0 & B & 0 \\ 0 & 0 & C \end{bmatrix}
-\end{gather}
+\end{equation}
 
-\begin{gather}
-\omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}\\
-\alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt} \\
-d\omega=\alpha dt \\
-\omega =\omega_{0}-\alpha (t-t_{0}) \\
-\beta=\beta_{0}+\omega_{0}(t-t_{0})+\frac{1}{2}\alpha{(t-t_{0})}^{2} \\
-{\omega}^{2}={\omega_0}^{2}+2\alpha(\beta-\beta_0) \\
-\vec{M}=\dot{\vec{H}}\\
-\vec{H}=I\vec{\omega}\\
-\vec{M}=I\dot{\vec{\omega}}=I\vec{\alpha}\\
-\dot{\vec{H}}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega} \\
-\vec{M}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega} \\
+\begin{equation}
+\omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}
+\end{equation}
+
+\begin{equation}
+\alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt}
+\end{equation}
+
+\begin{equation}
+d\omega=\alpha dt 
+\end{equation}
+
+\begin{equation}
+\omega =\omega_{0}-\alpha (t-t_{0})
+\end{equation}
+
+\begin{equation}
+\beta=\beta_{0}+\omega_{0}(t-t_{0})+\frac{1}{2}\alpha{(t-t_{0})}^{2}
+\end{equation}
+
+\begin{equation}
+{\omega}^{2}={\omega_0}^{2}+2\alpha(\beta-\beta_0) 
+\end{equation}
+
+\begin{equation}
+\vec{\tau}=\dot{\vec{L}}
+\end{equation}
+
+\begin{equation}
+\vec{L}=I\vec{\omega}
+\end{equation}
+
+\begin{equation}
+\vec{\tau}=I\dot{\vec{\omega}}=I\vec{\alpha}
+\end{equation}
+
+\begin{equation}
+\dot{\vec{L}}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
+\end{equation}
+
+\begin{equation}
+\vec{\tau}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
+\end{equation}
+
+\begin{equation}
 \left|\vec{\omega}\right|=\begin{bmatrix}\omega_1\\\omega_2\\\omega_2\end{bmatrix}
-\end{gather}
+\end{equation}
 
-\begin{gather}
-\begin{bmatrix}M_{1}\\M_{2}\\M_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
-\end{gather}
+\begin{equation}
+\begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
+\end{equation}
 
-\begin{gather}
-  M_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 \\
-  M_2=B\dot{\omega_2}-(C-A)\omega_1\omega_3 \\
-  M_3=C\dot{\omega_3}-(A-B)\omega_1\omega_2
-\end{gather}
+\begin{equation}
+  \tau_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 
+\end{equation}
 
-\begin{gather}
-M_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})
-\end{gather}
+\begin{equation}
+  \tau_2=B\dot{\omega_2}-(C-A)\omega_1\omega_3 
+\end{equation}
 
-\begin{gather}
-  M_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})\\
-  M_{2}=I_{zz}\dot{\omega_{3}}-I_{yz}(\dot{\omega_{3}}-\omega_{1}\omega_{2})-I_{xy}(\dot{\omega_{1}}+\omega_{2}\omega_{3})\\-(I_{zz}-I_{xx})\omega_{1}\omega_{3}-I_{xz}({\omega_{3}}^{2}-{\omega_{1}}^{2})\\
-  M_{3}=I_{zz}\dot{\omega_{1}}-I_{xz}(\dot{\omega_{1}}-\omega_{2}\omega_{3})-I_{yz}(\dot{\omega_{2}}+\omega_{1}\omega_{3})\\-(I_{xx}-I_{yy})\omega_{1}\omega_{2}-I_{xy}({\omega_{1}}^{2}-{\omega_{2}}^{2})
-\end{gather}
+\begin{equation}
+  \tau_3=C\dot{\omega_3}-(A-B)\omega_1\omega_2
+\end{equation}
 
-\begin{gather}
-  \dot{\omega_{1}}=\frac{M_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}\\
-  \dot{\omega_{2}}=\frac{M_{2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}\\
-  \dot{\omega_{3}}=\frac{M_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
-\end{gather}
+\begin{equation}
+\tau_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})
+\end{equation}
+
+\begin{equation}
+ \tau_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})
+\end{equation}
+
+\begin{equation}
+  \tau_{2}=I_{zz}\dot{\omega_{3}}-I_{yz}(\dot{\omega_{3}}-\omega_{1}\omega_{2})-I_{xy}(\dot{\omega_{1}}+\omega_{2}\omega_{3})\\-(I_{zz}-I_{xx})\omega_{1}\omega_{3}-I_{xz}({\omega_{3}}^{2}-{\omega_{1}}^{2})
+\end{equation}
+
+\begin{equation}
+ \tau_{3}=I_{zz}\dot{\omega_{1}}-I_{xz}(\dot{\omega_{1}}-\omega_{2}\omega_{3})-I_{yz}(\dot{\omega_{2}}+\omega_{1}\omega_{3})\\-(I_{xx}-I_{yy})\omega_{1}\omega_{2}-I_{xy}({\omega_{1}}^{2}-{\omega_{2}}^{2})
+\end{equation}
+
+\begin{equation}
+  \dot{\omega_{1}}=\frac{\tau_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
+\end{equation}
+
+\begin{equation}
+  \dot{\omega_{2}}=\frac{\tau_{2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
+\end{equation},
+
+\begin{equation}
+  \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
+\end{equation}
 
 \subsubsection{Matriz de Rotação}
 
-\begin{gather}
-  cos\phi=\hat{i_{1}}\cdot\hat{b}\\
-  cos\theta=\hat{i_{2}}\cdot\hat{b}\\
+\begin{equation}
+  cos\phi=\hat{i_{1}}\cdot\hat{b}
+\end{equation}
+
+\begin{equation}
+  cos\theta=\hat{i_{2}}\cdot\hat{b}
+\end{equation}
+
+\begin{equation}
   cos\varphi=\hat{i_{3}}\cdot\hat{b}
-\end{gather}
+\end{equation}
 
 \begin{figure}[!ht]
   \caption{Distribuição de Massa}
@@ -162,17 +234,17 @@ M_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz
   \label{fig:coordenada}
 \end{figure}
 
-\begin{gather}
+\begin{equation}
 R^{11} = \hat{i_{1}}\cdot\hat{b_1}
-\end{gather}
+\end{equation}
 
 Onde a matriz de rotação 
-\begin{gather}
+\begin{equation}
  R^{ib}=\begin{bmatrix}R_{11}&R_{12}&R_{13}\\R_{21}&R_{22}&R_{23}\\R_{31}&R_{32}&R_{33}\end{bmatrix}
-\end{gather}
+\end{equation}
 
 \begin{figure}[!ht]
-  \caption{Distribuição de Massa}
+  \caption{Ângulos de Euler}
   \begin{center}
       \includegraphics[scale=0.5]{img/euler_snider_p28}
   \end{center}
@@ -180,9 +252,99 @@ Onde a matriz de rotação
   \label{fig:coordenada}
 \end{figure}
 
-\subsection{Controle Tridimensional do Satélite}
+
+\begin{equation}
+R_{ij}=\hat{i_{3}}\cdot\hat{b}=cos\beta_{ij} \\
+\begin{Bmatrix} 1-2-3 & \quad 2-3-1 & \quad 3-1-2 \\ 1-3-2 & \quad 2-1-3 & \quad 3-2-1 \\ 1-3-1 & \quad 2-1-2 & \quad 3-2-3 \end{Bmatrix} 
+\end{equation}
+
+\begin{equation}
+R_{3}(\phi)\leftarrow R_{2}(\theta)\leftarrow R_1(\psi)\\
+\end{equation}
+
+\begin{equation}
+R_{3}(\phi)R_{2}(\theta)R_{1}(\psi)=\begin{bmatrix}1&0&0\\0&cos\phi&sen\phi\\0&-sen\phi&cos\phi\end{bmatrix}\begin{bmatrix}cos\theta&0&-sen\theta\\0&1&0\\-sen\theta&0&cos\theta\end{bmatrix}\begin{bmatrix}cos\psi&sen\psi&0\\-sen\psi&cos\psi&0\\0&0&1\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+R(\phi ,\theta ,\psi )=\begin{bmatrix} cos\theta cos\psi  & cos\phi sen\theta  & -sen\theta  \\ -cos\phi sen\psi +sen\phi sen\theta cos\psi  & cos\phi cos\psi +sen\phi sen\theta sen\psi  & sen\phi cos\theta  \\ sen\phi sen\psi +cos\phi sen\theta cos\psi  & -sen\phi cos\psi +cos\phi sen\theta sen\psi  & cos\phi cos\theta  \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+R(\phi ,\theta ,\psi )=\begin{bmatrix} 1 & \psi  & -\theta  \\ -\psi  & 1 & \phi  \\ \theta  & -\phi  & 0 \end{bmatrix} \\
+\end{equation}
+
+\begin{equation}
+\phi=tan^{-1}\left(\frac{R_{23}}{R_{33}}\right)
+\end{equation}
+
+\begin{equation}
+\theta=tan^{-1}\left(\frac{-R_{13}}{\sqrt{1-R^{2}_{13}}}\right)
+\end{equation}
+
+\begin{equation}
+\psi=tan^{-1}\left(\frac{R_{12}}{R_{11}}\right) 
+\end{equation}
+
+\begin{equation}
+\vec{\omega_1}(\dot{\phi})\leftarrow\vec{\omega_2}(\dot{\theta})\leftarrow\vec{\omega_3}(\dot{\psi})
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}=\begin{bmatrix}\dot{\phi}\\0\\0\end{bmatrix}+R_{1}(\phi)\begin{bmatrix}0\\\dot{\theta}\\0\end{bmatrix}+R_{1}(\phi)R_{2}(\theta)\begin{bmatrix}0\\0\\\dot{\psi}\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+ = \begin{bmatrix} 1 & 0 & -sen\theta \\ 0 & cos\phi  & sen\phi cos\theta \\ 0 & -sen\phi & cos\phi cos\theta\end{bmatrix}\begin{bmatrix}\dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ cos\theta  } \begin{bmatrix} cos\theta  & sen\phi sen\theta  & cos\phi sen\theta  \\ 0 & cos\phi cos\theta  & -sen\phi cos\theta  \\ 0 & sen\phi  & cos\phi  \end{bmatrix}\begin{bmatrix} \omega_1 \\ \omega_2  \\ \omega_3  \end{bmatrix} 
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ sin\theta  } \begin{bmatrix} sen\psi  & cos\psi  & 0 \\ cos\psi sen\theta  & -sen\psi sen\theta  & 0 \\ -sen\psi cos\theta  & -cos\psi cos\theta  & 0 \end{bmatrix}\begin{bmatrix} \omega _{ 1 } \\ \omega _{ 2 } \\ \omega _{ 3 } \end{bmatrix}
+\end{equation}
+
+
+\begin{figure}[!ht]
+  \caption{Distribuição de Massa}
+  \begin{center}
+      \includegraphics[scale=0.5]{img/euler_angles_snider_p27}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Snider}.} 
+  \label{fig:coordenada}
+\end{figure}
 
 \subsubsection{Rodas de Reação}
+
+\begin{equation}
+\vec{L_{tot}}=\vec{L_{b}}+\vec{L_{\omega}}=constante 
+\end{equation}
+
+\begin{equation}
+\vec{L_{b}}=I\vec{\omega}
+\end{equation}
+
+\begin{equation}
+\vec {L_{\omega} } =D_{\omega}\vec{\psi_{\omega}} 
+\end{equation}
+
+\begin{equation}
+\vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=D_{\omega}\dot{\vec{\psi_{\omega}}}
+\end{equation}
+
+\begin{equation}\label{eq:torquefinal1}
+\tau_{1}=A\dot{\omega_{1}}+(D_{\omega}\dot{\psi_{\omega}})_{1}+(C-B)\omega_{2}\omega_{3}-(D_{\omega}\psi_{\omega})_{2}\omega_{3}+(D_{\omega}\psi_{\omega})_{3}\omega_{2}
+\end{equation}
+
+\begin{equation}\label{eq:torquefinal2}
+\tau_{2}=B\dot{\omega_{2}}+(D_{\omega}\dot{\psi_{\omega}})_{2}+(A-C)\omega_{1}\omega_{3}+(D_{\omega}\psi_{\omega})_{2}\omega_{3}-(D_{\omega}\psi_{\omega})_{3}\omega_{1}
+\end{equation}
+
+\begin{equation}\label{eq:torquefinal3}
+\tau_{3}=C\dot{\omega_{3}}+(D_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(D_{\omega}\psi_{\omega})_{1}\omega_{2}+(D_{\omega}\psi_{\omega})_{3}\omega_{1}
+\end{equation}
 
 \begin{figure}[!ht]
   \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
@@ -226,12 +388,21 @@ A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela pod
 
 O controlador proporcional-integral-derivativo é um dos controladores mais utilizados nas aplicações industriais. Essa topologia de controlador consegue, em diferentes configurações atender entre 90 e 95\% de todos os sistemas que necessitam de controladores \cite{Levine1996}. A forma descritiva matemática mais comum de se encontrar um controlador PID no domínio do tempo é a seguinte:
 
-\begin{gather}
+\begin{equation}
   u(t) = K\left((e(t)+\frac{1}{T_i}\int_{0}^{t}{e(\tau)}d\tau+T_d\frac{de(t)}{dt}\right) 
-\end{gather}
+\end{equation}
 
 Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995};
 
+A partir desse princípio podemos relacionar com as equações \ref{eq:torquefinal1}, \ref{eq:torquefinal2} e \ref{eq:torquefinal3} podemos escrever a relação do controlador PID do Torque do motor:
+
+\begin{equation}
+\tau_{m_{1,2,3}}=K_{P}\left((\beta_{com}-\beta)+\frac{1}{T_{I}}\int{(\beta_{com}-\beta)dt}+T_{d}\frac{d}{dt}(\beta_{com}-\beta)\right)
+\end{equation}
+
+\begin{equation}
+=K_{P}\left(\beta_{com}+\frac{1}{T_{I}}\int{\beta_{com}dt}+T_{d}\frac{d}{dt}\beta_{com}\right) 
+\end{equation}
 
 Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{$G_e(s)$} é a função de transferência do controlador PID, \textit{$M_{c1}(s)$} é o sinal de erro tratado pelo controlador, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
@@ -359,9 +530,9 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
 
 O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação da sequência que é obtida através da transformada de Fourier:
 
-\begin{gather}
+\begin{equation}
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
-\end{gather}
+\end{equation}
 
 Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}. Isso pode ser visto na figura \ref{fig:relay_signals}.
 
@@ -376,10 +547,10 @@ Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do
 
 Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
-\begin{gather}
+\begin{equation}
   K_u \approx \frac{4d}{\pi a} \\
   T_u = P_u
-\end{gather}
+\end{equation}
 
 Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
 
