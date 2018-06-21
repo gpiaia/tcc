@@ -1,11 +1,11 @@
 \chapter{Revisão Bibliográfica}
 
-No presente capítulo, são apresentados conceitos básico para a compreensão do presente trabalho. Nessa etapa, busca-se através da revisão de trabalhos já elucidados a contextualização do projeto proposto.
+No presente capítulo, são apresentados conceitos básico para a compreensão do trabalho. Nessa etapa, busca-se através da revisão de trabalhos já elucidados a contextualização do projeto proposto.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Satélites Artificiais} %ch 1303
 
-Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS no dia 4 de Outubro de 1957, muitas técnicas e novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
+Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS no dia 4 de Outubro de 1957, novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
 
 \begin{figure}[!ht]
   \caption{Movimento de Translação de um satélite Artificial.}
@@ -34,9 +34,7 @@ A dinâmica de translação de um copo em relação ao outro é um caso de \text
   \vec{F}=m\vec{a}
 \end{equation}
 
-Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração.
-
-Podemos descrever a força total sobre uma partícula $\vec{F_i}$ da seguinte forma:
+Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração. Ainda, podemos descrever a força total sobre uma partícula $\vec{F_i}$ da seguinte forma:
 
 \begin{equation}\label{eq:Fi}
 \vec{F_i}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
@@ -144,13 +142,13 @@ I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{
 
 Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{yy}$ e $I_{zz}$ serão descritos como A, B e C respectivamente.
 
-Após a descrição matemática do momento de inércia, podemos acomeçar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
+Após a descrição matemática do momento de inércia, podemos começar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
 
 \begin{equation}
 \omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}
 \end{equation}
 
-A aceleração angular $\alpha$ nada mais é do que a primeira derivada da velocidade angular:
+A aceleração angular $\alpha$, nada mais é do que a primeira derivada da velocidade angular:
 
 \begin{equation}
 \alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt}
@@ -170,7 +168,7 @@ Outra equação importante para descrever a maioria dos tipos de movimento, é a
 \beta=\beta_{0}+\omega_{0}(t-t_{0})+\frac{1}{2}\alpha{(t-t_{0})}^{2}
 \end{equation}
 
-Ainda mais importante, é a expressão que relaciona a velocidade angular $\omega$ com a velocidade angular inicial $\omega_0$, aceleração angular e o deslocamento ($\beta-\beta_0$). Isso podemos ver na equação da sequência.
+Não menos importante, é a expressão que relaciona a velocidade angular $\omega$ com a velocidade angular inicial $\omega_0$, aceleração angular e o deslocamento ($\beta-\beta_0$). Isso é descrito na equação da sequência.
 
 \begin{equation}
 {\omega}^{2}={\omega_0}^{2}+2\alpha(\beta-\beta_0) 
@@ -184,17 +182,18 @@ Como foi feito na dinâmica de translação, precisamos relacionar os momentos e
 
 Mas como o momento angular é o produto do momento de inércia do corpo I pela velocidade angular, assim: 
 
-\begin{equation}
+\begin{equation}\label{eq:iomega}
 \vec{L}=I\vec{\omega}
 \end{equation}
 
-Com isso, já munido com as relações entre velocidade e aceleração, temos:  
+Com isso, já conhecendo as relações entre velocidade e aceleração, temos:  
 
 \begin{equation}\label{iomega}
 \vec{\tau}=I\dot{\vec{\omega}}=I\vec{\alpha}
 \end{equation}
 
-Se usarmos o teorema do transporte, o momento de inércia pode ser escrito da seguinte forma:
+Se usarmos o teorema do transporte cinemático, o momento de inércia pode ser escrito da seguinte forma:
+
 \begin{equation}
 \dot{\vec{L}}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
 \end{equation}
@@ -205,7 +204,7 @@ Por consequência, descrevemos o torque da seguinte maneire:
 \vec{\tau}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
 \end{equation}
 
-Como temos o momento de inércia do corpo rígido representado em forma de matriz, precisamos mudar a representação simbólica vetorial para a matricial. Começaremos pela velocidade angular $\vec{\omega}$, que em módulo, pode ser descrita da seguinte forma:
+Como temos o momento de inércia do corpo rígido representado em forma de matriz, precisamos mudar a representação a matricial. Começaremos pela velocidade angular $\vec{\omega}$, que em módulo, pode ser descrita da seguinte forma:
 
 \begin{equation}
 \left|\vec{\omega}\right|=\begin{bmatrix}\omega_1\\\omega_2\\\omega_2\end{bmatrix}
@@ -217,7 +216,7 @@ Se fizermos o mesmo com a equação \ref{eq:torque}, temos:
 \begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
 \end{equation}
 
-Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Ainda, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações da sequência.
+Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Ainda, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações a seguir.
 
 \begin{equation}
   \tau_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 
@@ -340,9 +339,9 @@ Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Matrizes de Rotação e Ângulos de Euler}
 
-Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem, também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}.
+Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem (EDO), também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}.
 
-Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta e \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundo de uma transformação pela sequência de Euler \cite{BongWie2001}.
+Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundo de uma transformação pela sequência de Euler \cite{BongWie2001}.
 
 \begin{figure}[!ht]
   \caption{Ângulos de Euler}
@@ -367,7 +366,7 @@ As duas matrizes de rotação obtidas pelo trabalho de Euler podem ser vistas na
 
 \subsubsection{Rodas de Reação}
 
-Uma rodas de reação consiste em um rotor que é fixado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade da roda criando uma reação pela criação de um torque. Quando a roda sofre uma desaceleração, ela exerce um torque em uma direção, se acelerada, em outra \cite{BongWie2001}. Na imagem \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
+Uma rodas de reação consiste em um rotor que é fixado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade da roda, criando uma reação pela criação de um torque. Quando a roda sofre uma desaceleração, ela exerce um torque em uma direção, se acelerada, em outra \cite{BongWie2001}. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
 
 \begin{figure}[!ht]
   \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
@@ -562,7 +561,7 @@ O outro método de se estimar os valores do controlador, é através de duas car
 
 Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário.
 
-Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:pid_adaptative_astrom_p233}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
+Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
 \begin{figure}[!ht]
   \caption{Fluxograma para a escolha do Método de Sintonia.}
@@ -570,7 +569,7 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
       \includegraphics[scale=0.75]{img/escolha_controle_astrom_p236}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:pid_adaptative_astrom_p233}
+  \label{fig:escolha_controle_astrom_p236}
 \end{figure}
 
 
@@ -588,8 +587,9 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
   \label{fig:pid_autotuning_relay_astrom_p239}
 \end{figure}
 
-O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação da sequência que é obtida através da transformada de Fourier:
+O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação da sequência:
 
+ % que é obtida através da série/transformada de Fourier????
 \begin{equation}
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{equation}
@@ -597,7 +597,7 @@ O modelo matemático usado para descrever o comportamento de um relé, pode ser 
 Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}. Isso pode ser visto na figura \ref{fig:relay_signals}.
 
 \begin{figure}[!ht]
-  \caption{Sinais do Relé e da Saída do Sistema}
+  \caption{Sinais do Relé e da Saída do Sistema  VOU COLOCAR OUTRA UMAGEM !!!!}
   \begin{center}
       \includegraphics[scale=0.75]{img/relay_giap_p2}
   \end{center}
