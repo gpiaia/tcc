@@ -5,7 +5,7 @@ No presente capítulo, são apresentados conceitos básico para a compreensão d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Satélites Artificiais} %ch 1303
 
-Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta USSR no dia 4 de Outubro de 1957, muitas técnicas e novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
+Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS no dia 4 de Outubro de 1957, muitas técnicas e novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
 
 \begin{figure}[!ht]
   \caption{Movimento de Translação de um satélite Artificial.}
@@ -19,38 +19,46 @@ Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Dinâmica de um Satélite}
 
+A dinâmica é dividida em duas partes, onde uma representa os movimentos de translação e a outra os de rotação.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dinâmica de Translação}
 
 A dinâmica de translação de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a dinâmica de rotação \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
 
-\begin{equation} \label{eq:fma}
+\begin{equation}\label{eq:fma}
   \vec{F}=\frac{d}{dt}\vec{p}\quad\quad\quad\quad\vec{p}=m\vec{v}
 \end{equation}
 
 \begin{equation}
-  \vec{F}=m\vec{a} 
+  \vec{F}=m\vec{a}
 \end{equation}
 
 Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração.
 
+Podemos descrever a força total sobre uma partícula $\vec{F_i}$ da seguinte forma:
 
-\begin{equation}\label{eq:ILED}
-\vec{F_p}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
+\begin{equation}\label{eq:Fi}
+\vec{F_i}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
 \end{equation}
+ 
+ Onde, $\vec{f_{ie}}$ é a força externa e $\vec{f_{ij}}$ é a força interna de carda parte j que compõe o corpo i e $m_i\vec{a_i}$ é a massa e a força resultante no corpo rígido.
 
+ Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
 
 \begin{equation}
   \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
 \end{equation}
 
-\begin{equation}
-  \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
-\end{equation}
+Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em módulo igual a força $\vec{f_{ij}}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam.  
 
-\begin{equation}
+Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F_e}$) como o somatório de todas as forças sobre as partículas ($\vec{F_{ie}}$). Isso pode ser esquito da seguinte forma:
+
+\begin{equation}\label{eq:fet}
   \vec{F_{e}}=\sum_{i=1}^{N}{\vec{f_{ie}}}=\sum_{i=1}^{N}{m_i\vec{a_i}} 
 \end{equation}
+
+A imagem \ref{fig:translacao_referencial_snider_p15}, representa o vetor posição $\vec{r_{com}}$ de um corpo rígido em relação a origem. A descrição matemática desse vetor pode ser visto na equação \ref{eq:rcom}.
 
 \begin{figure}[!ht]
   \caption{Representação de $\vec{r_{com}}$}
@@ -61,13 +69,19 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   \label{fig:translacao_referencial_snider_p15}
 \end{figure}
 
-\begin{equation}
-  \vec{r_{com}}=\frac{1}{_MT}\sum_{i=1}^{N}{m_i\vec{r_i}} 
+\begin{equation}\label{eq:rcom}
+  \vec{r_{com}}=\frac{1}{M_T}\sum_{i=1}^{N}{m_i\vec{r_i}} 
 \end{equation}
 
-\begin{equation}
+Onde, $M_T$ é a massa total do corpo rígido.
+
+Como a aceleração é a derivada segunda da posição, derivamos duas vezes a posição $\vec{r_{com}}$ e multiplicamos pela massa total em ambos os lado da equação \ref{eq:rcom}. Assim temos:
+
+\begin{equation}\label{eq:2deriv}
   M_T\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}}=\sum_{i=1}^{N}{m_i\vec{a_i}}
 \end{equation}
+
+Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sobre um corpo rígido que desempenha movimento de translação. Isso pode ser visto na sequência.
 
 \begin{equation}
 \vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}} 
@@ -75,6 +89,8 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Dinâmica de Rotação}
+
+A dinâmica de rotação descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. 
 
 \begin{figure}[!ht]
   \caption{Distribuição de Massa}
@@ -84,6 +100,9 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   \fonte{Adaptado de \citeonline{Snider}.} 
   \label{fig:mass_snider_p16}
 \end{figure}
+
+
+Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
 
 \begin{equation}
   I_{xx}=\sum_{i=1}^{N}{m_i({y_i}^{2}+{z_i}^{2})}
@@ -97,6 +116,8 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   I_{zz}=\sum_{i=1}^{N}{m_i({x_i}^{2}+{y_i}^{2})}
 \end{equation}
 
+Já quando as partículas estão dispostas sobre os planos xy, xz e yz, temos:
+
 \begin{equation}
   I_{xy}=-\sum_{i=1}^{N}{m_ix_iy_i}=I_{xy}
 \end{equation}
@@ -109,67 +130,94 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   I_{yz}=-\sum_{i=1}^{N}{m_iy_iz_i}=I_{zy}
 \end{equation}
 
-\begin{equation}
+Com isso, podemos criar uma matriz que representa o momento de inércia total do corpo rígido:
+
+\begin{equation}\label{eq:nsimetrico}
 I=\begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz}\end{bmatrix}
 \end{equation}
 
-Caso o satélite seja simétrico:
+Caso o satélite seja simétrico, os momentos de inércia nos planos xy, xz e yz são de mesmo módulo só que com sinal oposto aos momentos de inércia dos planos xy, zx e zy, anulando todos esses termos. Isso pode ser visto na seguinte matriz diagonal:
 
 \begin{equation}
 I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{bmatrix}=\begin{bmatrix} A & 0 & 0 \\ 0 & B & 0 \\ 0 & 0 & C \end{bmatrix}
 \end{equation}
 
+Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{yy}$ e $I_{zz}$ serão descritos como A, B e C respectivamente.
+
+Após a descrição matemática do momento de inércia, podemos acomeçar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
+
 \begin{equation}
 \omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}
 \end{equation}
+
+A aceleração angular $\alpha$ nada mais é do que a primeira derivada da velocidade angular:
 
 \begin{equation}
 \alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt}
 \end{equation}
 
-\begin{equation}
-d\omega=\alpha dt 
-\end{equation}
+ % \begin{equation}
+ % d\omega=\alpha dt 
+ % \end{equation}
 
-\begin{equation}
-\omega =\omega_{0}-\alpha (t-t_{0})
-\end{equation}
+% \begin{equation}
+% \omega =\omega_{0}-\alpha (t-t_{0})
+% \end{equation}
+
+Outra equação importante para descrever a maioria dos tipos de movimento, é aquela que relaciona a posição $\beta$ com a posição inicial $\beta_0$, velocidade angular inicial $\omega_0$, o tempo inicial do movimento $t_0$, o tempo atual t e a aceleração angular $\alpha$. A expressão pode ser vista na sequência.
 
 \begin{equation}
 \beta=\beta_{0}+\omega_{0}(t-t_{0})+\frac{1}{2}\alpha{(t-t_{0})}^{2}
 \end{equation}
 
+Ainda mais importante, é a expressão que relaciona a velocidade angular $\omega$ com a velocidade angular inicial $\omega_0$, aceleração angular e o deslocamento ($\beta-\beta_0$). Isso podemos ver na equação da sequência.
+
 \begin{equation}
 {\omega}^{2}={\omega_0}^{2}+2\alpha(\beta-\beta_0) 
 \end{equation}
+
+Como foi feito na dinâmica de translação, precisamos relacionar os momentos e a aceleração angular $\alpha$. Para isso vamos começar relacionando o torque $\vec{\tau}$ com a derivada do momento angular $\vec{L}$:
 
 \begin{equation}
 \vec{\tau}=\dot{\vec{L}}
 \end{equation}
 
+Mas como o momento angular é o produto do momento de inércia do corpo I pela velocidade angular, assim: 
+
 \begin{equation}
 \vec{L}=I\vec{\omega}
 \end{equation}
 
-\begin{equation}
+Com isso, já munido com as relações entre velocidade e aceleração, temos:  
+
+\begin{equation}\label{iomega}
 \vec{\tau}=I\dot{\vec{\omega}}=I\vec{\alpha}
 \end{equation}
 
+Se usarmos o teorema do transporte, o momento de inércia pode ser escrito da seguinte forma:
 \begin{equation}
 \dot{\vec{L}}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
 \end{equation}
 
-\begin{equation}
+Por consequência, descrevemos o torque da seguinte maneire:
+
+\begin{equation}\label{eq:torque}
 \vec{\tau}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
 \end{equation}
+
+Como temos o momento de inércia do corpo rígido representado em forma de matriz, precisamos mudar a representação simbólica vetorial para a matricial. Começaremos pela velocidade angular $\vec{\omega}$, que em módulo, pode ser descrita da seguinte forma:
 
 \begin{equation}
 \left|\vec{\omega}\right|=\begin{bmatrix}\omega_1\\\omega_2\\\omega_2\end{bmatrix}
 \end{equation}
 
+Se fizermos o mesmo com a equação \ref{eq:torque}, temos:
+
 \begin{equation}
 \begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
 \end{equation}
+
+Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Ainda, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações da sequência.
 
 \begin{equation}
   \tau_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 
@@ -183,21 +231,21 @@ d\omega=\alpha dt
   \tau_3=C\dot{\omega_3}-(A-B)\omega_1\omega_2
 \end{equation}
 
-\begin{equation}
-\tau_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})
-\end{equation}
+Se utilizarmos um corpo não simétrico, podemos recorrer a matriz da equação \ref{eq:nsimetrico}, e obteremos as 3 seguintes equações para descrever o torque:
 
-\begin{equation}
+\begin{equation}\label{eq:torquexyz}
  \tau_{1}=I_{xx}\dot{\omega_{1}}-I_{xy}(\dot{\omega_{2}}-\omega_{1}\omega_{3})-I_{xz}(\dot{\omega_{3}}+\omega_{1}\omega_{2})\\-(I_{yy}-I_{zz})\omega_{2}\omega_{3}-I_{yz}({\omega_{2}}^{2}-{\omega_{3}}^{2})
 \end{equation}
 
-\begin{equation}
+\begin{equation}\label{eq:torquexyz2}
   \tau_{2}=I_{zz}\dot{\omega_{3}}-I_{yz}(\dot{\omega_{3}}-\omega_{1}\omega_{2})-I_{xy}(\dot{\omega_{1}}+\omega_{2}\omega_{3})\\-(I_{zz}-I_{xx})\omega_{1}\omega_{3}-I_{xz}({\omega_{3}}^{2}-{\omega_{1}}^{2})
 \end{equation}
 
-\begin{equation}
+\begin{equation}\label{eq:torquexyz3}
  \tau_{3}=I_{zz}\dot{\omega_{1}}-I_{xz}(\dot{\omega_{1}}-\omega_{2}\omega_{3})-I_{yz}(\dot{\omega_{2}}+\omega_{1}\omega_{3})\\-(I_{xx}-I_{yy})\omega_{1}\omega_{2}-I_{xy}({\omega_{1}}^{2}-{\omega_{2}}^{2})
 \end{equation}
+
+Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexyz}, \ref{eq:torquexyz2} e \ref{eq:torquexyz3}, conseguimos a relação da velocidade com o torque aplicado. Isso pode ser visto nas 3 seguintes equações:
 
 \begin{equation}
   \dot{\omega_{1}}=\frac{\tau_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
@@ -211,37 +259,90 @@ d\omega=\alpha dt
   \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
-\subsubsection{Matriz de Rotação}
+%\subsubsection{Matriz de Rotação}
 
-\begin{equation}
-  cos\phi=\hat{i_{1}}\cdot\hat{b}
-\end{equation}
+% \begin{equation}
+%   cos\phi=\hat{i_{1}}\cdot\hat{b}
+% \end{equation}
 
-\begin{equation}
-  cos\theta=\hat{i_{2}}\cdot\hat{b}
-\end{equation}
+% \begin{equation}
+%   cos\theta=\hat{i_{2}}\cdot\hat{b}
+% \end{equation}
 
-\begin{equation}
-  cos\varphi=\hat{i_{3}}\cdot\hat{b}
-\end{equation}
+% \begin{equation}
+%   cos\varphi=\hat{i_{3}}\cdot\hat{b}
+% \end{equation} 
 
-\begin{figure}[!ht]
-  \caption{Distribuição de Massa}
-  \begin{center}
-      \includegraphics[scale=0.5]{img/coordenadas_snider_p25}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Snider}.} 
-  \label{fig:coordenada}
-\end{figure}
+% \begin{figure}[!ht]
+%   \caption{Distribuição de Massa}
+%   \begin{center}
+%       \includegraphics[scale=0.5]{img/coordenadas_snider_p25}
+%   \end{center}
+%   \fonte{Adaptado de \citeonline{Snider}.} 
+%   \label{fig:coordenada}
+% \end{figure}
 
-\begin{equation}
-R^{11} = \hat{i_{1}}\cdot\hat{b_1}
-\end{equation}
+% \begin{equation}
+% R^{11} = \hat{i_{1}}\cdot\hat{b_1}
+% \end{equation}
 
-Onde a matriz de rotação 
-\begin{equation}
- R^{ib}=\begin{bmatrix}R_{11}&R_{12}&R_{13}\\R_{21}&R_{22}&R_{23}\\R_{31}&R_{32}&R_{33}\end{bmatrix}
-\end{equation}
+% Onde a matriz de rotação 
+% \begin{equation}
+%  R^{ib}=\begin{bmatrix}R_{11}&R_{12}&R_{1}\\R_{21}&R_{22}&R_{23}\\R_{31}&R_{32}&R_{33}\end{bmatrix}
+% \end{equation}
+
+
+% \begin{equation}
+% R_{ij}=\hat{i_{3}}\cdot\hat{b}=cos\beta_{ij} \\
+% \begin{Bmatrix} 1-2-3 & \quad 2-3-1 & \quad 3-1-2 \\ 1-3-2 & \quad 2-1-3 & \quad 3-2-1 \\ 1-3-1 & \quad 2-1-2 & \quad 3-2-3 \end{Bmatrix} 
+% \end{equation}
+
+% \begin{equation}
+% R_{3}(\phi)\leftarrow R_{2}(\theta)\leftarrow R_1(\psi)\\
+% \end{equation}
+
+% \begin{equation}
+% R_{3}(\phi)R_{2}(\theta)R_{1}(\psi)=\begin{bmatrix}1&0&0\\0&cos\phi&sen\phi\\0&-sen\phi&cos\phi\end{bmatrix}\begin{bmatrix}cos\theta&0&-sen\theta\\0&1&0\\-sen\theta&0&cos\theta\end{bmatrix}\begin{bmatrix}cos\psi&sen\psi&0\\-sen\psi&cos\psi&0\\0&0&1\end{bmatrix}
+% \end{equation}
+
+% \begin{equation}
+% R(\phi ,\theta ,\psi )=\begin{bmatrix} cos\theta cos\psi  & cos\phi sen\theta  & -sen\theta  \\ -cos\phi sen\psi +sen\phi sen\theta cos\psi  & cos\phi cos\psi +sen\phi sen\theta sen\psi  & sen\phi cos\theta  \\ sen\phi sen\psi +cos\phi sen\theta cos\psi  & -sen\phi cos\psi +cos\phi sen\theta sen\psi  & cos\phi cos\theta  \end{bmatrix}
+% \end{equation}
+
+% \begin{equation}
+% R(\phi ,\theta ,\psi )=\begin{bmatrix} 1 & \psi  & -\theta  \\ -\psi  & 1 & \phi  \\ \theta  & -\phi  & 0 \end{bmatrix} \\
+% \end{equation}
+
+% \begin{equation}
+% \phi=tan^{-1}\left(\frac{R_{23}}{R_{33}}\right)
+% \end{equation}
+
+% \begin{equation}
+% \theta=tan^{-1}\left(\frac{-R_{13}}{\sqrt{1-R^{2}_{13}}}\right)
+% \end{equation}
+
+% \begin{equation}
+% \psi=tan^{-1}\left(\frac{R_{12}}{R_{11}}\right) 
+% \end{equation}
+
+% \begin{equation}
+% \vec{\omega_1}(\dot{\phi})\leftarrow\vec{\omega_2}(\dot{\theta})\leftarrow\vec{\omega_3}(\dot{\psi})
+% \end{equation}
+
+% \begin{equation}
+% \begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}=\begin{bmatrix}\dot{\phi}\\0\\0\end{bmatrix}+R_{1}(\phi)\begin{bmatrix}0\\\dot{\theta}\\0\end{bmatrix}+R_{1}(\phi)R_{2}(\theta)\begin{bmatrix}0\\0\\\dot{\psi}\end{bmatrix}
+% \end{equation}
+
+% \begin{equation}
+%  = \begin{bmatrix} 1 & 0 & -sen\theta \\ 0 & cos\phi  & sen\phi cos\theta \\ 0 & -sen\phi & cos\phi cos\theta\end{bmatrix}\begin{bmatrix}\dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}
+% \end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Matrizes de Rotação e Ângulos de Euler}
+
+Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem, também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}.
+
+Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta e \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundo de uma transformação pela sequência de Euler \cite{BongWie2001}.
 
 \begin{figure}[!ht]
   \caption{Ângulos de Euler}
@@ -252,51 +353,7 @@ Onde a matriz de rotação
   \label{fig:coordenada}
 \end{figure}
 
-
-\begin{equation}
-R_{ij}=\hat{i_{3}}\cdot\hat{b}=cos\beta_{ij} \\
-\begin{Bmatrix} 1-2-3 & \quad 2-3-1 & \quad 3-1-2 \\ 1-3-2 & \quad 2-1-3 & \quad 3-2-1 \\ 1-3-1 & \quad 2-1-2 & \quad 3-2-3 \end{Bmatrix} 
-\end{equation}
-
-\begin{equation}
-R_{3}(\phi)\leftarrow R_{2}(\theta)\leftarrow R_1(\psi)\\
-\end{equation}
-
-\begin{equation}
-R_{3}(\phi)R_{2}(\theta)R_{1}(\psi)=\begin{bmatrix}1&0&0\\0&cos\phi&sen\phi\\0&-sen\phi&cos\phi\end{bmatrix}\begin{bmatrix}cos\theta&0&-sen\theta\\0&1&0\\-sen\theta&0&cos\theta\end{bmatrix}\begin{bmatrix}cos\psi&sen\psi&0\\-sen\psi&cos\psi&0\\0&0&1\end{bmatrix}
-\end{equation}
-
-\begin{equation}
-R(\phi ,\theta ,\psi )=\begin{bmatrix} cos\theta cos\psi  & cos\phi sen\theta  & -sen\theta  \\ -cos\phi sen\psi +sen\phi sen\theta cos\psi  & cos\phi cos\psi +sen\phi sen\theta sen\psi  & sen\phi cos\theta  \\ sen\phi sen\psi +cos\phi sen\theta cos\psi  & -sen\phi cos\psi +cos\phi sen\theta sen\psi  & cos\phi cos\theta  \end{bmatrix}
-\end{equation}
-
-\begin{equation}
-R(\phi ,\theta ,\psi )=\begin{bmatrix} 1 & \psi  & -\theta  \\ -\psi  & 1 & \phi  \\ \theta  & -\phi  & 0 \end{bmatrix} \\
-\end{equation}
-
-\begin{equation}
-\phi=tan^{-1}\left(\frac{R_{23}}{R_{33}}\right)
-\end{equation}
-
-\begin{equation}
-\theta=tan^{-1}\left(\frac{-R_{13}}{\sqrt{1-R^{2}_{13}}}\right)
-\end{equation}
-
-\begin{equation}
-\psi=tan^{-1}\left(\frac{R_{12}}{R_{11}}\right) 
-\end{equation}
-
-\begin{equation}
-\vec{\omega_1}(\dot{\phi})\leftarrow\vec{\omega_2}(\dot{\theta})\leftarrow\vec{\omega_3}(\dot{\psi})
-\end{equation}
-
-\begin{equation}
-\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}=\begin{bmatrix}\dot{\phi}\\0\\0\end{bmatrix}+R_{1}(\phi)\begin{bmatrix}0\\\dot{\theta}\\0\end{bmatrix}+R_{1}(\phi)R_{2}(\theta)\begin{bmatrix}0\\0\\\dot{\psi}\end{bmatrix}
-\end{equation}
-
-\begin{equation}
- = \begin{bmatrix} 1 & 0 & -sen\theta \\ 0 & cos\phi  & sen\phi cos\theta \\ 0 & -sen\phi & cos\phi cos\theta\end{bmatrix}\begin{bmatrix}\dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}
-\end{equation}
+As duas matrizes de rotação obtidas pelo trabalho de Euler podem ser vistas na sequência: 
 
 \begin{equation}
 \begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ cos\theta  } \begin{bmatrix} cos\theta  & sen\phi sen\theta  & cos\phi sen\theta  \\ 0 & cos\phi cos\theta  & -sen\phi cos\theta  \\ 0 & sen\phi  & cos\phi  \end{bmatrix}\begin{bmatrix} \omega_1 \\ \omega_2  \\ \omega_3  \end{bmatrix} 
@@ -306,33 +363,46 @@ R(\phi ,\theta ,\psi )=\begin{bmatrix} 1 & \psi  & -\theta  \\ -\psi  & 1 & \phi
 \begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ sin\theta  } \begin{bmatrix} sen\psi  & cos\psi  & 0 \\ cos\psi sen\theta  & -sen\psi sen\theta  & 0 \\ -sen\psi cos\theta  & -cos\psi cos\theta  & 0 \end{bmatrix}\begin{bmatrix} \omega _{ 1 } \\ \omega _{ 2 } \\ \omega _{ 3 } \end{bmatrix}
 \end{equation}
 
-
-\begin{figure}[!ht]
-  \caption{Distribuição de Massa}
-  \begin{center}
-      \includegraphics[scale=0.5]{img/euler_angles_snider_p27}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Snider}.} 
-  \label{fig:coordenada}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Rodas de Reação}
 
-\begin{equation}
-\vec{L_{tot}}=\vec{L_{b}}+\vec{L_{\omega}}=constante 
+Uma rodas de reação consiste em um rotor que é fixado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade da roda criando uma reação pela criação de um torque. Quando a roda sofre uma desaceleração, ela exerce um torque em uma direção, se acelerada, em outra \cite{BongWie2001}. Na imagem \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
+
+\begin{figure}[!ht]
+  \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
+  \begin{center}
+      \includegraphics[scale=0.75]{img/satellite_controlhand_p1306}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Levine1996}.} 
+  \label{fig:satellite_controlhand_p1306}
+\end{figure}
+
+Como já foram descritos nas outras seções, precisamos encontrar uma relação que expresse o torque criado pelas rodas de reação, para que consigamos unir ao modelo do satélite. Para isso começamos pelo momento angular total $\vec{L_{tot}}$, que pode ser visto na sequência.
+
+\begin{equation}\label{eq:ltot}
+\vec{L_{tot}}=\vec{L_s}+\vec{L_{\omega}}=constante 
 \end{equation}
 
+Onde $L_s$ representa o momento angular do satélite e $\vec{L_{\omega}}$ o momento angular da roda de reação. Como já vimos na equação \ref{eq:iomega}, o momento angular pode ser descrito da seguinte forma:
+
 \begin{equation}
-\vec{L_{b}}=I\vec{\omega}
+\vec{L_s}=I\vec{\omega}
 \end{equation}
+
+E o momento angular nas rodas de ração podem ser escritos da seguinte forma:
 
 \begin{equation}
 \vec {L_{\omega} } =D_{\omega}\vec{\psi_{\omega}} 
 \end{equation}
 
-\begin{equation}
+Onde $D_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque promovido pela roda de reação $\tau_{\omega}$:
+
+\begin{equation}\
 \vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=D_{\omega}\dot{\vec{\psi_{\omega}}}
 \end{equation}
+
+E por fim, podemos relacionar o torque da roda com o do satélite e todas as outras variáveis de interesse. Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação anterior. O resultado pode ser visto nas 3 equações seguintes:
 
 \begin{equation}\label{eq:torquefinal1}
 \tau_{1}=A\dot{\omega_{1}}+(D_{\omega}\dot{\psi_{\omega}})_{1}+(C-B)\omega_{2}\omega_{3}-(D_{\omega}\psi_{\omega})_{2}\omega_{3}+(D_{\omega}\psi_{\omega})_{3}\omega_{2}
@@ -345,16 +415,6 @@ R(\phi ,\theta ,\psi )=\begin{bmatrix} 1 & \psi  & -\theta  \\ -\psi  & 1 & \phi
 \begin{equation}\label{eq:torquefinal3}
 \tau_{3}=C\dot{\omega_{3}}+(D_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(D_{\omega}\psi_{\omega})_{1}\omega_{2}+(D_{\omega}\psi_{\omega})_{3}\omega_{1}
 \end{equation}
-
-\begin{figure}[!ht]
-  \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/satellite_controlhand_p1306}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Levine1996}.} 
-  \label{fig:satellite_controlhand_p1306}
-\end{figure}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -497,7 +557,7 @@ O outro método de se estimar os valores do controlador, é através de duas car
 
 %\subsection{Métodos de Otimização ????}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sintonia Automática de Controladores e Controle Adaptativo}
+\subsection{Sintonia Automática de Controladores}
 
 
 Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário.
@@ -598,7 +658,6 @@ Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses val
   \label{fig:nise_digitalinput_p761}
 \end{figure}
 
-\subsubsection{Protocolos de MQTT e I2C}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Estado da Arte}
 
@@ -652,28 +711,28 @@ Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses val
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cite{Verma2018}
-\cite{Li2010}
-\cite{Nise}
-\cite{Chen2004}
-\cite{Liguo2008}
-\cite{Amaral}
-\cite{Araari2014}
-\cite{Rolle2009}
-\cite{Li}
-\cite{Ogata}
-\cite{Snider}
-\cite{Gohiya2012}
-\cite{Hu2001}
-\cite{Johnson}
-\cite{Editor}
-\cite{Li2013}
-\cite{Das2017}
-\cite{Dorf}
-\cite{Levine1996}
-\cite{Thomas}
-\cite{Guo2010}
-\cite{Liu2011}
-\cite{Astrom1995}
-\cite{Behera2017}
-\cite{Brown2002}
+% \cite{Verma2018}
+% \cite{Li2010}
+% \cite{Nise}
+% \cite{Chen2004}
+% \cite{Liguo2008}
+% \cite{Amaral}
+% \cite{Araari2014}
+% \cite{Rolle2009}
+% \cite{Li}
+% \cite{Ogata}
+% \cite{Snider}
+% \cite{Gohiya2012}
+% \cite{Hu2001}
+% \cite{Johnson}
+% \cite{Editor}
+% \cite{Li2013}
+% \cite{Das2017}
+% \cite{Dorf}
+% \cite{Levine1996}
+% \cite{Thomas}
+% \cite{Guo2010}
+% \cite{Liu2011}
+% \cite{Astrom1995}
+% \cite{Behera2017}
+% \cite{Brown2002}
