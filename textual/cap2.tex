@@ -26,7 +26,7 @@ A dinâmica é dividida em duas partes, onde uma representa os movimentos de tra
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Dinâmica de Translação}
+%\subsubsection{Dinâmica de Translação}
 
 A dinâmica de translação de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a dinâmica de rotação \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
 
@@ -44,17 +44,13 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
 \vec{F_i}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
 \end{equation}
  
- Onde, $\vec{f_{ie}}$ é a força externa e $\vec{f_{ij}}$ é a força interna de carda parte j que compõe o corpo i e $m_i\vec{a_i}$ é a massa e a força resultante no corpo rígido.
-
- Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
+ Onde, $\vec{f_{ie}}$ é a força externa e $\vec{f_{ij}}$ é a força interna de carda parte j que compõe o corpo i e $m_i\vec{a_i}$ é a massa e a força resultante no corpo rígido. Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
 
 \begin{equation}
   \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
 \end{equation}
 
-Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em módulo igual a força $\vec{f_{ij}}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam.  
-
-Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F_e}$) como o somatório de todas as forças sobre as partículas ($\vec{F_{ie}}$). Isso pode ser esquito da seguinte forma:
+Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em módulo igual a força $\vec{f_{ij}}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam. Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F_e}$) como o somatório de todas as forças sobre as partículas ($\vec{F_{ie}}$). Isso pode ser esquito da seguinte forma:
 
 \begin{equation}\label{eq:fet}
   \vec{F_{e}}=\sum_{i=1}^{N}{\vec{f_{ie}}}=\sum_{i=1}^{N}{m_i\vec{a_i}} 
@@ -92,9 +88,9 @@ Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sob
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Dinâmica de Rotação}
+%\subsubsection{Dinâmica de Rotação}
 
-A dinâmica de rotação descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. 
+A dinâmica de rotação descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
 
 \begin{figure}[!ht]
   \caption{Distribuição de Massa}
@@ -105,7 +101,6 @@ A dinâmica de rotação descreve o movimento de um corpo rígido em relação a
   \label{fig:mass_snider_p16}
 \end{figure}
 
-Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
 
 \begin{equation}
   I_{xx}=\sum_{i=1}^{N}{m_i({y_i}^{2}+{z_i}^{2})}
@@ -145,9 +140,7 @@ Caso o satélite seja simétrico, os momentos de inércia nos planos xy, xz e yz
 I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{bmatrix}=\begin{bmatrix} A & 0 & 0 \\ 0 & B & 0 \\ 0 & 0 & C \end{bmatrix}
 \end{equation}
 
-Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{yy}$ e $I_{zz}$ serão descritos como A, B e C respectivamente.
-
-Após a descrição matemática do momento de inércia, podemos começar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
+Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{yy}$ e $I_{zz}$ serão descritos como A, B e C respectivamente. Após a descrição matemática do momento de inércia, podemos começar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
 
 \begin{equation}
 \omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}
@@ -241,7 +234,7 @@ Se utilizarmos um corpo não simétrico, podemos recorrer a matriz da equação 
  \tau_{3}=I_{zz}\dot{\omega_{1}}-I_{xz}(\dot{\omega_{1}}-\omega_{2}\omega_{3})-I_{yz}(\dot{\omega_{2}}+\omega_{1}\omega_{3})\\-(I_{xx}-I_{yy})\omega_{1}\omega_{2}-I_{xy}({\omega_{1}}^{2}-{\omega_{2}}^{2})
 \end{equation}
 
-Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexyz}, \ref{eq:torquexyz2} e \ref{eq:torquexyz3}, conseguimos a relação da velocidade com o torque aplicado. Isso pode ser visto nas 3 seguintes equações:
+Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexyz}, \ref{eq:torquexyz2} e \ref{eq:torquexyz3}, temos:
 
 \begin{equation}
   \dot{\omega_{1}}=\frac{\tau_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
@@ -255,14 +248,13 @@ Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexy
   \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
+Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma expressão que representa a reação em forma de variação de velocidade que um torque provoca.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Matrizes de Rotação e Ângulos de Euler}
 
-Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem (EDO), também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}.
-
-Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundos de uma transformação pela sequência de Euler \cite{BongWie2001}.
+Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem (EDO), também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}. Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundos de uma transformação pela sequência de Euler \cite{BongWie2001}.
 
 \begin{figure}[!ht]
   \caption{Ângulos de Euler}
@@ -283,8 +275,10 @@ As duas matrizes de rotação obtidas pelo trabalho de Euler podem ser vistas na
 \begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ sin\theta  } \begin{bmatrix} sen\psi  & cos\psi  & 0 \\ cos\psi sen\theta  & -sen\psi sen\theta  & 0 \\ -sen\psi cos\theta  & -cos\psi cos\theta  & 0 \end{bmatrix}\begin{bmatrix} \omega _{ 1 } \\ \omega _{ 2 } \\ \omega _{ 3 } \end{bmatrix}
 \end{equation}
 
+Como podemos ver, existem singularidades nas matrizes de rotação, pois existe divisões por cosseno e seno, que podem assumir valor 0 quando $\theta$ for igual a $\pm(\pi /2)/(n+1)$ para o cosseno e $\pm\pi /2$ para o seno, para qualquer n inteiro. Essas singularidades impossibilitam o controle sobre essas singularidades.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Rodas de Reação}
 
@@ -319,11 +313,11 @@ E o momento angular nas rodas de ração podem ser escritos da seguinte forma:
 
 Onde $D_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque promovido pela roda de reação $\tau_{\omega}$:
 
-\begin{equation}\
+\begin{equation}\label{eq:torqueedo}
 \vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=D_{\omega}\dot{\vec{\psi_{\omega}}}
 \end{equation}
 
-E por fim, podemos relacionar o torque da roda com o do satélite e todas as outras variáveis de interesse. Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação anterior. O resultado pode ser visto nas 3 equações seguintes:
+E por fim, podemos relacionar o torque da roda com o do satélite e todas as outras variáveis de interesse da seguinte forma:
 
 \begin{equation}\label{eq:torquefinal1}
 \tau_{1}=A\dot{\omega_{1}}+(D_{\omega}\dot{\psi_{\omega}})_{1}+(C-B)\omega_{2}\omega_{3}-(D_{\omega}\psi_{\omega})_{2}\omega_{3}+(D_{\omega}\psi_{\omega})_{3}\omega_{2}
@@ -337,9 +331,16 @@ E por fim, podemos relacionar o torque da roda com o do satélite e todas as out
 \tau_{3}=C\dot{\omega_{3}}+(D_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(D_{\omega}\psi_{\omega})_{1}\omega_{2}+(D_{\omega}\psi_{\omega})_{3}\omega_{1}
 \end{equation}
 
+Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Controlador PID}
+\section{Controladores PID}
+
+Como já temos as equações diferenciais que descrevem o modelo satélite, precisamos desenvolver os conceitos básicos de controle para controlarmos as variáveis de interesse. Esses conceitos estão descritos nas próximas seções
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Resposta ao Degrau do um Sistema}
 
@@ -369,9 +370,7 @@ O controlador proporcional-integral-derivativo é um dos controladores mais util
   u(t) = K\left((e(t)+\frac{1}{T_i}\int_{0}^{t}{e(\tau)}d\tau+T_d\frac{de(t)}{dt}\right) 
 \end{equation}
 
-Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995};
-
-A partir desse princípio podemos relacionar com as equações \ref{eq:torquefinal1}, \ref{eq:torquefinal2} e \ref{eq:torquefinal3} podemos escrever a relação do controlador PID do Torque do motor:
+Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995}. A partir desse princípio podemos relacionar com as equações \ref{eq:torquefinal1}, \ref{eq:torquefinal2} e \ref{eq:torquefinal3} podemos escrever a relação do controlador PID com o torque:
 
 \begin{equation}
 \tau_{m_{1,2,3}}=K_{P}\left((\beta_{com}-\beta)+\frac{1}{T_{I}}\int{(\beta_{com}-\beta)dt}+T_{d}\frac{d}{dt}(\beta_{com}-\beta)\right)
@@ -437,7 +436,7 @@ Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e N
   \label{fig:ziegler-nichols_astrom_p135}
 \end{figure}
 
-Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K_p$, $T_i$, $T_d$ e $T_p$ com os vistos na figura \ref{fig:ziegler-nichols_astrom_p135}.  
+Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K_p$, $T_i$, $T_d$ e $T_p$ com os vistos na figura \ref{fig:ziegler-nichols_astrom_p135}. O outro método de se estimar os valores do controlador, é através de duas características da resposta em frequência: uma delas que é o ganho que deixa o sistema marginalmente estável ($K_u$), e a outra, é o período do sinal de referência que deixa o sistema marginalmente estável ($T_u$). Podemos ver na tabela \ref{tab:Ziegler-Nichols-freq} as relações entre $K_p$, $T_i$, $T_d$, $T_p$ e ($K_u$) e ($T_u$).
 
 \begin{table}
   \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta ao Degrau}
@@ -455,8 +454,6 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
     \fonte{Adaptado de \citeonline{Astrom1995}}
   \end{minipage}
 \end{table}
-
-O outro método de se estimar os valores do controlador, é através de duas características da resposta em frequência: uma delas que é o ganho que deixa o sistema marginalmente estável ($K_u$), e a outra, é o período do sinal de referência que deixa o sistema marginalmente estável ($T_u$). Podemos ver na tabela \ref{tab:Ziegler-Nichols-freq} as relações entre $K_p$, $T_i$, $T_d$, $T_p$ e ($K_u$) e ($T_u$) . 
 
 \begin{table}
   \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta em Frequência}
@@ -493,12 +490,12 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
   \label{fig:escolha_controle_astrom_p236}
 \end{figure}
 
-
+Uma alternativa possível para sintonia de controladores é o método do relé, ele, no modo clássico, se encontra entre os controladores com parâmetros constantes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Método do Relé}
 
-Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé.
+Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé. O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação \ref{eq:n(a)} que está na sequência:
  
 \begin{figure}[!ht]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
@@ -509,9 +506,7 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
   \label{fig:pid_autotuning_relay_astrom_p239}
 \end{figure}
 
-O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação da sequência:
-
-\begin{equation}
+\begin{equation}\label{eq:n(a)}
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{equation}
 
