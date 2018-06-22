@@ -3,9 +3,10 @@
 No presente capítulo, são apresentados conceitos básico para a compreensão do trabalho. Nessa etapa, busca-se através da revisão de trabalhos já elucidados a contextualização do projeto proposto.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Satélites Artificiais} %ch 1303
 
-Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS no dia 4 de Outubro de 1957, novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
+Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS (União das Repúblicas Socialistas Soviéticas) no dia 4 de Outubro de 1957, novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
 
 \begin{figure}[!ht]
   \caption{Movimento de Translação de um satélite Artificial.}
@@ -17,11 +18,14 @@ Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que f
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Dinâmica de um Satélite}
 
 A dinâmica é dividida em duas partes, onde uma representa os movimentos de translação e a outra os de rotação.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Dinâmica de Translação}
 
 A dinâmica de translação de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a dinâmica de rotação \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
@@ -85,7 +89,9 @@ Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sob
 \vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}} 
 \end{equation}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Dinâmica de Rotação}
 
 A dinâmica de rotação descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. 
@@ -98,7 +104,6 @@ A dinâmica de rotação descreve o movimento de um corpo rígido em relação a
   \fonte{Adaptado de \citeonline{Snider}.} 
   \label{fig:mass_snider_p16}
 \end{figure}
-
 
 Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
 
@@ -153,14 +158,6 @@ A aceleração angular $\alpha$, nada mais é do que a primeira derivada da velo
 \begin{equation}
 \alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt}
 \end{equation}
-
- % \begin{equation}
- % d\omega=\alpha dt 
- % \end{equation}
-
-% \begin{equation}
-% \omega =\omega_{0}-\alpha (t-t_{0})
-% \end{equation}
 
 Outra equação importante para descrever a maioria dos tipos de movimento, é aquela que relaciona a posição $\beta$ com a posição inicial $\beta_0$, velocidade angular inicial $\omega_0$, o tempo inicial do movimento $t_0$, o tempo atual t e a aceleração angular $\alpha$. A expressão pode ser vista na sequência.
 
@@ -258,90 +255,14 @@ Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexy
   \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
-%\subsubsection{Matriz de Rotação}
-
-% \begin{equation}
-%   cos\phi=\hat{i_{1}}\cdot\hat{b}
-% \end{equation}
-
-% \begin{equation}
-%   cos\theta=\hat{i_{2}}\cdot\hat{b}
-% \end{equation}
-
-% \begin{equation}
-%   cos\varphi=\hat{i_{3}}\cdot\hat{b}
-% \end{equation} 
-
-% \begin{figure}[!ht]
-%   \caption{Distribuição de Massa}
-%   \begin{center}
-%       \includegraphics[scale=0.5]{img/coordenadas_snider_p25}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Snider}.} 
-%   \label{fig:coordenada}
-% \end{figure}
-
-% \begin{equation}
-% R^{11} = \hat{i_{1}}\cdot\hat{b_1}
-% \end{equation}
-
-% Onde a matriz de rotação 
-% \begin{equation}
-%  R^{ib}=\begin{bmatrix}R_{11}&R_{12}&R_{1}\\R_{21}&R_{22}&R_{23}\\R_{31}&R_{32}&R_{33}\end{bmatrix}
-% \end{equation}
-
-
-% \begin{equation}
-% R_{ij}=\hat{i_{3}}\cdot\hat{b}=cos\beta_{ij} \\
-% \begin{Bmatrix} 1-2-3 & \quad 2-3-1 & \quad 3-1-2 \\ 1-3-2 & \quad 2-1-3 & \quad 3-2-1 \\ 1-3-1 & \quad 2-1-2 & \quad 3-2-3 \end{Bmatrix} 
-% \end{equation}
-
-% \begin{equation}
-% R_{3}(\phi)\leftarrow R_{2}(\theta)\leftarrow R_1(\psi)\\
-% \end{equation}
-
-% \begin{equation}
-% R_{3}(\phi)R_{2}(\theta)R_{1}(\psi)=\begin{bmatrix}1&0&0\\0&cos\phi&sen\phi\\0&-sen\phi&cos\phi\end{bmatrix}\begin{bmatrix}cos\theta&0&-sen\theta\\0&1&0\\-sen\theta&0&cos\theta\end{bmatrix}\begin{bmatrix}cos\psi&sen\psi&0\\-sen\psi&cos\psi&0\\0&0&1\end{bmatrix}
-% \end{equation}
-
-% \begin{equation}
-% R(\phi ,\theta ,\psi )=\begin{bmatrix} cos\theta cos\psi  & cos\phi sen\theta  & -sen\theta  \\ -cos\phi sen\psi +sen\phi sen\theta cos\psi  & cos\phi cos\psi +sen\phi sen\theta sen\psi  & sen\phi cos\theta  \\ sen\phi sen\psi +cos\phi sen\theta cos\psi  & -sen\phi cos\psi +cos\phi sen\theta sen\psi  & cos\phi cos\theta  \end{bmatrix}
-% \end{equation}
-
-% \begin{equation}
-% R(\phi ,\theta ,\psi )=\begin{bmatrix} 1 & \psi  & -\theta  \\ -\psi  & 1 & \phi  \\ \theta  & -\phi  & 0 \end{bmatrix} \\
-% \end{equation}
-
-% \begin{equation}
-% \phi=tan^{-1}\left(\frac{R_{23}}{R_{33}}\right)
-% \end{equation}
-
-% \begin{equation}
-% \theta=tan^{-1}\left(\frac{-R_{13}}{\sqrt{1-R^{2}_{13}}}\right)
-% \end{equation}
-
-% \begin{equation}
-% \psi=tan^{-1}\left(\frac{R_{12}}{R_{11}}\right) 
-% \end{equation}
-
-% \begin{equation}
-% \vec{\omega_1}(\dot{\phi})\leftarrow\vec{\omega_2}(\dot{\theta})\leftarrow\vec{\omega_3}(\dot{\psi})
-% \end{equation}
-
-% \begin{equation}
-% \begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}=\begin{bmatrix}\dot{\phi}\\0\\0\end{bmatrix}+R_{1}(\phi)\begin{bmatrix}0\\\dot{\theta}\\0\end{bmatrix}+R_{1}(\phi)R_{2}(\theta)\begin{bmatrix}0\\0\\\dot{\psi}\end{bmatrix}
-% \end{equation}
-
-% \begin{equation}
-%  = \begin{bmatrix} 1 & 0 & -sen\theta \\ 0 & cos\phi  & sen\phi cos\theta \\ 0 & -sen\phi & cos\phi cos\theta\end{bmatrix}\begin{bmatrix}\dot{\phi}\\\dot{\theta}\\\dot{\psi}\end{bmatrix}
-% \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Matrizes de Rotação e Ângulos de Euler}
 
 Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem (EDO), também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}.
 
-Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundo de uma transformação pela sequência de Euler \cite{BongWie2001}.
+Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundos de uma transformação pela sequência de Euler \cite{BongWie2001}.
 
 \begin{figure}[!ht]
   \caption{Ângulos de Euler}
@@ -361,6 +282,7 @@ As duas matrizes de rotação obtidas pelo trabalho de Euler podem ser vistas na
 \begin{equation}
 \begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ sin\theta  } \begin{bmatrix} sen\psi  & cos\psi  & 0 \\ cos\psi sen\theta  & -sen\psi sen\theta  & 0 \\ -sen\psi cos\theta  & -cos\psi cos\theta  & 0 \end{bmatrix}\begin{bmatrix} \omega _{ 1 } \\ \omega _{ 2 } \\ \omega _{ 3 } \end{bmatrix}
 \end{equation}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -415,14 +337,8 @@ E por fim, podemos relacionar o torque da roda com o do satélite e todas as out
 \tau_{3}=C\dot{\omega_{3}}+(D_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(D_{\omega}\psi_{\omega})_{1}\omega_{2}+(D_{\omega}\psi_{\omega})_{3}\omega_{1}
 \end{equation}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%conceitos de resposta em frequência
-% estabilidade de sistemas
-% em regime
-% diferentes tipos de sistemas
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Controlador PID}
 
 \subsection{Resposta ao Degrau do um Sistema}
@@ -442,7 +358,9 @@ Uma forma clássica de representar um resposta de uma variável de interesse, é
 
 A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela podemos ver claramente a atuação dos \textit{polos} e \textit{zeros} dominantes e o ganho de baixa frequência da função de transferência do sistema. Os métodos clássicos para se calcular os parâmetros de controladores são baseados na resposta ao degrau \cite{Ogata}. 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Controlador PID}
 
 O controlador proporcional-integral-derivativo é um dos controladores mais utilizados nas aplicações industriais. Essa topologia de controlador consegue, em diferentes configurações atender entre 90 e 95\% de todos os sistemas que necessitam de controladores \cite{Levine1996}. A forma descritiva matemática mais comum de se encontrar um controlador PID no domínio do tempo é a seguinte:
@@ -496,13 +414,16 @@ Existem muitas combinações de controladores PID, cada uma com suas peculiarida
   \label{fig:pi_twomotors_astrom_p308}
 \end{figure}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Sintonia de Controladores}
 
 Como podemos ver no modelo matemático e gráfico dos controladores PID, os valores de ajuste $K_p$, $T_i$ e $T_d$  podem assumir infinitos valores, sendo necessário a escolha do melhor conjunto desses valores para que a planta desempenhe o comportamento esperado \cite{Ogata}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Método de sintonia de Ziegler-Nichols}
 
 Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e o com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
@@ -554,10 +475,10 @@ O outro método de se estimar os valores do controlador, é através de duas car
   \end{minipage}
 \end{table}
 
-%\subsection{Métodos de Otimização ????}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sintonia Automática de Controladores}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Sintonia Automática de Controladores}
 
 Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário.
 
@@ -574,6 +495,7 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Método do Relé}
 
 Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé.
@@ -589,7 +511,6 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
 
 O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação da sequência:
 
- % que é obtida através da série/transformada de Fourier????
 \begin{equation}
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{equation}
@@ -614,56 +535,81 @@ Com isso, podemos calcular os parâmetros intermediários para a sintonia do con
 
 Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsubsection{Método Baseado em Regras} %Astron 241
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sistemas Embarcados}
-
-\begin{figure}[!ht]
-  \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/kernel_user_space}
-  \end{center}
-  \fonte{Adaptado de Embarcados....} 
-  \label{fig:kernel_user_space}
-\end{figure}
-  
-\begin{figure}[!ht]
-  \caption{Representação do Modelo de Controlador PID com distúrbios}
-  \begin{center}
-      \includegraphics[scale=0.35]{img/sistema-linux-overview_embarcados}
-  \end{center}
-  \fonte{Adaptado de Embarcados....} 
-  \label{fig:sistema-linux-overview_embarcados}
-\end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Comportamento Assíncrono}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Escalonamento de Tarefas}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Processamento Digital de Sinais}
+\subsection{Discretização e Processamento Digital de Sinais}
 
 \begin{figure}[!ht]
   \caption{Resposta ao degrau com diferentes períodos de amostragem.}
   \begin{center}
-      \includegraphics[scale=0.65]{img/nise_digitalinput_p761}
+      \includegraphics[scale=0.55]{img/nise_digitalinput_p761}
   \end{center}
   \fonte{Adaptado de \citeonline{Nise}.} 
   \label{fig:nise_digitalinput_p761}
 \end{figure}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Estado da Arte}
+
+\section{Linux Embarcados}
+
+Linux embarcado  nada mais é do que uma versão do Kernel Linux que é desenvolvido para funcionar em um sistema embarcado, possuindo várias modificações para exigir menos recursos de processamento e memória \cite{Molloy2016}. Muitos dispositivos do nosso dia-a-dia possuem a implementação do Kernel do Linux em seu sistema, temos como exemplos os computadores pessoais, celulares com Android, televisores, entre outros. 
+
+Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware de um sistema embarcado convencional. A arquitetura do processador é a RISC (Reduced Instruction Set Computer - Computador com um conjunto reduzido de instruções") de 32-bits. Possue dois tipos de memória, a SDRAM (Synchronous Dynamic Random-Access Memory - memória de acesso dinâmico randômico) que é volátil e a memória Flash que é usada para o armazenamento de informações persistentes. Possui RTC (Real Time Clock - relógio de tempo real), que nada mais é do que um relógio interno que funciona mesmo após desenergizar o embarcado, isso é possível devido a uma bateria ou um super-capacitor. Por fim, possue diversas interfaces de comunicação com outros dispositivos, entre elas: Porta serial, USB (Universal Serial Bus - Barramento serial universal), LAM (Local Area Network - Rede de área local) e Wi-Fi (rede sem fio) \citeonline{Prentice}.
+
+\begin{figure}[!ht]
+  \caption{Componentes básicos do Linux Embarcado}
+  \begin{center}
+      \includegraphics[scale=0.55]{img/componentes_linux_p13}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Prentice}} 
+  \label{fig:componentes_linux_p13}
+\end{figure}
+
+Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel \cite{Prentice}. Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
+
+\begin{figure}[!ht]
+  \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/kernel_user_space}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Prentice}} 
+  \label{fig:kernel_user_space}
+\end{figure}
+
+
+\begin{figure}[!ht]
+  \caption{Linha do Tempo de execução de duas tarefas.}
+  \begin{center}
+      \includegraphics[scale=0.45]{img/escalonador_hallinan_p469}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Prentice}} 
+  \label{fig:escalonador_hallinan_p469}
+\end{figure}
+  
+% \begin{figure}[!ht]
+%   \caption{Representação do Modelo de Controlador PID com distúrbios}
+%   \begin{center}
+%       \includegraphics[scale=0.35]{img/sistema-linux-overview_embarcados}
+%   \end{center}
+%   \fonte{Adaptado de Embarcados....} 
+%   \label{fig:sistema-linux-overview_embarcados}
+% \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sistemas Inteligentes de Sintonia de Controladores}
 
+\subsection{Linguagem de Programação Python}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Estado da Arte}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Sistemas Inteligentes de Sintonia de Controladores}
 
 \begin{figure}[!ht]
   \caption{Modelo de um Controlador com Auto-sintonia.}
@@ -674,12 +620,13 @@ Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses val
   \label{fig:pid_adaptative_astrom_p233}
 \end{figure}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Controle Fuzzy} %Astrom p298
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Controle com Redes Neurais}  %control hand p1017
 
 \begin{figure}[!ht]
@@ -708,31 +655,3 @@ Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses val
   \fonte{Adaptado de \citeonline{Chen2004}.} 
   \label{fig:pid_neural_Applying_p18}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \cite{Verma2018}
-% \cite{Li2010}
-% \cite{Nise}
-% \cite{Chen2004}
-% \cite{Liguo2008}
-% \cite{Amaral}
-% \cite{Araari2014}
-% \cite{Rolle2009}
-% \cite{Li}
-% \cite{Ogata}
-% \cite{Snider}
-% \cite{Gohiya2012}
-% \cite{Hu2001}
-% \cite{Johnson}
-% \cite{Editor}
-% \cite{Li2013}
-% \cite{Das2017}
-% \cite{Dorf}
-% \cite{Levine1996}
-% \cite{Thomas}
-% \cite{Guo2010}
-% \cite{Liu2011}
-% \cite{Astrom1995}
-% \cite{Behera2017}
-% \cite{Brown2002}
