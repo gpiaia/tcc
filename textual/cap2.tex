@@ -28,7 +28,7 @@ A dinâmica é dividida em duas partes, onde uma representa os movimentos de tra
 
 %\subsubsection{Dinâmica de Translação}
 
-A dinâmica de translação de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a dinâmica de rotação \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
+A \textit{dinâmica de translação} de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a \textit{dinâmica de rotação} \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
 
 \begin{equation}\label{eq:fma}
   \vec{F}=\frac{d}{dt}\vec{p}\quad\quad\quad\quad\vec{p}=m\vec{v}
@@ -366,7 +366,7 @@ A resposta ao degrau nos diz muito sobre os sistemas de interesse, pois nela pod
 
 O controlador proporcional-integral-derivativo é um dos controladores mais utilizados nas aplicações industriais. Essa topologia de controlador consegue, em diferentes configurações atender entre 90 e 95\% de todos os sistemas que necessitam de controladores \cite{Levine1996}. A forma descritiva matemática mais comum de se encontrar um controlador PID no domínio do tempo é a seguinte:
 
-\begin{equation}
+\begin{equation}\label{eq:PID}
   u(t) = K\left((e(t)+\frac{1}{T_i}\int_{0}^{t}{e(\tau)}d\tau+T_d\frac{de(t)}{dt}\right) 
 \end{equation}
 
@@ -413,6 +413,95 @@ Existem muitas combinações de controladores PID, cada uma com suas peculiarida
   \label{fig:pi_twomotors_astrom_p308}
 \end{figure}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Controle Digital}
+
+Quando utilizamos um dispositivo digital como controlador, temos que representar os sinais de forma discretizada, ou seja, em níveis que possam ser transformados em um conjunto de bits. Só assim o microcontrolador ou microprocessador poderá realizar as operações matemáticas desejadas. Para essa transformação, usamos coversores AD (analógico-digital) que convertem um sinal analógico (contínuo) em um sinal binário \cite{BongWie2001}.
+
+Um sinal analógico é representado digitalmente com um período T, da seguinte forma:
+
+\begin{equation}
+  y(0), y(T), y(2T), ...
+\end{equation}
+
+Se expressarmos usando notação ${y[kT]}$, podemos representar uma equação diferencial da seguinte forma:
+
+\begin{equation}
+  u(k) = a_{0}y[k]+a_{1}y[k-1]+...+a_{n}y[k-n] - b_{1}y[k-1] - b_{2}y[k-2] - ... -b_{n}y[k-n]
+\end{equation}
+
+Onde u(k) denota o sinal computado e y(k) os valores o sinal analógico nos instante k-ésimos.
+
+\subsubsection{Transformada Z}
+
+A transformada z é usada para aquisição e processamento de dados em sistemas discretos. Ela possui relação matemática com o domínio s da seguinte forma:
+
+\begin{equation}
+Z = e^{Ts}
+\end{equation}
+
+Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o valor do sinal analógico amostrado no momento k, y(k). Isso pode ser conferido na equação as seguir.
+
+\begin{equation}
+  y(z) \sum_{k=0}^{\infty}{y[k]z^{-k}} = y[0] + y[1]z^{-1}+y[2]z^{-2}...
+ \end{equation} 
+
+ Se usarmos os Teoremas da Tradução, Valor Inicial e Valor Final, conseguimos expressar uma função da seguinte forma \cite{BongWie2001}:
+
+\begin{equation}
+  \frac{u(z)}{y(z)} = \frac{a_0 + a_1z^{-1}+...+a_nz^{-n}}{1+b_1z^{-1}+b_2z^{-2}+...++b_nz^{-n}}
+\end{equation}
+
+\subsubsection{Aquisição de dados}
+
+Em um sistema discreto, uma forma de amostrar um sinal analógico é usar um trem de impulsos com amplitude do sinal y(t) nos tempos T e reter esses dados com um ZOH (Zero-Order-Hold - Retentor de Ordem Zero). A figura \ref{fig:zoh_wie_p155} representa muito bem esse processo.
+
+\begin{figure}[!ht]
+  \caption{Conversão de um sinal contínuo em discreto}
+  \begin{center}
+      \includegraphics[scale=0.65]{img/zoh_wie_p155}
+  \end{center}
+  \fonte{Adaptado de \citeonline{BongWie2001}.} 
+  \label{fig:zoh_wie_p155}
+\end{figure}
+
+Onde y(t) é o sinal que está sendo amostrado, y*(t) é o trem de pulsos amostrados e $\hat{y}(t)$ o sinal resultante. Um ZOH ideal pode ser representando da seguinte forma:
+
+\begin{equation}
+  \hat{y}(s) \approx \frac{1-e^{-Ts}}{Ts}y(s)
+\end{equation}
+
+Essa expressão é de suma importância para a aquisição das variáveis que queremos controlar usando técnicas digitais.
+
+\subsubsection{Controlador PID Digital}
+
+Agora, desejamos descrever a representação do controlador PID da equação \ref{eq:PID} de forma discreta, para isso devemos usar a aproximação de Euler:
+
+\begin{equation}
+  s = \frac{1-z^{-1}}{T}
+\end{equation}
+
+Conseguimos expressar o controlador PID no domínio z da seguinte forma:
+
+\begin{equation}
+  u(t) = -K\left[1 + \frac{1}{T_i}\frac{T}{1-z^{-1}} + T_d\frac{1-z^{-1}}{T} \right]e(t)
+\end{equation}
+
+Com isso, podemos representar de forma discreta o controlador PID, isso pode ser visto na equação da sequência:
+
+\begin{equation}
+  u(t) = -K_p\left[y[k]-\frac{1}{T_i}{\hat{u}[k]}-T_d\frac{y[k]-y[k-1]}{T}\right]
+\end{equation}
+
+Onde
+
+\begin{equation}
+  \hat{u}[k] = \hat{u}[k-1] +Ty[k]
+\end{equation}
+
+Com isso, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -481,7 +570,7 @@ Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do 
 
 Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Fluxograma para a escolha do Método de Sintonia.}
   \begin{center}
       \includegraphics[scale=0.75]{img/escolha_controle_astrom_p236}
@@ -510,16 +599,17 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{equation}
 
-Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}. Isso pode ser visto na figura \ref{fig:relay_signals}.
+Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}.
+% Isso pode ser visto na figura \ref{fig:relay_signals}.
 
-\begin{figure}[!ht]
-  \caption{Sinais do Relé e da Saída do Sistema  VOU COLOCAR OUTRA UMAGEM !!!!}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/relay_giap_p2}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Giap2014}} 
-  \label{fig:relay_signals}
-\end{figure}
+% \begin{figure}[!ht]
+%   \caption{Sinais do Relé e da Saída do Sistema  VOU COLOCAR OUTRA UMAGEM !!!!}
+%   \begin{center}
+%       \includegraphics[scale=0.75]{img/relay_giap_p2}
+%   \end{center}
+%   \fonte{Adaptado de \citeonline{Giap2014}} 
+%   \label{fig:relay_signals}
+% \end{figure}
 
 Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
@@ -531,48 +621,36 @@ Com isso, podemos calcular os parâmetros intermediários para a sintonia do con
 Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Discretização e Processamento Digital de Sinais}
-
-\begin{figure}[!ht]
-  \caption{Resposta ao degrau com diferentes períodos de amostragem.}
-  \begin{center}
-      \includegraphics[scale=0.55]{img/nise_digitalinput_p761}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Nise}.} 
-  \label{fig:nise_digitalinput_p761}
-\end{figure}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Linux Embarcados}
 
 Linux embarcado  nada mais é do que uma versão do Kernel Linux que é desenvolvido para funcionar em um sistema embarcado, possuindo várias modificações para exigir menos recursos de processamento e memória \cite{Molloy2016}. Muitos dispositivos do nosso dia-a-dia possuem a implementação do Kernel do Linux em seu sistema, temos como exemplos os computadores pessoais, celulares com Android, televisores, entre outros. 
 
-Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware de um sistema embarcado convencional. A arquitetura do processador é a RISC (Reduced Instruction Set Computer - Computador com um conjunto reduzido de instruções") de 32-bits. Possue dois tipos de memória, a SDRAM (Synchronous Dynamic Random-Access Memory - memória de acesso dinâmico randômico) que é volátil e a memória Flash que é usada para o armazenamento de informações persistentes. Possui RTC (Real Time Clock - relógio de tempo real), que nada mais é do que um relógio interno que funciona mesmo após desenergizar o embarcado, isso é possível devido a uma bateria ou um super-capacitor. Por fim, possue diversas interfaces de comunicação com outros dispositivos, entre elas: Porta serial, USB (Universal Serial Bus - Barramento serial universal), LAM (Local Area Network - Rede de área local) e Wi-Fi (rede sem fio) \citeonline{Prentice}.
-
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Componentes básicos do Linux Embarcado}
   \begin{center}
-      \includegraphics[scale=0.55]{img/componentes_linux_p13}
+      \includegraphics[scale=0.50]{img/componentes_linux_p13}
   \end{center}
   \fonte{Adaptado de \citeonline{Prentice}} 
   \label{fig:componentes_linux_p13}
 \end{figure}
 
-Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel \cite{Prentice}. Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
+Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware de um sistema embarcado convencional. A arquitetura do processador é a RISC (Reduced Instruction Set Computer - Computador com um conjunto reduzido de instruções") de 32-bits. Possui dois tipos de memória, a SDRAM (Synchronous Dynamic Random-Access Memory - memória de acesso dinâmico randômico) que é volátil e a memória Flash que é usada para o armazenamento de informações persistentes. Possui RTC (Real Time Clock - relógio de tempo real), que nada mais é do que um relógio interno que funciona mesmo após desenergizar o embarcado, isso é possível devido a uma bateria ou um super-capacitor. Por fim, possui diversas interfaces de comunicação com outros dispositivos, entre elas: Porta serial, USB (Universal Serial Bus - Barramento serial universal), LAM (Local Area Network - Rede de área local) e Wi-Fi (rede sem fio) \cite{Prentice}.
+
+
+Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel (\cite{Prentice}). Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
 
 \begin{figure}[!ht]
   \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
   \begin{center}
-      \includegraphics[scale=0.65]{img/kernel_user_space}
+      \includegraphics[scale=0.55]{img/kernel_user_space}
   \end{center}
   \fonte{Adaptado de \citeonline{Prentice}} 
   \label{fig:kernel_user_space}
 \end{figure}
 
+Como podem existir diversas aplicações e processos sendo executados ao mesmo tempo, mas só existe uma unidade de processamento, por exemplo, o Linux tem implementado um escalonador de tarefas que define quem será executado. Existem diferentes níveis de prioridade para executar uma tarefa, onde uma de alta prioridade pode entrar entrar em execução fazendo com que a que estava sendo executada fique em espera. Isso pode ser visto com mais clareza na figura \ref{fig:escalonador_hallinan_p469} \cite{Prentice}.
 
 \begin{figure}[!ht]
   \caption{Linha do Tempo de execução de duas tarefas.}
@@ -582,19 +660,8 @@ Quando nos referimos aos diferentes contextos de software em Linux, estamos fala
   \fonte{Adaptado de \citeonline{Prentice}} 
   \label{fig:escalonador_hallinan_p469}
 \end{figure}
-  
-% \begin{figure}[!ht]
-%   \caption{Representação do Modelo de Controlador PID com distúrbios}
-%   \begin{center}
-%       \includegraphics[scale=0.35]{img/sistema-linux-overview_embarcados}
-%   \end{center}
-%   \fonte{Adaptado de Embarcados....} 
-%   \label{fig:sistema-linux-overview_embarcados}
-% \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Linguagem de Programação Python}
+Os conceitos associados ao escalonamento de processos, são muito importante quando temos que tratar sinais oriundo dos GPIOs (General Purpose Input/Output - Entradas e Saídas de uso Geral) e o nosso sistema é rápido. O escalonamento cria um comportamento de assincronismo, onde as leituras e escritas não possuem periodicidade e muito menos duram o mesmo tempo a cada leitura. Para solucionar em parte esse problema, existe um Path (remendo) do Kernel do Linux que foi desenvolvido para diminuir a latência, tempo até processar uma interrupção ou uma tarefa, e tornar esse Kernel em RTS (Real Time System - Sistema de Tempo Real) \cite{Prentice}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
