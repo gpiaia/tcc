@@ -2,6 +2,7 @@
 
 No presente capítulo, são apresentados conceitos básico para a compreensão do trabalho. Nessa etapa, busca-se através da revisão de trabalhos já elucidados a contextualização do projeto proposto.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Satélites Artificiais} %ch 1303
@@ -22,11 +23,6 @@ Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que f
 \subsection{Dinâmica de um Satélite}
 
 A dinâmica é dividida em duas partes, onde uma representa os movimentos de translação e a outra os de rotação.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\subsubsection{Dinâmica de Translação}
 
 A \textit{dinâmica de translação} de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a \textit{dinâmica de rotação} \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
 
@@ -86,11 +82,7 @@ Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sob
 \end{equation}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\subsubsection{Dinâmica de Rotação}
-
-A dinâmica de rotação descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
+A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
 
 \begin{figure}[!ht]
   \caption{Distribuição de Massa}
@@ -250,6 +242,7 @@ Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexy
 
 Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma expressão que representa a reação em forma de variação de velocidade que um torque provoca.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Matrizes de Rotação e Ângulos de Euler}
@@ -333,6 +326,7 @@ E por fim, podemos relacionar o torque da roda com o do satélite e todas as out
 
 Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Controladores PID}
@@ -385,9 +379,9 @@ Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais
 \begin{figure}[!ht]
   \caption{Representação do Modelo de Controlador PID com distúrbios.}
   \begin{center}
-      \includegraphics[scale=0.75]{img/pid_controller_Snider_p35}
+      \includegraphics[scale=0.55]{img/pid_controller_Snider_p35}
   \end{center}
-  \fonte{\citeonline{Snider}.} 
+  \fonte{Adaptado de \citeonline{Snider}.} 
   \label{fig:pid_controller_Snider_p35}
 \end{figure}
 
@@ -396,9 +390,9 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
 \begin{figure}[!ht]
   \caption{Modelo de um Controlador PID com Histerese}
   \begin{center}
-      \includegraphics[scale=0.65]{img/pid_antiwindup_astrom_p83}
+      \includegraphics[scale=0.55]{img/pid_antiwindup_astrom_p83}
   \end{center}
-  \fonte{\citeonline{Astrom1995}.} 
+  \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
 
@@ -434,6 +428,7 @@ Se expressarmos usando notação ${y[kT]}$, podemos representar uma equação di
 
 Onde u(k) denota o sinal computado e y(k) os valores o sinal analógico nos instante k-ésimos.
 
+
 \subsubsection{Transformada Z}
 
 A transformada z é usada para aquisição e processamento de dados em sistemas discretos. Ela possui relação matemática com o domínio s da seguinte forma:
@@ -453,6 +448,7 @@ Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o 
 \begin{equation}
   \frac{u(z)}{y(z)} = \frac{a_0 + a_1z^{-1}+...+a_nz^{-n}}{1+b_1z^{-1}+b_2z^{-2}+...++b_nz^{-n}}
 \end{equation}
+
 
 \subsubsection{Aquisição de dados}
 
@@ -502,6 +498,7 @@ Onde
 \end{equation}
 
 Com isso, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -573,13 +570,15 @@ Além da simplicidade do conceito de implementação, os controladores PID são 
 \begin{figure}[H]
   \caption{Fluxograma para a escolha do Método de Sintonia.}
   \begin{center}
-      \includegraphics[scale=0.75]{img/escolha_controle_astrom_p236}
+      \includegraphics[scale=0.55]{img/escolha_controle_astrom_p236}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:escolha_controle_astrom_p236}
 \end{figure}
 
 Uma alternativa possível para sintonia de controladores é o método do relé, ele, no modo clássico, se encontra entre os controladores com parâmetros constantes.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Método do Relé}
@@ -589,7 +588,7 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
 \begin{figure}[!ht]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
   \begin{center}
-      \includegraphics[scale=0.75]{img/pid_autotuning_relay_astrom_p239}
+      \includegraphics[scale=0.45]{img/pid_autotuning_relay_astrom_p239}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pid_autotuning_relay_astrom_p239}
@@ -600,16 +599,6 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
 \end{equation}
 
 Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}.
-% Isso pode ser visto na figura \ref{fig:relay_signals}.
-
-% \begin{figure}[!ht]
-%   \caption{Sinais do Relé e da Saída do Sistema  VOU COLOCAR OUTRA UMAGEM !!!!}
-%   \begin{center}
-%       \includegraphics[scale=0.75]{img/relay_giap_p2}
-%   \end{center}
-%   \fonte{Adaptado de \citeonline{Giap2014}} 
-%   \label{fig:relay_signals}
-% \end{figure}
 
 Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
@@ -666,39 +655,15 @@ Os conceitos associados ao escalonamento de processos, são muito importante qua
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Estado da Arte}
+\section{Estado da Arte - Controle Inteligente}
 
+O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia e promover a adaptação do controle perante as mudanças que a planta possa apresentar. As duas formas principais formas de controle inteligente utilizadas na atualidade são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, que serão explicadas na sequência.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Sistemas Inteligentes de Sintonia de Controladores}
-
-\begin{figure}[!ht]
-  \caption{Modelo de um Controlador com Auto-sintonia.}
-  \begin{center}
-      \includegraphics[scale=0.75]{img/pid_adaptative_astrom_p233}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:pid_adaptative_astrom_p233}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Controle Fuzzy} %Astrom p298
-
+\subsection{Controle usando Algoritmo Genético}  %control hand p1017
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Controle com Redes Neurais}  %control hand p1017
-
-\begin{figure}[!ht]
-  \caption{Modelo de um Simples Neurônio.}
-  \begin{center}
-      \includegraphics[scale=0.6]{img/neuron_astrom_p295}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:neuron_astrom_p295}
-\end{figure}
 
 \begin{figure}[!ht]
   \caption{Representação de uma Rede Neural.}
@@ -707,13 +672,4 @@ Os conceitos associados ao escalonamento de processos, são muito importante qua
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:feedforward_neural_astrom_p297}
-\end{figure}
-
-\begin{figure}[!ht]
-  \caption{Proposta de \citeonline{Chen2004} para um Controlador PID com Redes Neurais}
-  \begin{center}
-      \includegraphics[scale=1]{img/pid_neural_Applying_p18}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Chen2004}.} 
-  \label{fig:pid_neural_Applying_p18}
 \end{figure}
