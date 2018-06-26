@@ -621,49 +621,97 @@ Linux embarcado  nada mais é do que uma versão do Kernel Linux que é desenvol
   \begin{center}
       \includegraphics[scale=0.65]{img/componentes_linux_p13}
   \end{center}
-  \fonte{Adaptado de \citeonline{Prentice}} 
+  \fonte{Adaptado de \citeonline{Tobergte2013}} 
   \label{fig:componentes_linux_p13}
 \end{figure}
 
-Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware de um sistema embarcado convencional. A arquitetura do processador é a RISC (Reduced Instruction Set Computer - Computador com um conjunto reduzido de instruções") de 32-bits. Possui dois tipos de memória, a SDRAM (Synchronous Dynamic Random-Access Memory - memória de acesso dinâmico randômico) que é volátil e a memória Flash que é usada para o armazenamento de informações persistentes. Possui RTC (Real Time Clock - relógio de tempo real), que nada mais é do que um relógio interno que funciona mesmo após desenergizar o embarcado, isso é possível devido a uma bateria ou um super-capacitor. Por fim, possui diversas interfaces de comunicação com outros dispositivos, entre elas: Porta serial, USB (Universal Serial Bus - Barramento serial universal), LAM (Local Area Network - Rede de área local) e Wi-Fi (rede sem fio) \cite{Prentice}.
+Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware de um sistema embarcado convencional. A arquitetura do processador é a RISC (Reduced Instruction Set Computer - Computador com um conjunto reduzido de instruções") de 32-bits. Possui dois tipos de memória, a SDRAM (Synchronous Dynamic Random-Access Memory - memória de acesso dinâmico randômico) que é volátil e a memória Flash que é usada para o armazenamento de informações persistentes. Possui RTC (Real Time Clock - relógio de tempo real), que nada mais é do que um relógio interno que funciona mesmo após desenergizar o embarcado, isso é possível devido a uma bateria ou um super-capacitor. Por fim, possui diversas interfaces de comunicação com outros dispositivos, entre elas: Porta serial, USB (Universal Serial Bus - Barramento serial universal), LAM (Local Area Network - Rede de área local) e Wi-Fi (rede sem fio) \cite{Tobergte2013}.
 
 
-Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel (\cite{Prentice}). Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
+Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel (\cite{Tobergte2013}). Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
 
 \begin{figure}[!ht]
   \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
   \begin{center}
       \includegraphics[scale=0.55]{img/kernel_user_space}
   \end{center}
-  \fonte{Adaptado de \citeonline{Prentice}} 
+  \fonte{Adaptado de \citeonline{Tobergte2013}} 
   \label{fig:kernel_user_space}
 \end{figure}
 
-Como podem existir diversas aplicações e processos sendo executados ao mesmo tempo, mas só existe uma unidade de processamento, por exemplo, o Linux tem implementado um escalonador de tarefas que define quem será executado. Existem diferentes níveis de prioridade para executar uma tarefa, onde uma de alta prioridade pode entrar entrar em execução fazendo com que a que estava sendo executada fique em espera. Isso pode ser visto com mais clareza na figura \ref{fig:escalonador_hallinan_p469} \cite{Prentice}.
+Como podem existir diversas aplicações e processos sendo executados ao mesmo tempo, mas só existe uma unidade de processamento, por exemplo, o Linux tem implementado um escalonador de tarefas que define quem será executado. Existem diferentes níveis de prioridade para executar uma tarefa, onde uma de alta prioridade pode entrar entrar em execução fazendo com que a que estava sendo executada fique em espera. Isso pode ser visto com mais clareza na figura \ref{fig:escalonador_hallinan_p469} \cite{Tobergte2013}.
 
 \begin{figure}[!ht]
   \caption{Linha do Tempo de execução de duas tarefas.}
   \begin{center}
       \includegraphics[scale=0.45]{img/escalonador_hallinan_p469}
   \end{center}
-  \fonte{Adaptado de \citeonline{Prentice}} 
+  \fonte{Adaptado de \citeonline{Tobergte2013}} 
   \label{fig:escalonador_hallinan_p469}
 \end{figure}
 
-Os conceitos associados ao escalonamento de processos, são muito importante quando temos que tratar sinais oriundo dos GPIOs (General Purpose Input/Output - Entradas e Saídas de uso Geral) e o nosso sistema é rápido. O escalonamento cria um comportamento de assincronismo, onde as leituras e escritas não possuem periodicidade e muito menos duram o mesmo tempo a cada leitura. Para solucionar em parte esse problema, existe um Path (remendo) do Kernel do Linux que foi desenvolvido para diminuir a latência, tempo até processar uma interrupção ou uma tarefa, e tornar esse Kernel em RTS (Real Time System - Sistema de Tempo Real) \cite{Prentice}.
+Os conceitos associados ao escalonamento de processos, são muito importante quando temos que tratar sinais oriundo dos GPIOs (General Purpose Input/Output - Entradas e Saídas de uso Geral) e o nosso sistema é rápido. O escalonamento cria um comportamento de assincronismo, onde as leituras e escritas não possuem periodicidade e muito menos duram o mesmo tempo a cada leitura. Para solucionar em parte esse problema, existe um Path (remendo) do Kernel do Linux que foi desenvolvido para diminuir a latência, tempo até processar uma interrupção ou uma tarefa, e tornar esse Kernel em RTS (Real Time System - Sistema de Tempo Real) \cite{Tobergte2013}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Estado da Arte - Controle Inteligente}
+\section{Estado da Arte - Controladores Inteligentes}
 
-O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia e promover a adaptação do controle perante as mudanças que a planta possa apresentar. As duas formas principais formas de controle inteligente utilizadas na atualidade são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, que serão explicadas na sequência.
+O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas formas principais formas de controle inteligente utilizadas na atualidade são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, que serão explicadas na sequência.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Controle usando Algoritmo Genético}  %control hand p1017
+
+Um algoritmo genético (AG) é baseado nos princípios naturais de otimização, seleção natural e genética populacional. Esses princípios foram codificados em diferentes linguagens de programação, com o fim de otimizar variáveis de sistemas físicos e até de ciências sociais. Um AG busca o cromossomo ideal que gere um população com o potencial espaço de soluções \cite{Unal2013}. No caso do controlador PID, os valores de $K_i$, $T_i$ e $T_d$, ou ainda, um conjunto desses valores. Na imagem \ref{fig:pid_genetic_unal_p45} podemos ver uma proposta de controlador PID onde é usado AG. 
+
+\begin{figure}[!ht]
+  \caption{Topologia de Controlador Usando Algoritmo Genético}''
+  \begin{center}
+      \includegraphics[scale=0.55]{img/pid_genetic_unal_p45}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Unal2013}.} 
+  \label{fig:pid_genetic_unal_p45}
+\end{figure}
+
+%conlusão sobre a imagem
+
+Os principais parâmetros de entrada para um AG, são:
+
+\begin{equation}
+  \sum , G, \rho, f, \mu, I, S, G_p,\Omega, R, \tau  
+ \end{equation} 
+
+Onde $\sum$ é o espaço de busca (fenótipo), G é o espaço genético (genótipo), $\rho$ é a função do código genético, $f$ é a função da aptidão, $\mu$ é o tamanho da população, $I$ é a função de inicialização, S é o tipo de seleção, $G_p$ é o percentual da população que sobrevive até a próxima geração, $\Omega$ é o operador genético (crossover ou mutação),  $R$ é a política de mutação, e por fim, $\tau$, que é o critério de parada \cite{Unal2013}. %posso escrever um conclusão sobre os parâmetros
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Controle com Redes Neurais}  %control hand p1017
+
+Uma \textit{Rede Neural} (RN) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de de cognição é caracterizado como um comportamento não linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
+
+\begin{equation} \label{eq:neuron}
+ f(rn) \equiv \frac{1}{1+e^{-\lambda_n}}
+\end{equation}
+
+também
+
+\begin{equation}
+ f(rn) \equiv sgn(rn) = \begin{Bmatrix}  1, \quad rn>0 \\ 1, \quad rn<0  \end{Bmatrix}
+\end{equation}
+
+Onde $\lambda_n$ é o ganho do neurônio. Uma representação gráfica de um neurônio natural comparado com um artificial pode ser visto na figura \ref{fig:neuronio_unal_p6}, onde os dendritos são representados pelas entradas $p_1, p_2, ..., p_R$, uma soma dessas entradas que posteriormente é aplicada a função da equação \ref{eq:neuron}, onde obtemos a saída $a$.
+
+\begin{figure}[!ht]
+  \caption{Célula de um Neurônio Natural e Modelo Matemático Respectivo}
+  \begin{center}
+      \includegraphics[scale=0.45]{img/neuronio_unal_p6}
+  \end{center}
+  \fonte{Adaptado de (unal).} 
+  \label{fig:neuronio_unal_p6}
+\end{figure}
+
+Ao paralelizarmos um grupo de neurônios, criamos uma camada de neurônios, cada elemento dessa camada é conectado em todas as entradas, ou em todos os neurônios da camada anterior, ou posterior ou ainda, nas saídas. Uma representação de uma rede neural pode ser vista na figura \ref{fig:feedforward_neural_astrom_p297}, onde temos 5 entradas ($u_1,...,u_5$) e duas saídas ($y_1 y_2$).
 
 \begin{figure}[!ht]
   \caption{Representação de uma Rede Neural.}
@@ -673,3 +721,18 @@ O estado da arte dentro de controle, nasce com a criação de controladores inte
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:feedforward_neural_astrom_p297}
 \end{figure}
+
+Em controle, as RN são usadas principalmente em sistemas não lineares, onde existem regiões que a planta não é controlável pelas técnicas de controle clássicas \citeonline{Chen2004}. Nesse caso, a RN recebe os sinais de controle do controlador e da saídas da planta, realiza as operações e encontra os novos parâmetros para o controlador PID. Um bom exemplo dessa topologia pode ser visto na figura \ref{fig:pid_neural_chen_p212}, onde os parâmetros obtidos pela rede neural ainda são linearizados para que sejam utilizados pelo controlador.
+
+\begin{figure}[H]
+  \caption{Controlador PID com Rede Neural}
+  \begin{center}
+      \includegraphics[scale=0.55]{img/pid_neural_chen_p212}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Chen2004}.} 
+  \label{fig:pid_neural_chen_p212}
+\end{figure}
+
+Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima Geral) que é usado para extrair os parâmetros $K$ $T_i$ $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
+
+
