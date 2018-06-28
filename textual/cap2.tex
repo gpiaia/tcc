@@ -9,7 +9,7 @@ No presente capítulo, são apresentados conceitos básico para a compreensão d
 
 Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS (União das Repúblicas Socialistas Soviéticas) no dia 4 de Outubro de 1957, novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Movimento de Translação de um satélite Artificial.}
   \begin{center}
       \includegraphics[scale=0.5]{img/rotational_brown_p256}
@@ -54,7 +54,7 @@ Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em 
 
 A imagem \ref{fig:translacao_referencial_snider_p15}, representa o vetor posição $\vec{r_{com}}$ de um corpo rígido em relação a origem. A descrição matemática desse vetor pode ser visto na equação \ref{eq:rcom}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Representação de $\vec{r_{com}}$}
   \begin{center}
       \includegraphics[scale=0.5]{img/translacao_referencial_snider_p15}
@@ -84,7 +84,7 @@ Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sob
 
 A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Distribuição de Massa}
   \begin{center}
       \includegraphics[scale=0.5]{img/mass_snider_p16}
@@ -249,7 +249,7 @@ Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma e
 
 Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem (EDO), também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}. Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundos de uma transformação pela sequência de Euler \cite{BongWie2001}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Ângulos de Euler}
   \begin{center}
       \includegraphics[scale=0.5]{img/euler_snider_p28}
@@ -277,7 +277,7 @@ Como podemos ver, existem singularidades nas matrizes de rotação, pois existe 
 
 Uma rodas de reação consiste em um rotor que é fixado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade da roda, criando uma reação pela criação de um torque. Quando a roda sofre uma desaceleração, ela exerce um torque em uma direção, se acelerada, em outra \cite{BongWie2001}. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
   \begin{center}
       \includegraphics[scale=0.75]{img/satellite_controlhand_p1306}
@@ -342,7 +342,7 @@ Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou 
 
 Uma forma clássica de representar um resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal do da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
   \begin{center}
       \includegraphics[scale=0.5]{img/transient_ogata_p170}
@@ -376,7 +376,7 @@ Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$}
 
 Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{$G_e(s)$} é a função de transferência do controlador PID, \textit{$M_{c1}(s)$} é o sinal de erro tratado pelo controlador, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Representação do Modelo de Controlador PID com distúrbios.}
   \begin{center}
       \includegraphics[scale=0.55]{img/pid_controller_Snider_p35}
@@ -387,7 +387,7 @@ Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais
 
 Como alguns sistemas podem admitir grandes e rápidas variações de sinais de referência, exigindo uma grande força de controle e energia no atuador, algumas topologias foram desenvolvidas para limitar a atuação de alguns fatores dos controladores. Um bom exemplo é o \textit{anti-windup}, onde essa topologia limita a saturação do atuador quando o sistema atinge o regime, causado pela ação integral. Essa topologia pode ser vista no modelo da figura \ref{fig:pid_antiwindup_astrom_p83} \cite{Astrom1995}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Modelo de um Controlador PID com Histerese}
   \begin{center}
       \includegraphics[scale=0.55]{img/pid_antiwindup_astrom_p83}
@@ -398,10 +398,10 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
 
 Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a acão integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. Podemos ver um exemplo dessa configuração na imagem \ref{fig:pi_twomotors_astrom_p308}, onde apenas um controlador PI controla a velocidade angular (\textit{$\omega$})somada de dois motores (Motor 1 e Motor 2) a partir de uma velocidade de referência (\textit{$\omega_{sp}$}) \cite{Astrom1995}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Representação do Modelo de Controlador PI com dois motores.}
   \begin{center}
-      \includegraphics[scale=0.65]{img/pi_twomotors_astrom_p308}
+      \includegraphics[scale=0.55]{img/pi_twomotors_astrom_p308}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pi_twomotors_astrom_p308}
@@ -434,7 +434,7 @@ Onde u(k) denota o sinal computado e y(k) os valores o sinal analógico nos inst
 A transformada z é usada para aquisição e processamento de dados em sistemas discretos. Ela possui relação matemática com o domínio s da seguinte forma:
 
 \begin{equation}
-Z = e^{Ts}
+Z = e^{-Ts}
 \end{equation}
 
 Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o valor do sinal analógico amostrado no momento k, y(k). Isso pode ser conferido na equação as seguir.
@@ -454,7 +454,7 @@ Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o 
 
 Em um sistema discreto, uma forma de amostrar um sinal analógico é usar um trem de impulsos com amplitude do sinal y(t) nos tempos T e reter esses dados com um ZOH (Zero-Order-Hold - Retentor de Ordem Zero). A figura \ref{fig:zoh_wie_p155} representa muito bem esse processo.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Conversão de um sinal contínuo em discreto}
   \begin{center}
       \includegraphics[scale=0.65]{img/zoh_wie_p155}
@@ -513,7 +513,7 @@ Como podemos ver no modelo matemático e gráfico dos controladores PID, os valo
 
 Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e o com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a).}
   \begin{center}
       \includegraphics[scale=0.75]{img/ziegler-nichols_astrom_p135}
@@ -585,10 +585,10 @@ Uma alternativa possível para sintonia de controladores é o método do relé, 
 
 Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé. O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação \ref{eq:n(a)} que está na sequência:
  
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
   \begin{center}
-      \includegraphics[scale=0.45]{img/pid_autotuning_relay_astrom_p239}
+      \includegraphics[scale=0.55]{img/pid_autotuning_relay_astrom_p239}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pid_autotuning_relay_astrom_p239}
@@ -630,7 +630,7 @@ Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware
 
 Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel (\cite{Tobergte2013}). Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
   \begin{center}
       \includegraphics[scale=0.55]{img/kernel_user_space}
@@ -641,7 +641,7 @@ Quando nos referimos aos diferentes contextos de software em Linux, estamos fala
 
 Como podem existir diversas aplicações e processos sendo executados ao mesmo tempo, mas só existe uma unidade de processamento, por exemplo, o Linux tem implementado um escalonador de tarefas que define quem será executado. Existem diferentes níveis de prioridade para executar uma tarefa, onde uma de alta prioridade pode entrar entrar em execução fazendo com que a que estava sendo executada fique em espera. Isso pode ser visto com mais clareza na figura \ref{fig:escalonador_hallinan_p469} \cite{Tobergte2013}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Linha do Tempo de execução de duas tarefas.}
   \begin{center}
       \includegraphics[scale=0.45]{img/escalonador_hallinan_p469}
@@ -665,10 +665,10 @@ O estado da arte dentro de controle, nasce com a criação de controladores inte
 
 Um algoritmo genético (AG) é baseado nos princípios naturais de otimização, seleção natural e genética populacional. Esses princípios foram codificados em diferentes linguagens de programação, com o fim de otimizar variáveis de sistemas físicos e até de ciências sociais. Um AG busca o cromossomo ideal que gere um população com o potencial espaço de soluções \cite{Unal2013}. No caso do controlador PID, os valores de $K_i$, $T_i$ e $T_d$, ou ainda, um conjunto desses valores. Na imagem \ref{fig:pid_genetic_unal_p45} podemos ver uma proposta de controlador PID onde é usado AG. 
 
-\begin{figure}[!ht]
-  \caption{Topologia de Controlador Usando Algoritmo Genético}''
+\begin{figure}[H]
+  \caption{Topologia de Controlador Usando Algoritmo Genético}
   \begin{center}
-      \includegraphics[scale=0.55]{img/pid_genetic_unal_p45}
+      \includegraphics[scale=0.65]{img/pid_genetic_unal_p45}
   \end{center}
   \fonte{Adaptado de \citeonline{Unal2013}.} 
   \label{fig:pid_genetic_unal_p45}
@@ -702,21 +702,21 @@ também
 
 Onde $\lambda_n$ é o ganho do neurônio. Uma representação gráfica de um neurônio natural comparado com um artificial pode ser visto na figura \ref{fig:neuronio_unal_p6}, onde os dendritos são representados pelas entradas $p_1, p_2, ..., p_R$, uma soma dessas entradas que posteriormente é aplicada a função da equação \ref{eq:neuron}, onde obtemos a saída $a$.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Célula de um Neurônio Natural e Modelo Matemático Respectivo}
   \begin{center}
       \includegraphics[scale=0.45]{img/neuronio_unal_p6}
   \end{center}
-  \fonte{Adaptado de (unal).} 
+  \fonte{Adaptado de  \citeonline{Unal2013}.} 
   \label{fig:neuronio_unal_p6}
 \end{figure}
 
 Ao paralelizarmos um grupo de neurônios, criamos uma camada de neurônios, cada elemento dessa camada é conectado em todas as entradas, ou em todos os neurônios da camada anterior, ou posterior ou ainda, nas saídas. Uma representação de uma rede neural pode ser vista na figura \ref{fig:feedforward_neural_astrom_p297}, onde temos 5 entradas ($u_1,...,u_5$) e duas saídas ($y_1 y_2$).
 
-\begin{figure}[!ht]
+\begin{figure}[H]
   \caption{Representação de uma Rede Neural.}
   \begin{center}
-      \includegraphics[scale=0.65]{img/feedforward_neural_astrom_p297}
+      \includegraphics[scale=0.7]{img/feedforward_neural_astrom_p297}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:feedforward_neural_astrom_p297}
