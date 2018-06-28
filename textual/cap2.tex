@@ -301,27 +301,27 @@ Onde $L_s$ representa o momento angular do satélite e $\vec{L_{\omega}}$ o mome
 E o momento angular nas rodas de ração podem ser escritos da seguinte forma:
 
 \begin{equation}
-\vec {L_{\omega} } =D_{\omega}\vec{\psi_{\omega}} 
+\vec {L_{\omega} } =J_{\omega}\vec{\psi_{\omega}} 
 \end{equation}
 
-Onde $D_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque promovido pela roda de reação $\tau_{\omega}$:
+Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque promovido pela roda de reação $\tau_{\omega}$:
 
 \begin{equation}\label{eq:torqueedo}
-\vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=D_{\omega}\dot{\vec{\psi_{\omega}}}
+\vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=J_{\omega}\dot{\vec{\psi_{\omega}}}
 \end{equation}
 
 E por fim, podemos relacionar o torque da roda com o do satélite e todas as outras variáveis de interesse da seguinte forma:
 
 \begin{equation}\label{eq:torquefinal1}
-\tau_{1}=A\dot{\omega_{1}}+(D_{\omega}\dot{\psi_{\omega}})_{1}+(C-B)\omega_{2}\omega_{3}-(D_{\omega}\psi_{\omega})_{2}\omega_{3}+(D_{\omega}\psi_{\omega})_{3}\omega_{2}
+\tau_{1}=A\dot{\omega_{1}}+(J_{\omega}\dot{\psi_{\omega}})_{1}+(C-B)\omega_{2}\omega_{3}-(J_{\omega}\psi_{\omega})_{2}\omega_{3}+(J_{\omega}\psi_{\omega})_{3}\omega_{2}
 \end{equation}
 
 \begin{equation}\label{eq:torquefinal2}
-\tau_{2}=B\dot{\omega_{2}}+(D_{\omega}\dot{\psi_{\omega}})_{2}+(A-C)\omega_{1}\omega_{3}+(D_{\omega}\psi_{\omega})_{2}\omega_{3}-(D_{\omega}\psi_{\omega})_{3}\omega_{1}
+\tau_{2}=B\dot{\omega_{2}}+(J_{\omega}\dot{\psi_{\omega}})_{2}+(A-C)\omega_{1}\omega_{3}+(J_{\omega}\psi_{\omega})_{2}\omega_{3}-(J_{\omega}\psi_{\omega})_{3}\omega_{1}
 \end{equation}
 
 \begin{equation}\label{eq:torquefinal3}
-\tau_{3}=C\dot{\omega_{3}}+(D_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(D_{\omega}\psi_{\omega})_{1}\omega_{2}+(D_{\omega}\psi_{\omega})_{3}\omega_{1}
+\tau_{3}=C\dot{\omega_{3}}+(J_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(J_{\omega}\psi_{\omega})_{1}\omega_{2}+(J_{\omega}\psi_{\omega})_{3}\omega_{1}
 \end{equation}
 
 Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
@@ -603,11 +603,10 @@ Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do
 Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
 \begin{equation}
-  K_u \approx \frac{4d}{\pi a} \\
-  T_u = P_u
+  K_u \approx \frac{4d}{\pi a}
 \end{equation}
 
-Onde $P_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
+Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -682,7 +681,7 @@ Os principais parâmetros de entrada para um AG, são:
   \sum , G, \rho, f, \mu, I, S, G_p,\Omega, R, \tau  
  \end{equation} 
 
-Onde $\sum$ é o espaço de busca (fenótipo), G é o espaço genético (genótipo), $\rho$ é a função do código genético, $f$ é a função da aptidão, $\mu$ é o tamanho da população, $I$ é a função de inicialização, S é o tipo de seleção, $G_p$ é o percentual da população que sobrevive até a próxima geração, $\Omega$ é o operador genético (crossover ou mutação),  $R$ é a política de mutação, e por fim, $\tau$, que é o critério de parada \cite{Unal2013}. %posso escrever um conclusão sobre os parâmetros
+Onde $\sum$ é o espaço de busca (fenótipo), G é o espaço genético (genótipo), $\rho$ é a função do código genético, $f$ é a função da aptidão, $\mu$ é o tamanho da população, $I$ é a função de inicialização, S é o tipo de seleção, $G_p$ é o percentual da população que sobrevive até a próxima geração, $\Omega$ é o operador genético (crossover ou mutação),  $R$ é a forma de mutação, e por fim, $\tau$, que é o critério de parada \cite{Unal2013}. %posso escrever um conclusão sobre os parâmetros
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
