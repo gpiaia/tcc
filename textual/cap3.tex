@@ -1,17 +1,11 @@
 \chapter{Metodologia}
 
-A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que farão parte do satélite. Entre eles, as rodas de reação, motor DC (Direct Current - corrente contínua), mancal a ar e hastes. Também possui especificação dos componentes eletrônicos que constituirão o satélite.
-
-É na segunda etapa onde ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possamos fornecer torque para a planta sair da inércia.
-
-Já na terceira etapa, são abordados os elementos de software, de rede e supervisão do satélite. Nessa etapa é onde estão as especificações de software, desenvolvimento do software de controle e supervisão, juntamente com testes para validar as primeiras etapas.
+A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que farão parte do satélite. Entre eles, as rodas de reação, motor DC (Direct Current - corrente contínua), mancal a ar e hastes. Também possui especificação dos componentes eletrônicos que constituirão o satélite. É na segunda etapa que ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possamos fornecer torque para a planta sair da inércia. Já na terceira etapa, são abordados os elementos de software, de rede e supervisão do satélite. Nessa etapa também se encontram as especificações de software, desenvolvimento do software de controle e supervisão, juntamente com testes para validar as primeiras etapas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Hardware}
 
-Após a modelagem descrita no referencial teórico, pode-se modelar uma simulador de satélite de fabricação factível. Isso só é possível atraves de várias simplificações, onde o satélite passa a ser de fácil implementação, possibilitando a validação dos conceitos propostos nesse trabalho.
-
-Dentre várias simplificações, a mais óbvia, o simulador não apresentará de forma direta os movimentos de translação descritos no seção \ref{cap:dinamica}. Ainda, existe uma limitação para os ângulos $\phi$, $\theta$ e $\psi$ que é um intercalo de $0<\phi<240º$ devido a existência do mancal a ar.
+Após a modelagem descrita no referencial teórico, pode-se modelar uma simulador de satélite de fabricação factível. Isso só é possível atraves de várias simplificações, onde o satélite passa a ser de fácil implementação, possibilitando a validação dos conceitos propostos nesse trabalho. Dentre várias simplificações, a mais óbvia, o simulador não apresentará de forma direta os movimentos de translação descritos no seção \ref{cap:dinamica}. Ainda, existe uma limitação para os ângulos $\phi$, $\theta$ e $\psi$ que é um intercalo de $0<\phi, \theta, \psi<240º$ devido a existência do mancal a ar.
 
 \begin{figure}[H]
   \caption{Desenho Mecânico do Satélite Completo}

@@ -412,9 +412,7 @@ Existem muitas combinações de controladores PID, cada uma com suas peculiarida
 
 \subsection{Controle Digital}
 
-Quando utilizamos um dispositivo digital como controlador, temos que representar os sinais de forma discretizada, ou seja, em níveis que possam ser transformados em um conjunto de bits. Só assim o microcontrolador ou microprocessador poderá realizar as operações matemáticas desejadas. Para essa transformação, usamos coversores AD (analógico-digital) que convertem um sinal analógico (contínuo) em um sinal binário \cite{BongWie2001}.
-
-Um sinal analógico é representado digitalmente com um período T, da seguinte forma:
+Quando utilizamos um dispositivo digital como controlador, temos que representar os sinais de forma discretizada, ou seja, em níveis que possam ser transformados em um conjunto de bits. Só assim o microcontrolador ou microprocessador poderá realizar as operações matemáticas desejadas. Para essa transformação, usamos coversores AD (analógico-digital) que convertem um sinal analógico (contínuo) em um sinal binário \cite{BongWie2001}. Um sinal analógico é representado digitalmente com um período T, da seguinte forma:
 
 \begin{equation}
   y(0), y(T), y(2T), ...
@@ -563,9 +561,7 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
 
 \subsection{Sintonia Automática de Controladores}
 
-Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário.
-
-Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
+Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário. Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
 \begin{figure}[H]
   \caption{Fluxograma para a escolha do Método de Sintonia.}
@@ -598,9 +594,7 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{equation}
 
-Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}.
-
-Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
+Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{a} é a amplitude do sinal de referencia \cite{Levine1996}. Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
 \begin{equation}
   K_u \approx \frac{4d}{\pi a}
@@ -733,5 +727,7 @@ Em controle, as RN são usadas principalmente em sistemas não lineares, onde ex
 \end{figure}
 
 Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima Geral) que é usado para extrair os parâmetros $K$ $T_i$ $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
+
+Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.
 
 
