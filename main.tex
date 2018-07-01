@@ -1,4 +1,4 @@
-\include{./config}
+\include{./config/config}
 % ||||||||||||||||||||||||||||||||||||||||||||||
 % Início do documento
 % ||||||||||||||||||||||||||||||||||||||||||||||
@@ -21,11 +21,11 @@
 % ----------------------------------------------
 % Capa
 % ----------------------------------------------
-\include{./pre_textual/capa} 
+\include{./config/capa} 
 % ----------------------------------------------
 % Folha de rosto (o * indica que haverá a ficha bibliográfica)
 % ----------------------------------------------
-\include{./pre_textual/folha_de_rosto}
+\include{./config/folha_de_rosto}
 % Folha de rosto (o * indica que haverá a ficha bibliográfica)
 \makeatletter
 \renewcommand{\folhaderostocontent}{
@@ -79,35 +79,35 @@
 % ----------------------------------------------
 % Inserir a ficha bibliografica catalográfica
 % ----------------------------------------------
-% \include{./pre_textual/catalografia} 
+% \include{./config/catalografia} 
 % ----------------------------------------------
 % Inserir errata
 % ----------------------------------------------
-%\include{./pre_textual/errata} 
+%\include{./config/errata} 
 % ----------------------------------------------
 % Folha de aprovação
 % ----------------------------------------------
-% \include{./pre_textual/folha_aprovacao} 
+% \include{./config/folha_aprovacao} 
 % ----------------------------------------------
 % Dedicatória
 % ----------------------------------------------
-%\include{./pre_textual/dedicatoria} 
+%\include{./config/dedicatoria} 
 % ----------------------------------------------
 % Agradecimentos
 % ----------------------------------------------
-%\include{./pre_textual/agradecimentos} 
+%\include{./config/agradecimentos} 
 % ----------------------------------------------
 % Epígrafe
 % ----------------------------------------------
-%\include{./pre_textual/epigrafe} 
+%\include{./config/epigrafe} 
 % ||||||||||||||||||||||||||||||||||||||||||||||
 % RESUMOS
 % ||||||||||||||||||||||||||||||||||||||||||||||
-%\include{./pre_textual/resumos} 
+%\include{./config/resumos} 
 % ||||||||||||||||||||||||||||||||||||||||||||||
 % Listas
 % ||||||||||||||||||||||||||||||||||||||||||||||
-\include{./pre_textual/listas} 
+\include{./config/listas} 
 % ----------------------------------------------
 % inserir o sumario
 % ----------------------------------------------
@@ -118,13 +118,13 @@
 % ELEMENTOS TEXTUAIS
 % ==============================================
 \textual
-\include{./textual/cap1}
-\include{./textual/cap2} 
-\include{./textual/cap3}
-\include{./textual/cronograma}
+\include{./introducao/introducao}
+\include{./referencial/referencial} 
+\include{./metodologia/metodologia}
+\include{./cronograma/cronograma}
 \phantompart
-%\include{./textual/analise_resultados}
-\include{./textual/conclusao}
+%\include{./resultados/analise_resultados}
+\include{./conclusao/conclusao}
 % ==============================================
 % ELEMENTOS PÓS-TEXTUAIS
 % ==============================================
@@ -132,7 +132,7 @@
 % ==============================================
 % Referências bibliográficas
 % ==============================================
-\bibliography{references}
+\bibliography{referencial/references}
 % ==============================================
 % Glossário
 % ==============================================
@@ -140,11 +140,11 @@
 % ||||||||||||||||||||||||||||||||||||||||||||||
 % Apêndices
 % ||||||||||||||||||||||||||||||||||||||||||||||
-\include{./pos_textual/apendices}
+\include{./apendices/apendices}
 % ||||||||||||||||||||||||||||||||||||||||||||||
 % ANEXOS
 % ||||||||||||||||||||||||||||||||||||||||||||||
-%\include{./pos_textual/anexos}
+%\include{./anexos/anexos}
 % ==============================================
 % INDICE REMISSIVO
 % ==============================================

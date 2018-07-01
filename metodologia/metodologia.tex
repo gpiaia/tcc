@@ -10,7 +10,7 @@ Após a modelagem descrita no referencial teórico, é possível modelar um simu
 \begin{figure}[H]
   \caption{Desenho Mecânico do Satélite Completo}
   \begin{center}
-      \includegraphics[scale=.6]{img/satelite_completo}
+      \includegraphics[scale=.6]{metodologia/img/satelite_completo}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:satelite_completo}
@@ -30,7 +30,7 @@ Um dos elementos mais importantes do simulador, é o mancal a ar. Ele possibilit
 \begin{figure}[H]
   \caption{Desenho Mecânico do Mancal a Ar}
   \begin{center}
-      \includegraphics[scale=.45]{img/base_desenho}
+      \includegraphics[scale=.45]{metodologia/img/base_desenho}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:base_desenho}
@@ -46,7 +46,7 @@ O atuador do simulador de satélite será um conjunto de três motores Brushless
 \begin{figure}[H]
   \caption{Desenho mecânico do conjunto Motor-Roda}
   \begin{center}
-      \includegraphics[scale=.45]{img/motor_roda_desenho}
+      \includegraphics[scale=.45]{metodologia/img/motor_roda_desenho}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:motor_roda_desenho}
@@ -58,12 +58,12 @@ A roda de reação também deve ser usinada, pois é necessário uma roda com um
 
 \subsection{Elementos Eletrônicos}
 
-A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (Rpi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade Wi-Fi, possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento do trabalho. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}
+A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade Wi-Fi, possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento do trabalho. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}
 
 \begin{figure}[H]
   \caption{Raspberry Pi Zero}
   \begin{center}
-      \includegraphics[scale=.55]{img/rasp_zero}
+      \includegraphics[scale=.55]{metodologia/img/rasp_zero}
   \end{center}
   \fonte{Adaptado de \citeonline{Molloy2016}} 
   \label{fig:rasp_zero}
@@ -74,7 +74,7 @@ Um outro elemento que será indispensável é o acelerômetro, o qual será o se
 \begin{figure}[H]
   \caption{Circuito impresso com o acelerômetro MMA7260QT}
   \begin{center}
-      \includegraphics[scale=.4]{img/pci_acelerometro_calache_p22}
+      \includegraphics[scale=.4]{metodologia/img/pci_acelerometro_calache_p22}
   \end{center}
   \fonte{Adaptado de \citeonline{Calache2013}} 
   \label{fig:pci_acelerometro_calache_p22}
@@ -96,7 +96,7 @@ Após a escolha do tipo de motor que será utilizado como atuador no controle da
 \begin{figure}[H]
   \caption{Modelo do Motor DC}
   \begin{center}
-      \includegraphics[scale=.7]{img/modelo_motor_dc}
+      \includegraphics[scale=.7]{metodologia/img/modelo_motor_dc}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:modelo_motor_dc}
@@ -147,7 +147,7 @@ Como em partes, todo o satélite já foi modelado até agora, nessa subseção a
 \begin{figure}[H]
   \caption{Modelo em malha aberta}
   \begin{center}
-      \includegraphics[scale=.55]{img/modelo_satelite_malha_aberta}
+      \includegraphics[scale=.55]{metodologia/img/modelo_satelite_malha_aberta}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:modelo_satelite_malha_aberta}
@@ -158,7 +158,7 @@ Se fecharmos a malha em posição, usando um acelerômetro e usarmos um controla
 \begin{figure}[H]
   \caption{Modelo em malha fechada com um Controlador PID}
   \begin{center}
-      \includegraphics[scale=.58]{img/modelo_satelite_pid}
+      \includegraphics[scale=.58]{metodologia/img/modelo_satelite_pid}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:modelo_satelite_pid}
@@ -174,9 +174,9 @@ Após a modelagem, devemos implementar o modelo e configurar todas as interfaces
 
 
 \begin{figure}[H]
-  \caption{Topologia de Rede}
+  \caption{Representação Geral do Sistema}
   \begin{center}
-      \includegraphics[scale=.75]{img/comunicacao_projeto}
+      \includegraphics[scale=.75]{metodologia/img/comunicacao_projeto}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:comunicacao_projeto}
