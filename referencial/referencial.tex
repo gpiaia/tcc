@@ -243,39 +243,12 @@ Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexy
 Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma expressão que representa a reação em forma de variação de velocidade que um torque provoca.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Matrizes de Rotação e Ângulos de Euler}
-
-Na seção anterior, temos como resultado 3 equações diferenciais ordinárias de primeira ordem (EDO), também chamadas de equações de Euler. Essas equações definem a dinâmica do corpo rígido em relação a um ponto fixo. Como temos o interesse de controle de posição, ainda nos falta uma relação matemática para expressar a posição angular $\beta$, velocidade angular $\omega$ e a aceleração $\alpha$, isso em um espaço tridimensional \cite{Snider}. Na imagem \ref{fig:coordenada}, podemos ver a representação dos ângulos de Euler ($\psi, \theta, \phi$) em relação aos eixos $b_1, b_2 e b_3$, oriundos de uma transformação pela sequência de Euler \cite{BongWie2001}.
-
-\begin{figure}[H]
-  \caption{Ângulos de Euler}
-  \begin{center}
-      \includegraphics[scale=0.5]{referencial/img/euler_snider_p28}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Snider}.} 
-  \label{fig:coordenada}
-\end{figure}
-
-As duas matrizes de rotação obtidas pelo trabalho de Euler podem ser vistas na sequência: 
-
-\begin{equation}
-\begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ cos\theta  } \begin{bmatrix} cos\theta  & sen\phi sen\theta  & cos\phi sen\theta  \\ 0 & cos\phi cos\theta  & -sen\phi cos\theta  \\ 0 & sen\phi  & cos\phi  \end{bmatrix}\begin{bmatrix} \omega_1 \\ \omega_2  \\ \omega_3  \end{bmatrix} 
-\end{equation}
-
-\begin{equation}
-\begin{bmatrix} \dot { \phi  }  \\ \dot { \theta  }  \\ \dot { \psi  }  \end{bmatrix}=\frac { 1 }{ sin\theta  } \begin{bmatrix} sen\psi  & cos\psi  & 0 \\ cos\psi sen\theta  & -sen\psi sen\theta  & 0 \\ -sen\psi cos\theta  & -cos\psi cos\theta  & 0 \end{bmatrix}\begin{bmatrix} \omega _{ 1 } \\ \omega _{ 2 } \\ \omega _{ 3 } \end{bmatrix}
-\end{equation}
-
-Como podemos ver, existem singularidades nas matrizes de rotação, pois existe divisões por cosseno e seno, que podem assumir valor 0 quando $\theta$ for igual a $\pm(\pi /2)/(n+1)$ para o cosseno e $\pm\pi /2$ para o seno, para qualquer n inteiro. Essas singularidades impossibilitam o controle sobre essas singularidades.
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Rodas de Reação}
 
-Uma rodas de reação consiste em um rotor que é fixado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade da roda, criando uma reação pela criação de um torque. Quando a roda sofre uma desaceleração, ela exerce um torque em uma direção, se acelerada, em outra \cite{BongWie2001}. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
+Uma roda de reação consiste em um roda que é fixado em um eixo de motor que é usado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade angular de uma roda. Quando a roda sofre uma variação da sua velocidade angular, ela exerce um torque em uma determinada direção \cite{BongWie2001}. Esse efeito ocorre devido à conservação do momento angular do corpo, logo, se a roda está sendo desacelerada, o corpo tende se opor a esse movimento. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
+
 
 \begin{figure}[H]
   \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
@@ -310,18 +283,18 @@ Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\om
 \vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=J_{\omega}\dot{\vec{\psi_{\omega}}}
 \end{equation}
 
-E por fim, podemos relacionar o torque da roda com o do satélite e todas as outras variáveis de interesse da seguinte forma:
+E por fim, podemos relacionar as velocidades angulares do satélite com o as inércia e as velocidades das rodas da seguinte forma:
 
-\begin{equation}\label{eq:torquefinal1}
-\tau_{1}=A\dot{\omega_{1}}+(J_{\omega}\dot{\psi_{\omega}})_{1}+(C-B)\omega_{2}\omega_{3}-(J_{\omega}\psi_{\omega})_{2}\omega_{3}+(J_{\omega}\psi_{\omega})_{3}\omega_{2}
+\begin{equation}\label{eq:modeloA}
+  \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi_{\omega 1}}}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
 \end{equation}
 
-\begin{equation}\label{eq:torquefinal2}
-\tau_{2}=B\dot{\omega_{2}}+(J_{\omega}\dot{\psi_{\omega}})_{2}+(A-C)\omega_{1}\omega_{3}+(J_{\omega}\psi_{\omega})_{2}\omega_{3}-(J_{\omega}\psi_{\omega})_{3}\omega_{1}
-\end{equation}
+\begin{equation}\label{eq:modeloB}
+  \dot{\omega_{2}}=\frac{J_{\omega 2}\dot{\vec{\psi_{\omega 2}}}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
+\end{equation},
 
-\begin{equation}\label{eq:torquefinal3}
-\tau_{3}=C\dot{\omega_{3}}+(J_{\omega}\dot{\psi_{\omega}})_{3}+(B-A)\omega_{1}\omega_{2}-(J_{\omega}\psi_{\omega})_{1}\omega_{2}+(J_{\omega}\psi_{\omega})_{3}\omega_{1}
+\begin{equation}\label{eq:modeloC}
+  \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi_{\omega 3}}}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
 Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
@@ -364,15 +337,7 @@ O controlador proporcional-integral-derivativo é um dos controladores mais util
   u(t) = K\left((e(t)+\frac{1}{T_i}\int_{0}^{t}{e(\tau)}d\tau+T_d\frac{de(t)}{dt}\right) 
 \end{equation}
 
-Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995}. A partir desse princípio podemos relacionar com as equações \ref{eq:torquefinal1}, \ref{eq:torquefinal2} e \ref{eq:torquefinal3} podemos escrever a relação do controlador PID com o torque:
-
-\begin{equation}
-\tau_{m_{1,2,3}}=K_{P}\left((\beta_{com}-\beta)+\frac{1}{T_{I}}\int{(\beta_{com}-\beta)dt}+T_{d}\frac{d}{dt}(\beta_{com}-\beta)\right)
-\end{equation}
-
-\begin{equation}
-=K_{P}\left(\beta_{com}+\frac{1}{T_{I}}\int{\beta_{com}dt}+T_{d}\frac{d}{dt}\beta_{com}\right) 
-\end{equation}
+Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995}.s
 
 Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{$G_e(s)$} é a função de transferência do controlador PID, \textit{$M_{c1}(s)$} é o sinal de erro tratado pelo controlador, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
@@ -396,16 +361,7 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
 
-Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a acão integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. Podemos ver um exemplo dessa configuração na imagem \ref{fig:pi_twomotors_astrom_p308}, onde apenas um controlador PI controla a velocidade angular (\textit{$\omega$})somada de dois motores (Motor 1 e Motor 2) a partir de uma velocidade de referência (\textit{$\omega_{sp}$}) \cite{Astrom1995}.
-
-\begin{figure}[H]
-  \caption{Representação do Modelo de Controlador PI com dois motores.}
-  \begin{center}
-      \includegraphics[scale=0.55]{referencial/img/pi_twomotors_astrom_p308}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Astrom1995}.} 
-  \label{fig:pi_twomotors_astrom_p308}
-\end{figure}
+Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a acão integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -461,13 +417,32 @@ Em um sistema discreto, uma forma de amostrar um sinal analógico é usar um tre
   \label{fig:zoh_wie_p155}
 \end{figure}
 
-Onde y(t) é o sinal que está sendo amostrado, y*(t) é o trem de pulsos amostrados e $\hat{y}(t)$ o sinal resultante. Um ZOH ideal pode ser representando da seguinte forma:
+Onde y(t) é o sinal que está sendo amostrado, y*(t) é o trem de pulsos amostrados e $\hat{y}(t)$ é o sinal resultante. Um ZOH ideal pode ser representando da seguinte forma:
 
 \begin{equation}
   \hat{y}(s) \approx \frac{1-e^{-Ts}}{Ts}y(s)
 \end{equation}
 
 Essa expressão é de suma importância para a aquisição das variáveis que queremos controlar usando técnicas digitais.
+
+\subsubsection{Filtro de Kalman}
+
+Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando a instabilidade o sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
+
+Filtro de Kalman é um algoritmo usado para estimas estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
+
+
+\begin{figure}[H]
+  \caption{Diagrama de Blocos do Filtro de Kalman}
+  \begin{center}
+      \includegraphics[scale=0.5]{referencial/img/kalman_levine_p591}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Levine1996}.} 
+  \label{fig:kalman_levine_p591}
+\end{figure}
+
+Onde $u(t)$ é o sinal do controlador, $y(t)$ é o sinal amostrado da saída da planta, $\hat {y}(t) $ é a saída estimada, H é o ganho do filtro e A, B e C são as matrizes em espaço de estados da dinâmica da planta.
+
 
 \subsubsection{Controlador PID Digital}
 
@@ -496,6 +471,10 @@ Onde
 \end{equation}
 
 Com isso, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
+
+
+\subsubsection{Controlador PID Digital}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -605,77 +584,10 @@ Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses val
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Linux Embarcados}
-
-Linux embarcado  nada mais é do que uma versão do Kernel Linux que é desenvolvido para funcionar em um sistema embarcado, possuindo várias modificações para exigir menos recursos de processamento e memória \cite{Molloy2016}. Muitos dispositivos do nosso dia-a-dia possuem a implementação do Kernel do Linux em seu sistema, temos como exemplos os computadores pessoais, celulares com Android, televisores, entre outros. 
-
-\begin{figure}[H]
-  \caption{Componentes básicos do Linux Embarcado}
-  \begin{center}
-      \includegraphics[scale=0.65]{referencial/img/componentes_linux_p13}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Tobergte2013}} 
-  \label{fig:componentes_linux_p13}
-\end{figure}
-
-Na figura \ref{fig:componentes_linux_p13}, podemos ver a arquitetura de hardware de um sistema embarcado convencional. A arquitetura do processador é a RISC (Reduced Instruction Set Computer - Computador com um conjunto reduzido de instruções") de 32-bits. Possui dois tipos de memória, a SDRAM (Synchronous Dynamic Random-Access Memory - memória de acesso dinâmico randômico) que é volátil e a memória Flash que é usada para o armazenamento de informações persistentes. Possui RTC (Real Time Clock - relógio de tempo real), que nada mais é do que um relógio interno que funciona mesmo após desenergizar o embarcado, isso é possível devido a uma bateria ou um super-capacitor. Por fim, possui diversas interfaces de comunicação com outros dispositivos, entre elas: Porta serial, USB (Universal Serial Bus - Barramento serial universal), LAM (Local Area Network - Rede de área local) e Wi-Fi (rede sem fio) \cite{Tobergte2013}.
-
-
-Quando nos referimos aos diferentes contextos de software em Linux, estamos falando do espaço de usuário e o espaço do Kernel. No espaço de usuário rodam as aplicações, já no espaço do Kernel, rodam as Threds e os acessos ao hardware. Os acessos entre regiões de memórias de um contexto pelo outro, são feitos através de chamadas de sistema do Kernel (\cite{Tobergte2013}). Essa estrutura pode ser vista na imagem \ref{fig:kernel_user_space}.
-
-\begin{figure}[H]
-  \caption{Estrutura Básica do Espaço de Usuário e de Kernel.}
-  \begin{center}
-      \includegraphics[scale=0.55]{referencial/img/kernel_user_space}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Tobergte2013}} 
-  \label{fig:kernel_user_space}
-\end{figure}
-
-Como podem existir diversas aplicações e processos sendo executados ao mesmo tempo, mas só existe uma unidade de processamento, por exemplo, o Linux tem implementado um escalonador de tarefas que define quem será executado. Existem diferentes níveis de prioridade para executar uma tarefa, onde uma de alta prioridade pode entrar entrar em execução fazendo com que a que estava sendo executada fique em espera. Isso pode ser visto com mais clareza na figura \ref{fig:escalonador_hallinan_p469} \cite{Tobergte2013}.
-
-\begin{figure}[H]
-  \caption{Linha do Tempo de execução de duas tarefas.}
-  \begin{center}
-      \includegraphics[scale=0.45]{referencial/img/escalonador_hallinan_p469}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Tobergte2013}} 
-  \label{fig:escalonador_hallinan_p469}
-\end{figure}
-
-Os conceitos associados ao escalonamento de processos, são muito importante quando temos que tratar sinais oriundo dos GPIOs (General Purpose Input/Output - Entradas e Saídas de uso Geral) e o nosso sistema é rápido. O escalonamento cria um comportamento de assincronismo, onde as leituras e escritas não possuem periodicidade e muito menos duram o mesmo tempo a cada leitura. Para solucionar em parte esse problema, existe um Path (remendo) do Kernel do Linux que foi desenvolvido para diminuir a latência, tempo até processar uma interrupção ou uma tarefa, e tornar esse Kernel em RTS (Real Time System - Sistema de Tempo Real) \cite{Tobergte2013}.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \section{Estado da Arte - Controladores Inteligentes}
 
-O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas formas principais formas de controle inteligente utilizadas na atualidade são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, que serão explicadas na sequência.
+O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas formas principais formas de controle inteligente utilizadas na atualidade são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, onde a por redes neurais será explicada na sequência.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Controle usando Algoritmo Genético}  %control hand p1017
-
-Um algoritmo genético (AG) é baseado nos princípios naturais de otimização, seleção natural e genética populacional. Esses princípios foram codificados em diferentes linguagens de programação, com o fim de otimizar variáveis de sistemas físicos e até de ciências sociais. Um AG busca o cromossomo ideal que gere um população com o potencial espaço de soluções \cite{Unal2013}. No caso do controlador PID, os valores de $K_i$, $T_i$ e $T_d$, ou ainda, um conjunto desses valores. Na imagem \ref{fig:pid_genetic_unal_p45} podemos ver uma proposta de controlador PID onde é usado AG. 
-
-\begin{figure}[H]
-  \caption{Topologia de Controlador Usando Algoritmo Genético}
-  \begin{center}
-      \includegraphics[scale=0.65]{referencial/img/pid_genetic_unal_p45}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Unal2013}.} 
-  \label{fig:pid_genetic_unal_p45}
-\end{figure}
-
-%conlusão sobre a imagem
-
-Os principais parâmetros de entrada para um AG, são:
-
-\begin{equation}
-  \sum , G, \rho, f, \mu, I, S, G_{pp},\Omega, R, \tau  
- \end{equation} 
-
-Onde $\sum$ é o espaço de busca (fenótipo), G é o espaço genético (genótipo), $\rho$ é a função do código genético, $f$ é a função da aptidão, $\mu$ é o tamanho da população, $I$ é a função de inicialização, S é o tipo de seleção, $G_{pp}$ é o percentual da população que sobrevive até a próxima geração, $\Omega$ é o operador genético (crossover ou mutação),  $R$ é a forma de mutação, e por fim, $\tau$, que é o critério de parada \cite{Unal2013}. %posso escrever um conclusão sobre os parâmetros
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -8,4 +8,9 @@
 *.bak
 *.orig
 *.ini
+*.bbl
+*.blg
+*.brf
+*.idx
+*.gz
 draw.io
