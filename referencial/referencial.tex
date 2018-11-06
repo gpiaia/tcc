@@ -259,7 +259,7 @@ Uma roda de reação consiste em um roda que é fixado em um eixo de motor que �
   \label{fig:satellite_controlhand_p1306}
 \end{figure}
 
-Como já foram descritos nas outras seções, precisamos encontrar uma relação que expresse o torque criado pelas rodas de reação, para que consigamos unir ao modelo do satélite. Para isso começamos pelo momento angular total $\vec{L_{tot}}$, que pode ser visto na sequência.
+Como já foram descritos nas outras seções, precisamos encontrar uma relação que expresse o torque criado pelas rodas de reação, para que consigamos unir ao modelo do satélite. Para isso, começamos pelo momento angular total $\vec{L_{tot}}$, que pode ser visto na sequência:
 
 \begin{equation}\label{eq:ltot}
 \vec{L_{tot}}=\vec{L_s}+\vec{L_{\omega}}=constante 
@@ -271,13 +271,13 @@ Onde $L_s$ representa o momento angular do satélite e $\vec{L_{\omega}}$ o mome
 \vec{L_s}=I\vec{\omega}
 \end{equation}
 
-E o momento angular nas rodas de ração podem ser escritos da seguinte forma:
+E o momento angular nas rodas de ração pode ser escritos da seguinte forma:
 
 \begin{equation}
 \vec {L_{\omega} } =J_{\omega}\vec{\psi_{\omega}} 
 \end{equation}
 
-Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque promovido pela roda de reação $\tau_{\omega}$:
+Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque provido pela roda de reação $\tau_{\omega}$:
 
 \begin{equation}\label{eq:torqueedo}
 \vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=J_{\omega}\dot{\vec{\psi_{\omega}}}
@@ -297,7 +297,7 @@ E por fim, podemos relacionar as velocidades angulares do satélite com o as in�
   \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi_{\omega 3}}}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
-Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
+Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso, temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -313,7 +313,7 @@ Como já temos as equações diferenciais que descrevem o modelo satélite, prec
 
 Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}.
 
-Uma forma clássica de representar um resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal do da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
+Uma forma clássica de representar um resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
 \begin{figure}[H]
   \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
@@ -339,7 +339,7 @@ O controlador proporcional-integral-derivativo é um dos controladores mais util
 
 Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995}.s
 
-Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{$G_e(s)$} é a função de transferência do controlador PID, \textit{$M_{c1}(s)$} é o sinal de erro tratado pelo controlador, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
+Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
 \begin{figure}[H]
   \caption{Representação do Modelo de Controlador PID com distúrbios.}
@@ -425,24 +425,6 @@ Onde y(t) é o sinal que está sendo amostrado, y*(t) é o trem de pulsos amostr
 
 Essa expressão é de suma importância para a aquisição das variáveis que queremos controlar usando técnicas digitais.
 
-\subsubsection{Filtro de Kalman}
-
-Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando a instabilidade o sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
-
-Filtro de Kalman é um algoritmo usado para estimas estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
-
-
-\begin{figure}[H]
-  \caption{Diagrama de Blocos do Filtro de Kalman}
-  \begin{center}
-      \includegraphics[scale=0.5]{referencial/img/kalman_levine_p591}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Levine1996}.} 
-  \label{fig:kalman_levine_p591}
-\end{figure}
-
-Onde $u(t)$ é o sinal do controlador, $y(t)$ é o sinal amostrado da saída da planta, $\hat {y}(t) $ é a saída estimada, H é o ganho do filtro e A, B e C são as matrizes em espaço de estados da dinâmica da planta.
-
 
 \subsubsection{Controlador PID Digital}
 
@@ -472,9 +454,25 @@ Onde
 
 Com isso, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Controlador PID Digital}
+\subsubsection{Filtro de Kalman}
 
+Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando a instabilidade o sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
+
+Filtro de Kalman é um algoritmo usado para estimas estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
+
+
+\begin{figure}[H]
+  \caption{Diagrama de Blocos do Filtro de Kalman}
+  \begin{center}
+      \includegraphics[scale=0.5]{referencial/img/kalman_levine_p591}
+  \end{center}
+  \fonte{Adaptado de \citeonline{Levine1996}.} 
+  \label{fig:kalman_levine_p591}
+\end{figure}
+
+Onde $u(t)$ é o sinal do controlador, $y(t)$ é o sinal amostrado da saída da planta, $\hat {y}(t) $ é a saída estimada, H é o ganho do filtro e A, B e C são as matrizes em espaço de estados da dinâmica da planta.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -540,7 +538,7 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
 
 \subsection{Sintonia Automática de Controladores}
 
-Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário. Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
+Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário. Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau, podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
 \begin{figure}[H]
   \caption{Fluxograma para a escolha do Método de Sintonia.}
@@ -551,14 +549,14 @@ Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do 
   \label{fig:escolha_controle_astrom_p236}
 \end{figure}
 
-Uma alternativa possível para sintonia de controladores é o método do relé, ele, no modo clássico, se encontra entre os controladores com parâmetros constantes.
+Uma alternativa possível para sintonia de controladores, é o método do relé, ele, no modo clássico, se encontra entre os controladores com parâmetros constantes.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Método do Relé}
 
-Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé. O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação \ref{eq:n(a)} que está na sequência:
+Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé. O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação \ref{eq:n(a)} que está na sequência.
  
 \begin{figure}[H]
   \caption{Modelo do Método de Auto Sintonia via Relé.}
@@ -616,7 +614,7 @@ Onde $\lambda_n$ é o ganho do neurônio. Uma representação gráfica de um neu
   \label{fig:neuronio_unal_p6}
 \end{figure}
 
-Ao paralelizarmos um grupo de neurônios, criamos uma camada de neurônios, cada elemento dessa camada é conectado em todas as entradas, ou em todos os neurônios da camada anterior, ou posterior ou ainda, nas saídas. Uma representação de uma rede neural pode ser vista na figura \ref{fig:feedforward_neural_astrom_p297}, onde temos 5 entradas ($u_1,...,u_5$) e duas saídas ($y_1 y_2$).
+Ao paralelizarmos um grupo de neurônios, criamos uma camada de neurônios, cada elemento dessa camada é conectado em todas as entradas, ou em todos os neurônios da camada anterior, ou posterior, ou ainda, nas saídas. Uma representação de uma rede neural pode ser vista na figura \ref{fig:feedforward_neural_astrom_p297}, onde temos 5 entradas ($u_1,...,u_5$) e duas saídas ($y_1 y_2$).
 
 \begin{figure}[H]
   \caption{Representação de uma Rede Neural.}
