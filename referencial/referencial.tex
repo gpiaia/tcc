@@ -46,7 +46,7 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
   \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
 \end{equation}
 
-Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em módulo igual a força $\vec{f_{ij}}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam. Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F_e}$) como o somatório de todas as forças sobre as partículas ($\vec{F_{ie}}$). Isso pode ser esquito da seguinte forma:
+Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em módulo igual a força $\vec{f_{ij}}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam. Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F_e}$) como o somatório de todas as forças sobre as partículas ($\vec{F_{ie}}$). Isso pode ser escrito da seguinte forma:
 
 \begin{equation}\label{eq:fet}
   \vec{F_{e}}=\sum_{i=1}^{N}{\vec{f_{ie}}}=\sum_{i=1}^{N}{m_i\vec{a_i}} 
@@ -82,7 +82,7 @@ Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sob
 \end{equation}
 
 
-A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso mara N partículas, temos:
+A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso para N partículas, temos:
 
 \begin{figure}[H]
   \caption{Distribuição de Massa}
@@ -92,7 +92,6 @@ A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em re
   \fonte{Adaptado de \citeonline{Snider}.} 
   \label{fig:mass_snider_p16}
 \end{figure}
-
 
 \begin{equation}
   I_{xx}=\sum_{i=1}^{N}{m_i({y_i}^{2}+{z_i}^{2})}
@@ -180,7 +179,7 @@ Se usarmos o teorema do transporte cinemático, o momento de inércia pode ser e
 \dot{\vec{L}}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
 \end{equation}
 
-Por consequência, descrevemos o torque da seguinte maneire:
+Por consequência, descrevemos o torque da seguinte maneira:
 
 \begin{equation}\label{eq:torque}
 \vec{\tau}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
@@ -198,7 +197,7 @@ Se fizermos o mesmo com a equação \ref{eq:torque}, temos:
 \begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
 \end{equation}
 
-Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Ainda, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações a seguir.
+Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Além disso, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações a seguir.
 
 \begin{equation}
   \tau_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 
@@ -247,8 +246,7 @@ Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma e
 
 \subsubsection{Rodas de Reação}
 
-Uma roda de reação consiste em um roda que é fixado em um eixo de motor que é usado em satélites ou em outros veículos, com o objetivo de mudar a posição dos mesmos através da variação de velocidade angular de uma roda. Quando a roda sofre uma variação da sua velocidade angular, ela exerce um torque em uma determinada direção \cite{BongWie2001}. Esse efeito ocorre devido à conservação do momento angular do corpo, logo, se a roda está sendo desacelerada, o corpo tende se opor a esse movimento. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
-
+Uma roda de reação consiste em um dispositivo que é fixado em um eixo de motor, com o objetivo de interferir na posição de um corpo através da variação de velocidade angular das rodas. Quando a roda sofre uma variação da sua velocidade angular, ela exerce um torque em uma determinada direção \cite{BongWie2001}. Esse efeito ocorre devido à conservação do momento angular do corpo, logo, se a roda está sendo desacelerada, o corpo tende se opor a esse movimento. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
 
 \begin{figure}[H]
   \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
@@ -297,7 +295,7 @@ E por fim, podemos relacionar as velocidades angulares do satélite com o as in�
   \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi_{\omega 3}}}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
-Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Com isso, temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
+Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Assim, temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -313,7 +311,7 @@ Como já temos as equações diferenciais que descrevem o modelo satélite, prec
 
 Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}.
 
-Uma forma clássica de representar um resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
+Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
 \begin{figure}[H]
   \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
@@ -452,7 +450,7 @@ Onde
   \hat{u}[k] = \hat{u}[k-1] +Ty[k]
 \end{equation}
 
-Com isso, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
+Desse modo, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -460,7 +458,7 @@ Com isso, concluímos a modelagem de um controlador PID, com um conjunto de equa
 
 Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando a instabilidade o sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
 
-Filtro de Kalman é um algoritmo usado para estimas estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
+Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
 
 
 \begin{figure}[H]
@@ -486,7 +484,7 @@ Como podemos ver no modelo matemático e gráfico dos controladores PID, os valo
 
 \subsection{Método de sintonia de Ziegler-Nichols}
 
-Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e o com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
+Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
 
 \begin{figure}[H]
   \caption{Resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a).}
@@ -584,14 +582,14 @@ Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses val
 
 \section{Estado da Arte - Controladores Inteligentes}
 
-O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas formas principais formas de controle inteligente utilizadas na atualidade são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, onde a por redes neurais será explicada na sequência.
+O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas principais formas de controle inteligente utilizadas na atualidade, são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, onde a por redes neurais será explicada na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Controle com Redes Neurais}  %control hand p1017
 
-Uma \textit{Rede Neural} (RN) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de de cognição é caracterizado como um comportamento não linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
+Uma \textit{Rede Neural} (RN) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de cognição é caracterizado como um comportamento não-linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
 
 \begin{equation} \label{eq:neuron}
  f(rn) \equiv \frac{1}{1+e^{-\lambda_n}}

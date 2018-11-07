@@ -18,7 +18,7 @@ Após a modelagem descrita no referencial teórico, é possível modelar um simu
 
  Como podemos ver na imagem anterior, o modelo sofre várias simplificações em relação a um satélite real, onde o modelo passa a ser de fácil implementação, possibilitando a validação dos conceitos propostos nesse trabalho. Dentre várias simplificações, a mais óbvia, o simulador não apresentará de forma direta os movimentos de translação descritos no seção \ref{cap:dinamica}. Ainda, existe uma limitação para os ângulos $\phi$, $\theta$ e $\psi$ que é um intervalo de $0<\phi, \theta, \psi<240º$ devido a existência do mancal a ar e a simetria do corpo do satélite, como princípio para simplificar a modelagem matemática do mesmo.
 
-Os principais elementos descritos na imagem anterior, serão descritos de forma detalhada na sequência, dentre eles, o corpo do satélite, que pode ser visto na sequência.
+Os principais elementos do simulador de satélites, serão descritos de forma detalhada na sequência, dentre eles, o corpo do satélite.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,7 +83,7 @@ Cada roda será responsável por um terço do momento angular total do satélite
 
 Onde $I_{sat}$ é o momento de inércia do satélite, $m$ é a massa, $r_{sat}$ é a distância dos motores do centro de inércia.
 
-Como podemos relacionar o momento angular com o momento de inércia das rodas e a velocidade angular, como podemos ver abaixo.
+Podemos relacionar o momento angular com o momento de inércia das rodas e a velocidade angular, como podemos ver abaixo.
 
 \begin{equation}
 \vec{L_{roda}} = I_{roda}\vec{\omega_{roda}}
@@ -150,7 +150,7 @@ A roda de reação também foi usinada, pois é necessário uma roda com uma mas
 
 \subsection{Elementos Eletrônicos}
 
-A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade wireless (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento do trabalho. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}
+A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade wireless (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}
 
 \begin{figure}[H]
   \caption{Raspberry Pi Zero}
@@ -206,7 +206,7 @@ Após a escolha do tipo de motor que será utilizado como atuador no controle da
   \label{fig:modelo_motor_dc}
 \end{figure}
 
-Onde $R_a$, $L_a$, $i_a$ e $e_a$ são a resistência, a indutância, a corrente e a tenção de armadura, respectivamente, $e_b$ é a tensão induzida e $\tau_{\omega}$ é o torque do motor. A relação entre a corrente com a tensão de armadura pode ser vista na sequência \cite{Ogata}.
+Onde $R_a$, $L_a$, $i_a$ e $e_a$ são a resistência, a indutância, a corrente e a tensão de armadura, respectivamente, $e_b$ é a tensão induzida e $\tau_{\omega}$ é o torque do motor. A relação entre a corrente com a tensão de armadura pode ser vista na sequência \cite{Ogata}.
 
 \begin{equation}
 L_a \frac{di_a}{dt}+R_a i_a + e_b = e_a
@@ -255,7 +255,7 @@ Com isso, modelamos o atuador do satélite, o próximo passo para a completa mod
 
 \subsection{Modelo Completo do Satélite}
 
-Como em partes, todo o satélite já foi modelado até agora, nessa subseção acoplaremos todos os modelo em um único, que terá como variável de interesse a posição angular tridimensional definida pelos ângulos $\psi, \theta, \phi$. Para a modelagem completa, usamos as equações que descevem o comportamento das rodas de ração, do motor cc e da própria dinâmica do satélite. Essa associação se dá em forma de diagrama de blocos já em malha fechada, que pode ser visto na figura \ref{fig:simulink_modelo_completo_aberto}.
+Como em partes, todo o satélite já foi modelado até agora, nessa subseção acoplaremos todos os modelos em um único, que terá como variável de interesse a posição angular tridimensional definida pelos ângulos $\psi, \theta, \phi$. Para a modelagem completa, usamos as equações que descevem o comportamento das rodas de reação, do motor cc e da própria dinâmica do satélite. Essa associação se dá em forma de diagrama de blocos já em malha fechada, que pode ser visto na figura \ref{fig:simulink_modelo_completo_aberto}.
 
 \begin{figure}[H]
   \caption{Diagrama de Blocos em Malha Fechada}
