@@ -172,8 +172,18 @@ Um outro elemento que será indispensável é o acelerômetro, o qual será o se
   \label{fig:pci_acelerometro_calache_p22}
 \end{figure}
 
-Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electronic-Speed-Control - Controlador eletrônico de velocidade) que serão conectados com a bateria, os motores e a RPi. Com isso, todos os principais elementos de hardware foram descritos, sendo a modelagem dos mesmos o próximo passo do desenvolvimento.
+Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electronic-Speed-Control - Controlador eletrônico de velocidade) que serão conectados com a bateria, os motores e a RPi. Após a conclusão do dimensionamento e escolha dos materiais, foi possível fazer a fabricação mecânica e montagem do simulador satélite, o qual pode ser visto na figura \ref{fig:simulador_real}.
 
+\begin{figure}[H]
+  \caption{Simulador de Satélites Prototipado}
+  \begin{center}
+      \includegraphics[scale=.5]{metodologia/img/simulador_real}
+  \end{center}
+  \fonte{Elaborado pelo Autor.} 
+  \label{fig:simulador_real}
+\end{figure}
+
+Com isso, todos os principais elementos de hardware foram descritos, sendo a modelagem dos mesmos o próximo passo do desenvolvimento.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -202,40 +212,40 @@ Onde $R_a$, $L_a$, $i_a$ e $e_a$ são a resistência, a indutância, a corrente 
 L_a \frac{di_a}{dt}+R_a i_a + e_b = e_a
 \end{equation}
 
-Como existe a relação entre a constante de torque $K_2$ e a tensão induzida, juntamente com a relação entre a constante de velocidade contra-eletromotriz $K_1$ e a tensão da fonte $V_a$. Isso pode ser visto na sequência.
+Como existe a relação entre a constante de torque $K_t$ e a tensão induzida, juntamente com a relação entre a constante de velocidade contra-eletromotriz $K_w$ e a tensão da fonte $V_a$. Isso pode ser visto na sequência.
 
 \begin{equation}
-  e_a = K_2\frac{d\theta}{dt}
+  e_a = K_t\frac{d\theta}{dt}
 \end{equation}
 
 e
 
 \begin{equation}
-  e_b = K_1V_a
+  e_b = K_wV_a
 \end{equation}
 
 Temos que:
 
 \begin{equation}\label{eq:la}
-L_a \frac{di_a}{dt}+R_a i_a + K_2\frac{d\theta}{dt} = K_1V_a
+L_a \frac{di_a}{dt}+R_a i_a + K_t\frac{d\theta}{dt} = K_wV_a
 \end{equation}
 
 Ainda, a relação que através do conceito de equilíbrio de torque, conseguimos relacionar o torque do motor $\tau_{\omega}$ com os momentos de inércia do rotor e da roda de reação com a corrente da armadura da seguinte forma:
 
 \begin{equation}\label{eq:tauj}
-\tau_{\omega} = (J_{\omega 1} + J_{\omega 2})\frac{d^{2}\theta}{dt^{2}}+B\frac{d\theta}{dt} = K_2 i_a
+\tau_{\omega} = (J_{\omega 1} + J_{\omega 2})\frac{d^{2}\theta}{dt^{2}}+B\frac{d\theta}{dt} = K_t i_a
 \end{equation}
 
 Onde B é o atrito viscoso. Como queremos relacionar a tensão da fonte com a velocidade angular, devemos manipular as equações \ref{eq:la} e \ref{eq:tauj} e aplicarmos a transformada de Laplace. O resultado dessas operações pode ser visto na sequência: 
 
 \begin{equation}
-  \frac{\omega(s)}{V_a(s)} = \frac{K_1K_2}{(R_a+ sLa)(s(J_{\omega 1} + J_{\omega 2})+B)+K_1K_2}  
+  \frac{\omega(s)}{V_a(s)} = \frac{K_wK_t}{(R_a+ sLa)(s(J_{\omega 1} + J_{\omega 2})+B)+K_wK_t}  
 \end{equation}
 
-Mas como nas equações \ref{eq:modeloA}, \ref{eq:modeloB} e \ref{eq:modeloC} é necessário a a derivada instantânea da velocidade, ou seja, a aceleração do motor, precisamos derivar a equação anterior, obtemos assim:
+Mas como nas equações \ref{eq:modeloA}, \ref{eq:modeloB} e \ref{eq:modeloC} é necessário a a derivada instantânea da velocidade, ou seja, a aceleração do motor, precisamos derivar a equação anterior, e ainda, podemos dizer que a soma dos momentos de inércia é representado somente por $J$, obtemos assim:
 
-\begin{equation}
-  \frac{\dot{\omega}(s)}{V_a(s)} = \frac{K_1K_2 s}{(R_a+ sLa)(s(J_{\omega 1} + J_{\omega 2})+B)+K_1K_2}  
+\begin{equation}\label{eq:motor_accel}
+  \frac{\dot{\omega}(s)}{V_a(s)} = \frac{K_wK_t s}{(R_a+ Las)(Js+B)+K_wK_t}  
 \end{equation}
 
 Com isso, modelamos o atuador do satélite, o próximo passo para a completa modelagem, é acoplar esse modelo com o do satélite descrito na seção \ref{cap:dinamica}. Esses passos serão descritos na próxima subseção.
@@ -248,12 +258,23 @@ Com isso, modelamos o atuador do satélite, o próximo passo para a completa mod
 Como em partes, todo o satélite já foi modelado até agora, nessa subseção acoplaremos todos os modelo em um único, que terá como variável de interesse a posição angular tridimensional definida pelos ângulos $\psi, \theta, \phi$. Para a modelagem completa, usamos as equações que descevem o comportamento das rodas de ração, do motor cc e da própria dinâmica do satélite. Essa associação se dá em forma de diagrama de blocos já em malha fechada, que pode ser visto na figura \ref{fig:simulink_modelo_completo_aberto}.
 
 \begin{figure}[H]
-  \caption{Modelo da planta em malha fechada}
+  \caption{Diagrama de Blocos em Malha Fechada}
   \begin{center}
-      \includegraphics[scale=.55]{metodologia/img/simulink_modelo_completo_aberto}
+      \includegraphics[scale=.6]{metodologia/img/simulink_modelo_completo_aberto}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:simulink_modelo_completo_aberto}
+\end{figure}
+
+Onde o bloco subsistema Motor x, y e z, é constituído pela função de transferência da equação \ref{eq:motor_accel}, que pode é inserida na ferramenta Matlab da seguinte forma:
+
+\begin{figure}[H]
+  \caption{Função de Transferência dos Motores}
+  \begin{center}
+      \includegraphics[scale=.45]{metodologia/img/modelo_satelite_motor}
+  \end{center}
+  \fonte{Elaborado pelo Autor.} 
+  \label{fig:modelo_satelite_motor}
 \end{figure}
 
 Se fecharmos a malha em posição, usando um acelerômetro e usarmos um controlador PID, por consequência, conseguimos controlar a dinâmica do satélite em malha fechada. O diagrama de blocos com realimentação e com o controlador PID pode ser visto na figura \ref{fig:modelo_satelite_pid}. 
@@ -261,7 +282,7 @@ Se fecharmos a malha em posição, usando um acelerômetro e usarmos um controla
 \begin{figure}[H]
   \caption{Modelo em malha fechada com um Controlador PID}
   \begin{center}
-      \includegraphics[scale=.5]{metodologia/img/modelo_satelite_pid}
+      \includegraphics[scale=.6]{metodologia/img/modelo_satelite_pid}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:modelo_satelite_pid}
@@ -329,7 +350,7 @@ Ao fazer os primeiros testes, ficou perceptível o bias (deslocamento em relaç�
   \label{fig:bias_correction}
 \end{figure}
 
-Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal, o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como bias para as amostras do giroscópio. Os calores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
+Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal - mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos - o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como bias para as amostras do giroscópio. Os calores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
 
 \begin{table}[H]
   \caption{Correção do Bias do Giroscópio}
@@ -352,7 +373,23 @@ Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Método de Sintonia Automático usando Redes Neurais e Regrão Não-Linear Robusta}
+\subsection{Métodos de Sintonia}
+
+O último passo da implementação do satélite, é a sintonia das malhas de controle, onde diferentes métodos foram utilizados para descobrir os parâmetros \textit{$K_p$}, \textit{$K_i$} e \textit{$K_d$}. Para isso, usamos um método clássico de sintonia, que é o de Ziegler-Nichols em malha fechada, o método do relé e por fim, o método automático usando redes neurais e regressão não-linear. Esses, serão descirtos na sequência. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Método de Ziegler-Nichols}
+
+Como esse é um método heurístico, simplesmente precisamos captar as informações da resposta ao degrau em malha fechada para calcular os parâmetros do controlador. O processo é basicamente encontrar um ganho proporcional no qual a planta apresente um comportamento marginalmente estável, ou seja, possua uma oscilação sustentada na saída, onde conseguimos encontrar o valor do período de oscilação e o K crítico é o próprio ganho até a oscilação sustentada. Após a obtenção desses dois parâmetros, só calcularmos conforma a tabela \ref{tab:Ziegler-Nichols-freq}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Método via RNA e Regressão Não-Linear}
+
+Por fim, o método proposto pelo presente trabalho, onde diferentes conceitos foram empregados para a sintonia automática de controladores PID. Os dois usados, foram o de Redes Neurais e regressão não-linear robusta, de onde são extraídos os novo valores dos parâmetros. Na figura \ref{fig:neural_regression} podemos ver a topologia usada.
 
 \begin{figure}[H]
   \caption{Diagrama de Blocos do Sintonizador e Otimizador}
@@ -362,3 +399,35 @@ Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as 
   \fonte{Elaborado pelo Autor.} 
   \label{fig:neural_regression}
 \end{figure}
+
+O funcionamento dessa topologia é baseado na aprendizagem de máquina, onde uma rede neural aprende o comportamento do satélite, tendo como entradas a posição atual ($\beta$) , o valor de referência ($\beta_{com}$) e o sinal de controle, que nada mais é do que a largura de pulso entregue ao motor. Temos como saída da RNA, o sinal de controle, pois esse na prática, é um sinal modulado contendo a largura de pulso para o motor, onde a rede neural é mais assertiva devido ao comportamento não-linear, também característico de uma RNA.
+
+Após o treinamento da rede neural, ela é usada para se criar uma nova base de dados, onde ela recebe como parâmetros um sinal que é uma sugestão de resposta ao degrau (Sinal Objetivo) fornecida pelo usuário, ou ainda, uma representação do sistema em forma de um sistema de primeira ordem, pois esse, apresenta características melhores do que o sistema original. Basicamente, o objetivo de se fornecer esse sinal, é orientar a regressão não-linear ao ponto ótimo ou algo próximo a ele.
+
+Por último, é feita e extração do parâmetros do controlador via regressão, onde o antigo sinal de controle é modulado através da variação dos coeficientes do controlador PID discreto até possuir a forma de onda do novo sinal, que foi gerado pela rede neural. Essa regressão é feita usando como função de minimização, o próprio controlador PID discreto, como pode ser visto na equação da sequência:
+
+\begin{equation}\label{eq:motor_accel}
+u(t) = K_c e(t) + \frac{K_c}{T_i}\sum_{n=0}^{N}{e(t)dt}-K_cT_d\frac{P[n]-P[n-1]}{dt}
+\end{equation}
+
+Onde essa equação é análoga as equações do controlador PID discreto, descritas no referencial teórico, onde dt é a diferença de tempo entre as amostras, P é a variável de interesse, e(t) é o erro instantâneo. A partir dessa equação, podemos implementar uma função de minimização, que está no script em Python da sequência:
+
+
+\begin{lstlisting}[caption={Algoritmo I: Minimização da Função do Controlador}]
+def fun(x, n_t, y) :
+    global n, soma_erro, dt, referencia
+    erro = referencia - dado_teste[int(n_t[0][n])]
+    if(n>0) :
+        soma_erro += erro
+        derivada =  (dado_teste[int(n_t[0][n])] -  dado_teste[int(n_t[0][n-1])])/(dt)
+        u = x[0] * erro + (x[0]/x[1])*soma_erro*dt - x[0]*x[2]*derivada
+    else : 
+        u = 0
+    n += 1
+    return u - y
+\end{lstlisting}
+
+Onde $x[0]$ é \textit{$K_p$}, $x[1]$ é \textit{$T_i$}, $x[2]$ é \textit{$T_d$}, \textit{soma\_erro} é o somatório do erro, \textit{derivada} é a derivada da variável de interesse, \textit{dado\_teste} é o dado proveniente da RNA treinada, \textit{n\_t} é o vetor com o número das amostras, \textit{u} é a saída do controlador, \textit{y} é saída do controlador não sintonizado, \textit{n} é o indexador de cada interação.
+
+Com isso, conseguimos extrair os novos parâmetros do controlador, que são atualizados na tarefa principal do algoritmo de controle.
+
