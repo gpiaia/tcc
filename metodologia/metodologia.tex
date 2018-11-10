@@ -2,23 +2,23 @@
 
 A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que fazem parte do satélite, entre eles: as rodas de reação, motor DC (Direct Current - corrente contínua), mancal a ar e hastes. Também contempla as especificação dos componentes eletrônicos que constituem o satélite. É na segunda etapa que ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possa fornecer torque para romper a inércia da planta. Já na terceira etapa, são abordados os elementos de software, de rede e supervisão do satélite. Nessa etapa também se encontram as especificações de software, desenvolvimento do software de controle e supervisão.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Hardware}
 
-Após a modelagem descrita no referencial teórico, é possível modelar um simulador de satélite de fabricação factível.  O mancal a ar, a base de suporte do simulador do satélite, rodas de reação, motores Brushless (motor de corrente contínua sem escovas) e os outros elementos, podem ser vistos na imagem \ref{fig:satelite_completo}.
+Após a modelagem descrita no referencial teórico, é possível modelar um simulador de satélite de fabricação factível.  O mancal a ar, a base de suporte do simulador do satélite, rodas de reação, motores Brushless (motor de corrente contínua sem escovas) e os outros elementos, podem ser vistos na figura \ref{fig:satelite_completo}.
 
 \begin{figure}[H]
   \caption{Desenho Mecânico Completo do Simulador de Satélite}
   \begin{center}
-      \includegraphics[scale=.6]{metodologia/img/satelite_completo}
+      \includegraphics[scale=.5]{metodologia/img/satelite_completo}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:satelite_completo}
 \end{figure}
 
- Como podemos ver na imagem anterior, o modelo sofre várias simplificações em relação a um satélite real, onde o modelo passa a ser de fácil implementação, possibilitando a validação dos conceitos propostos nesse trabalho. Dentre várias simplificações, a mais óbvia, o simulador não apresentará de forma direta os movimentos de translação descritos no seção \ref{cap:dinamica}. Ainda, existe uma limitação para os ângulos $\phi$, $\theta$ e $\psi$ que é um intervalo de $0<\phi, \theta, \psi<240º$ devido a existência do mancal a ar e a simetria do corpo do satélite, como princípio para simplificar a modelagem matemática do mesmo.
-
-Os principais elementos do simulador de satélites, serão descritos de forma detalhada na sequência, dentre eles, o corpo do satélite.
+ Como podemos ver na imagem anterior, o modelo sofre várias simplificações em relação a um satélite real, onde o modelo passa a ser de fácil implementação, possibilitando a validação dos conceitos propostos nesse trabalho. Dentre várias simplificações, a mais óbvia, o simulador não apresentará de forma direta os movimentos de translação descritos no seção \ref{cap:dinamica}. Ainda, existe uma limitação para os ângulos $\phi$, $\theta$ e $\psi$ que é um intervalo de $0<\phi, \theta, \psi<240º$ devido a existência do mancal a ar e a simetria do corpo do satélite, como princípio para simplificar a modelagem matemática do mesmo. Os principais elementos do simulador de satélites, serão descritos de forma detalhada na sequência, dentre eles, o corpo do satélite.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,7 +30,7 @@ O elemento de dinâmica mais importante que deve ser dimensionado, é o corpo do
 \begin{figure}[H]
   \caption{Corpo do Simulador de Satélites}
   \begin{center}
-      \includegraphics[scale=.45]{metodologia/img/corpo_satelite}
+      \includegraphics[scale=.4]{metodologia/img/corpo_satelite}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:corpo_satelite}
@@ -81,9 +81,7 @@ Cada roda será responsável por um terço do momento angular total do satélite
 \vec{L_{roda}} = \frac{\vec{L_{sat}}}{3}   
 \end{equation}
 
-Onde $I_{sat}$ é o momento de inércia do satélite, $m$ é a massa, $r_{sat}$ é a distância dos motores do centro de inércia.
-
-Podemos relacionar o momento angular com o momento de inércia das rodas e a velocidade angular, como podemos ver abaixo.
+Onde $I_{sat}$ é o momento de inércia do satélite, $m$ é a massa, $r_{sat}$ é a distância dos motores do centro de inércia. Podemos relacionar o momento angular com o momento de inércia das rodas e a velocidade angular, como podemos ver abaixo.
 
 \begin{equation}
 \vec{L_{roda}} = I_{roda}\vec{\omega_{roda}}
@@ -153,7 +151,7 @@ A roda de reação também foi usinada, pois é necessário uma roda com uma mas
 A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade wireless (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}
 
 \begin{figure}[H]
-  \caption{Raspberry Pi Zero}
+  \caption{Raspberry Pi Zero W}
   \begin{center}
       \includegraphics[scale=.55]{metodologia/img/rasp_zero}
   \end{center}
@@ -168,22 +166,46 @@ Um outro elemento que será indispensável é o acelerômetro, o qual será o se
   \begin{center}
       \includegraphics[scale=.4]{metodologia/img/pci_acelerometro_calache_p22}
   \end{center}
-  \fonte{Adaptado de \citeonline{Calache2013}} 
+  \fonte{Adaptado de \citeonline{mpu}} 
   \label{fig:pci_acelerometro_calache_p22}
 \end{figure}
 
-Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electronic-Speed-Control - Controlador eletrônico de velocidade) que serão conectados com a bateria, os motores e a RPi. Após a conclusão do dimensionamento e escolha dos materiais, foi possível fazer a fabricação mecânica e montagem do simulador satélite, o qual pode ser visto na figura \ref{fig:simulador_real}.
+Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electronic-Speed-Control - Controlador eletrônico de velocidade) que serão conectados com a bateria, os motores e a RPi. Após a conclusão do dimensionamento e escolha dos materiais, foi possível fazer a fabricação mecânica e montagem do simulador satélite, o qual pode ser visto nas figuras \ref{fig:base_real}, \ref{fig:corpo_real} e \ref{fig:simulador_real}.
+
+\begin{figure}[H]
+  \caption{Base do Simulador de Satélites Prototipado}
+  \begin{center}
+      \includegraphics[scale=.5]{metodologia/img/base_real}
+  \end{center}
+  \fonte{Elaborado pelo Autor.} 
+  \label{fig:base_real}
+\end{figure}
+
+Na imagem anterior, podemos ver a base do simulador, feita em madeira, onde se encontra a região concava do mancal e as conexão 
+pneumáticas. Já na figura \ref{fig:corpo_real}, podemos ver as partes que compõem o corpo do simulador.
 
 \begin{figure}[H]
   \caption{Simulador de Satélites Prototipado}
   \begin{center}
-      \includegraphics[scale=.5]{metodologia/img/simulador_real}
+      \includegraphics[scale=.65]{metodologia/img/corpo_real}
+  \end{center}
+  \fonte{Elaborado pelo Autor.} 
+  \label{fig:corpo_real}
+\end{figure}
+
+Onde \textit{Rpi} é a Rapberri Pi Zero W, \textit{B} é bateria, \textit{ESC} são os controladores, \textit{Rr} são as rodas de reação, \textit{Cm} são massas para compensação de massa do simulador, \textit{Gr} é o acelerômetro/giroscópio, \textit{Se} é a semiesfera de alumínio que compõe o mancal, \textit{Hb} é a haste de alumínio da bateria, \textit{Hx} é a haste do motor do eixo x, , \textit{Hy} é a haste do motor do eixo y e \textit{Hz} é a haste do motor do eixo z. E por fim, a imagem completa do simulador de satélites, que pode ser vista na figura \ref{fig:simulador_real}.
+
+\begin{figure}[H]
+  \caption{Simulador de Satélites Prototipado}
+  \begin{center}
+      \includegraphics[scale=.65]{metodologia/img/simulador_real}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:simulador_real}
 \end{figure}
 
 Com isso, todos os principais elementos de hardware foram descritos, sendo a modelagem dos mesmos o próximo passo do desenvolvimento.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -318,6 +340,9 @@ Após a modelagem, devemos implementar o modelo e configurar todas as interfaces
 \end{figure}
 
 
+Após modelada a topologia geral do sistema, é possível dividir a parte de software, onde é descita a implementação de cada etapa, começando com a implementação do controlador e da sua sintonia, que está na sequência.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Implementação do Controlador PID e Métodos de Sintonia}
@@ -327,7 +352,7 @@ Nessa etapa ocorre a implementação usando a linguagem de programação Python,
 \begin{figure}[H]
   \caption{Fluxograma do Software de Controle}
   \begin{center}
-      \includegraphics[scale=.75]{metodologia/img/software_model}
+      \includegraphics[scale=.95]{metodologia/img/software_model}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:software_model}
@@ -337,7 +362,8 @@ Após o desenvolvimento das malhas de controle, e testes preliminares, ficou cla
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Analise dos Sinais e Filtragem}
+
+\subsection{Análise dos Sinais e Filtragem}
 
 Ao fazer os primeiros testes, ficou perceptível o bias (deslocamento em relação ao zero) e a gama de ruídos que compõem os sinais amostrados, isso pode ser visto na figura \ref{fig:bias_correction} (a), onde temos mais de 100.000 amostras nos três eixos. Já nas imagens \ref{fig:bias_correction} (b), (c) e (d), podemos ver o histograma dos mesmos sinais.
 
@@ -370,6 +396,7 @@ Como podemos ver, os três sinais possuem uma distribuição caraterística muit
 \end{table}
 
 Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as malhas de controle, isso será descirto na sequência.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -412,22 +439,18 @@ u(t) = K_c e(t) + \frac{K_c}{T_i}\sum_{n=0}^{N}{e(t)dt}-K_cT_d\frac{P[n]-P[n-1]}
 
 Onde essa equação é análoga as equações do controlador PID discreto, descritas no referencial teórico, onde dt é a diferença de tempo entre as amostras, P é a variável de interesse, e(t) é o erro instantâneo. A partir dessa equação, podemos implementar uma função de minimização, que está no script em Python da sequência:
 
-
-\begin{lstlisting}[caption={Algoritmo I: Minimização da Função do Controlador}]
-def fun(x, n_t, y) :
-    global n, soma_erro, dt, referencia
-    erro = referencia - dado_teste[int(n_t[0][n])]
-    if(n>0) :
+\begin{lstlisting}[caption={Pseudocódigo I: Minimização da Função do Controlador}]
+funcao(x, n, y_original) :
+    erro = referencia - dados_objetivo[n]
+    se (n>0) :
         soma_erro += erro
-        derivada =  (dado_teste[int(n_t[0][n])] -  dado_teste[int(n_t[0][n-1])])/(dt)
-        u = x[0] * erro + (x[0]/x[1])*soma_erro*dt - x[0]*x[2]*derivada
-    else : 
-        u = 0
+        derivada =  (dados_objetivo[n] -  dados_objetivo[n-1]/dt
+        saida_controlador = Kp * erro + (Kp/Ti)*soma_erro*dt - Kp*Td*derivada
+    se nao :
+        saida_controlador = 0
     n += 1
-    return u - y
+    retorna u - y_original
 \end{lstlisting}
 
-Onde $x[0]$ é \textit{$K_p$}, $x[1]$ é \textit{$T_i$}, $x[2]$ é \textit{$T_d$}, \textit{soma\_erro} é o somatório do erro, \textit{derivada} é a derivada da variável de interesse, \textit{dado\_teste} é o dado proveniente da RNA treinada, \textit{n\_t} é o vetor com o número das amostras, \textit{u} é a saída do controlador, \textit{y} é saída do controlador não sintonizado, \textit{n} é o indexador de cada interação.
-
-Com isso, conseguimos extrair os novos parâmetros do controlador, que são atualizados na tarefa principal do algoritmo de controle.
+Onde $x[0]$ é \textit{$K_p$}, $x[1]$ é \textit{$T_i$}, $x[2]$ é \textit{$T_d$}, \textit{soma\_erro} é o somatório do erro, \textit{derivada} é a derivada da variável de interesse, \textit{dado\_teste} é o dado proveniente da RNA treinada, \textit{n\_t} é o vetor com o número das amostras, \textit{u} é a saída do controlador, \textit{y} é saída do controlador não sintonizado, \textit{n} é o indexador de cada interação. Com isso, conseguimos extrair os novos parâmetros do controlador, que são atualizados na tarefa principal do algoritmo de controle.
 

@@ -81,7 +81,6 @@ Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sob
 \vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}} 
 \end{equation}
 
-
 A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso para N partículas, temos:
 
 \begin{figure}[H]
@@ -249,9 +248,9 @@ Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma e
 Uma roda de reação consiste em um dispositivo que é fixado em um eixo de motor, com o objetivo de interferir na posição de um corpo através da variação de velocidade angular das rodas. Quando a roda sofre uma variação da sua velocidade angular, ela exerce um torque em uma determinada direção \cite{BongWie2001}. Esse efeito ocorre devido à conservação do momento angular do corpo, logo, se a roda está sendo desacelerada, o corpo tende se opor a esse movimento. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
 
 \begin{figure}[H]
-  \caption{Representação Mecânica Simplificada de um satélite com rodas de Reação.}
+  \caption{Representação Simplificada de um Corpo Rígido com rodas de Reação.}
   \begin{center}
-      \includegraphics[scale=0.75]{referencial/img/satellite_controlhand_p1306}
+      \includegraphics[scale=0.65]{referencial/img/satellite_controlhand_p1306}
   \end{center}
   \fonte{Adaptado de \citeonline{Levine1996}.} 
   \label{fig:satellite_controlhand_p1306}
@@ -381,6 +380,8 @@ Se expressarmos usando notação ${y[kT]}$, podemos representar uma equação di
 Onde u(k) denota o sinal computado e y(k) os valores o sinal analógico nos instante k-ésimos.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Transformada Z}
 
 A transformada z é usada para aquisição e processamento de dados em sistemas discretos. Ela possui relação matemática com o domínio s da seguinte forma:
@@ -401,6 +402,8 @@ Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o 
   \frac{u(z)}{y(z)} = \frac{a_0 + a_1z^{-1}+...+a_nz^{-n}}{1+b_1z^{-1}+b_2z^{-2}+...++b_nz^{-n}}
 \end{equation}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Amostragem}
 
@@ -424,6 +427,8 @@ Onde y(t) é o sinal que está sendo amostrado, y*(t) é o trem de pulsos amostr
 Essa expressão é de suma importância para a aquisição das variáveis que queremos controlar usando técnicas digitais.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsubsection{Controlador PID Digital}
 
 Agora, desejamos descrever a representação do controlador PID da equação \ref{eq:PID} de forma discreta, para isso devemos usar a aproximação de Euler:
@@ -440,7 +445,7 @@ Conseguimos expressar o controlador PID no domínio z da seguinte forma:
 
 Com isso, podemos representar de forma discreta o controlador PID, isso pode ser visto na equação da sequência:
 
-\begin{equation}
+\begin{equation}\label{eq:pid_equation}
   u(t) = -K_p\left[y[k]-\frac{1}{T_i}{\hat{u}[k]}-T_d\frac{y[k]-y[k-1]}{T}\right]
 \end{equation}
 
@@ -452,6 +457,7 @@ Onde
 
 Desse modo, concluímos a modelagem de um controlador PID, com um conjunto de equações que podem ser, de forma simples, implementadas em um sistema digital.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Filtro de Kalman}
@@ -459,7 +465,6 @@ Desse modo, concluímos a modelagem de um controlador PID, com um conjunto de eq
 Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando a instabilidade o sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
 
 Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
-
 
 \begin{figure}[H]
   \caption{Diagrama de Blocos do Filtro de Kalman}
@@ -513,6 +518,7 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
     \fonte{Adaptado de \citeonline{Astrom1995}}
   \end{minipage}
 \end{table}
+
 
 \begin{table}
   \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta em Frequência}
@@ -582,14 +588,14 @@ Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses val
 
 \section{Estado da Arte - Controladores Inteligentes}
 
-O estado da arte dentro de controle, nasce com a criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas principais formas de controle inteligente utilizadas na atualidade, são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, onde a por redes neurais será explicada na sequência.
+O estado da arte dentro de controle, está na criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas principais formas de controle inteligente utilizadas na atualidade, são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, onde a por redes neurais será explicada na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Controle com Redes Neurais}  %control hand p1017
+\subsection{Controle com Redes Neurais Artificiais}  %control hand p1017
 
-Uma \textit{Rede Neural} (RN) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de cognição é caracterizado como um comportamento não-linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
+Uma \textit{Rede Neural} (RNA) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de cognição é caracterizado como um comportamento não-linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
 
 \begin{equation} \label{eq:neuron}
  f(rn) \equiv \frac{1}{1+e^{-\lambda_n}}
@@ -636,6 +642,34 @@ Em controle, as RN são usadas principalmente em sistemas não lineares, onde ex
 
 Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima Geral) que é usado para extrair os parâmetros $K$ $T_i$ $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
 
-Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.
 
+%#########################
 
+\subsubsection{Regressão Não-Linear Robusta}
+
+Regressão é um método matemático para o ajuste de curva através da otimização de parâmetros que compõem a equação característica do sinal. O caso de interesse, é a regressão para sinais não-lineares, os quais são provenientes da RNA, que precisarão ser otimizados sobre a equação característica do controlador PID (equação \ref{eq:pid_equation}). De forma genérica, a equação que descreve um modelo não-linear pode ser descrita da seguinte forma \cite{robust2019}:
+
+\begin{equation}
+ y_i = f(x_i; \theta) + \epsilon_i, \quad\quad i = 1,...,n
+\end{equation}
+
+Onde $y_i$ é a resposta observável, $x_i$ é o vetor k-dimensional com os valores conhecidos e $\theta$ é p-dimensional com valores desconhecidos que influenciam a reposta observável e $\epsilon_i$ é o erro que satisfaz alguma regularidade estocástica. 
+
+Um dos métodos mais usados para regressão, independente da linearidade do sistema, é o \textit{Método dos mínimos quadrados} (MMQ), que pode ser representado da seguinte forma:
+
+\begin{equation}
+ S(\theta) = \sum_{i=1}^{n}[y_i-f(x_i;\theta)]^2 
+\end{equation}
+
+Esse método por definição, é usado onde as amostras obedecem uma distribuição normal. Quando isso não é verdadeiro, usa-se o método MMQ robusto, onde o erro pode assumir outras distribuições mantando a boa resposta da regressão. Na figura \ref{fig:robust_regression}, podemos ver a comparação entre os métodos MMQ e MMQ Robusto, ficando clara a melhor resposta do MMQ Robusto.
+
+\begin{figure}[H]
+  \caption{Controlador PID com Rede Neural}
+  \begin{center}
+      \includegraphics[scale=0.7]{referencial/img/robust_regression}
+  \end{center}
+  \fonte{Adaptado de \citeonline{RegressionPython}.} 
+  \label{fig:robust_regression}
+\end{figure}
+
+Os últimos itens abordados, apontam algumas das modernas técnicas aplicadas em controle, as quais aplicarei no presente trabalho de forma conjunta, propondo uma técnica afim para a sintonia de controladores. Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.

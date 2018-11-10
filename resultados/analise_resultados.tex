@@ -4,26 +4,14 @@
 \chapter{Análise dos Resultados}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Método de Sintonia via Método de Ziegler-Nichol em Malha fechada}
+
+\subsection{Métodos Clássicos de Sintonia}
 
 \begin{figure}[H]
   \caption{Respostas ao Degrau com sintonia via Método de Ziegler-Nichol em Malha fechada}
   \begin{center}
-      \includegraphics[scale=0.4]{resultados/img/pid_result}
-  \end{center}
-  \fonte{Elaborado pelo Autor.} 
-  \label{fig:mpu6050_analisys}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Método de Sintonia Automático via Relé Com Histerese}
-
-\begin{figure}[H]
-  \caption{Respostas ao Degrau com Sintonia via Método do Relé}
-  \begin{center}
-      \includegraphics[scale=0.4]{resultados/img/white}
+      \includegraphics[scale=0.35]{resultados/img/relay}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:mpu6050_analisys}
@@ -34,8 +22,6 @@
 
 \subsection{Método de Sintonia Automático usando Redes Neurais e Regrão Não-Linear Robusta}
 
-\subsubsection{Treinamento da Rede Neural}
-
 \begin{figure}[H]
   \caption{Saída da Rede Neural Treinada e o sinal Real}
   \begin{center}
@@ -45,12 +31,19 @@
   \label{fig:mpu6050_analisys}
 \end{figure}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Respostas ao degrau}
+
 \begin{figure}[H]
-  \caption{Respostas ao Degrau com Sintonia via Rede Neural e Regressão Não-Linear}
+  \caption{Respostas ao Degrau com Sintonia via Método do Relé}
   \begin{center}
-      \includegraphics[scale=0.4]{resultados/img/white}
+      \includegraphics[scale=0.4]{resultados/img/pid_result_simu}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:mpu6050_analisys}
 \end{figure}
+
+
 
