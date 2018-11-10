@@ -598,21 +598,21 @@ O estado da arte dentro de controle, está na criação de controladores intelig
 Uma \textit{Rede Neural} (RNA) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de cognição é caracterizado como um comportamento não-linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
 
 \begin{equation} \label{eq:neuron}
- f(rn) \equiv \frac{1}{1+e^{-\lambda_n}}
+f(rn) \equiv \frac{1}{1+e^{-\lambda_n}}
 \end{equation}
 
 também
 
 \begin{equation}
- f(rn) \equiv sgn(rn) = \begin{Bmatrix}  1, \quad rn>0 \\ 1, \quad rn<0  \end{Bmatrix}
+f(rn) \equiv sgn(rn) = \begin{Bmatrix}  1, \quad rn>0 \\ 1, \quad rn<0  \end{Bmatrix}
 \end{equation}
 
 Onde $\lambda_n$ é o ganho do neurônio. Uma representação gráfica de um neurônio natural comparado com um artificial pode ser visto na figura \ref{fig:neuronio_unal_p6}, onde os dendritos são representados pelas entradas $p_1, p_2, ..., p_R$, uma soma dessas entradas que posteriormente é aplicada a função da equação \ref{eq:neuron}, onde obtemos a saída $a$.
 
 \begin{figure}[H]
   \caption{Célula de um Neurônio Natural e Modelo Matemático Respectivo}
-  \begin{center}
-      \includegraphics[scale=0.45]{referencial/img/neuronio_unal_p6}
+    \begin{center}
+        \includegraphics[scale=0.45]{referencial/img/neuronio_unal_p6}
   \end{center}
   \fonte{Adaptado de  \citeonline{Unal2013}.} 
   \label{fig:neuronio_unal_p6}
