@@ -18,13 +18,13 @@ Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que f
   \label{fig:rotational_brown_p256}
 \end{figure}
 
+A dinâmica de rotação é descrita no próximo item, juntamente com todas as ferramentas matemáticas para sua modelagem. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Dinâmica de um Satélite}\label{cap:dinamica}
 
-A dinâmica é dividida em duas partes, onde uma representa os movimentos de translação e a outra os de rotação.
-
-A \textit{dinâmica de translação} de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a \textit{dinâmica de rotação} \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
+A dinâmica é dividida em duas partes, onde uma representa os movimentos de translação e a outra os de rotação. A \textit{dinâmica de translação} de um copo em relação ao outro é um caso de \textit{Dinâmica de Corpo Rígido}. A fundação da Dinâmica de corpos rígidos foi feita pelo Físico Inglês Isaac Newton em forma de três leis, das quais, a 2º e a 3ª são primordiais para descrever a \textit{dinâmica de rotação} \cite{Snider}. A 2ª lei de Newton pode ser escrita das seguintes forma:
 
 \begin{equation}\label{eq:fma}
   \vec{F}=\frac{d}{dt}\vec{p}\quad\quad\quad\quad\vec{p}=m\vec{v}
@@ -308,9 +308,7 @@ Como já temos as equações diferenciais que descrevem o modelo satélite, prec
 
 \subsection{Resposta ao Degrau do um Sistema}
 
-Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}.
-
-Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (Delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
+Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}. Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (Delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
 \begin{figure}[H]
   \caption{Parâmetros de uma resposta ao degrau de um sistema de segunda ordem ou superior.}
@@ -339,7 +337,7 @@ Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$}
 Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
 \begin{figure}[H]
-  \caption{Representação do modelo de controlador PID com distúrbios.}
+  \caption{Representação do modelo paralelo de um controlador PID com distúrbios.}
   \begin{center}
       \includegraphics[scale=0.55]{referencial/img/pid_controller_Snider_p35}
   \end{center}

@@ -9,9 +9,7 @@ Nesse capítulo são apresentados os principais resultados e as análises sobre 
 
 \subsection{Métodos Clássicos de Sintonia}
 
-Dentre eles, se encontram os métodos de sintonia de Ziegler-Nichols em malha fechada e o Método do Relé. O método de sintonia em malha aberta não pode ser aplicado nesse trabalho, pois em malha aberta, o sistema é instável, ou seja, ao colocarmos uma determinada largura de pulso e não modularmos ela, o simulador de satélite simplesmente ficará girando descontroladamente, pois não existem forças no eixo z para pararem o satélite, como acontece quando um objeto é acelerado no espaço na ausência de forças. 
-
-Na figura \ref{fig:relay} (a), podemos ver o resultado da aplicação do método do relé em um degrau de amplitude de $\SI{45}{\degree}$, valor esse, usado em todos os ensaios.
+Dentre eles, se encontram os métodos de sintonia de Ziegler-Nichols em malha fechada e o Método do Relé. O método de sintonia em malha aberta não pode ser aplicado nesse trabalho, pois em malha aberta, o sistema é instável, ou seja, ao colocarmos uma determinada largura de pulso e não modularmos ela, o simulador de satélite simplesmente ficará girando descontroladamente, pois não existem forças no eixo z para pararem o satélite, como acontece quando um objeto é acelerado no espaço na ausência de forças. Na figura \ref{fig:relay} (a), podemos ver o resultado da aplicação do método do relé em um degrau de amplitude de $\SI{45}{\degree}$, valor esse, usado em todos os ensaios.
 
 \begin{figure}[H]
   \caption{Resultados do método do relé.}
@@ -79,10 +77,12 @@ Como podemos ver, o sinal proveniente da simulação é mais rápido e com menor
 \begin{figure}[H]
   \caption{Velocidade angular instantânea e sinal de controle.}
   \begin{center}
-      \includegraphics[scale=0.25]{resultados/img/pid_result_controller}
+      \includegraphics[scale=0.26]{resultados/img/pid_result_controller}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:pid_result_controlller}
 \end{figure}
 
-Por consequência, o sinal do controlador também apresentará grande quantidade de ruído, o que pode ser visto na figura \ref{fig:pid_result_controlller} (b), o que dificulta muito o controle. Sem a presença do filtro de Kalman devidamente ajustado, o controle dificilmente funcionaria perfeitamente.
+Por consequência, o sinal do controlador também apresentará grande quantidade de ruído, o que pode ser visto na figura \ref{fig:pid_result_controlller} (b), o que dificulta muito o controle. Sem a presença do filtro de Kalman devidamente ajustado, o controle não funcionaria de maneira adequada.
+
+Desde o desenvolvimento mecânico, que exigiu a fabricação de todas as peças e além disso, ajustes para o perfeito funcionamento da dinâmica do simulador de satélites, os resultados foram funcionais e satisfatórios. O mancal a ar funcionou perfeitamente, se mostrando promissor para outras aplicações que exijam atrito desprezível. O sistema de controle conseguiu manter uma performance que não influenciou nos resultados, mesmo que executado em um sistema operacional, que possuí escalonamento de tarefas, o que pode tornar a execução das tarefas não periódicas em muitos casos. E por fim, os resultados do método de sintonia desenvolvido usando RNA e regressão não linear, que otimizou de forma também satisfatória a resposta em relação aos métodos clássicos de sintonia.
