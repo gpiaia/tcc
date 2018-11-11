@@ -10,7 +10,7 @@ No presente capítulo, são apresentados conceitos básico para a compreensão d
 Desde o lançamento do satélite Sputnik I, primeiro satélite artificial, que foi desenvolvido e lançado pela extinta URSS (União das Repúblicas Socialistas Soviéticas) no dia 4 de Outubro de 1957, novas formas de controle foram desenvolvidas. Como o principal fim de um satélite é a comunicação e a navegação, que exigem orientação acurada, juntamente com todas as forças que atuam sobre o satélite, se torna imprescindível o uso de técnicas de controle para se garantir a translação e a rotação do satélite \cite{Brown2002}. Na figura \ref{fig:rotational_brown_p256}, podemos ver os movimentos de rotação e translação de um satélite ao redor de um planeta.
 
 \begin{figure}[H]
-  \caption{Movimento de Translação de um satélite Artificial.}
+  \caption{Movimento de translação de um satélite artificial.}
   \begin{center}
       \includegraphics[scale=0.5]{referencial/img/rotational_brown_p256}
   \end{center}
@@ -34,28 +34,28 @@ A \textit{dinâmica de translação} de um copo em relação ao outro é um caso
   \vec{F}=m\vec{a}
 \end{equation}
 
-Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração. Ainda, podemos descrever a força total sobre uma partícula $\vec{F_i}$ da seguinte forma:
+Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a velocidade e $\vec{a}$ é  aceleração. Ainda, podemos descrever a força total sobre uma partícula $\vec{F}_i$ da seguinte forma:
 
 \begin{equation}\label{eq:Fi}
-\vec{F_i}=\vec{f_{ie}}+\sum_{i\neq j}^{N}{\vec{f_{ie}}} = m_i\vec{a_i}
+\vec{F}_i=\vec{f}_{ie}+\sum_{i\neq j}^{N}{\vec{f}_{ie}} = m_i\vec{a}_i
 \end{equation}
  
- Onde, $\vec{f_{ie}}$ é a força externa e $\vec{f_{ij}}$ é a força interna de carda parte j que compõe o corpo i e $m_i\vec{a_i}$ é a massa e a força resultante no corpo rígido. Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
+ Onde, $\vec{f}_{ie}$ é a força externa e $\vec{f}_{ij}$ é a força interna de carda parte j que compõe o corpo i e $m_i\vec{a}_i$ é a massa e a força resultante no corpo rígido. Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
 
 \begin{equation}
-  \sum_{i=1}^{N}{\vec{F_i}}=\sum_{i=1}^{N}{\vec{f_i}}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f_i}j=}}\sum_{i=1}^{N}{m_i\vec{a_i}} 
+  \sum_{i=1}^{N}{\vec{F}_i}=\sum_{i=1}^{N}{\vec{f}_i}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f}_ij=}}\sum_{i=1}^{N}{m_i\vec{a}_i} 
 \end{equation}
 
-Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f_{ji}}$ em módulo igual a força $\vec{f_{ij}}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam. Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F_e}$) como o somatório de todas as forças sobre as partículas ($\vec{F_{ie}}$). Isso pode ser escrito da seguinte forma:
+Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f}_{ji}$ em módulo igual a força $\vec{f}_{ij}$ que o corpo i exerce sobre o corpo j, só que oposta. Logo, as forças internas se anulam. Quando temos um conjunto de partículas unidas, podemos descrever a força total sobre o corpo ($\vec{F}_e$) como o somatório de todas as forças sobre as partículas ($\vec{F}_{ie}$). Isso pode ser escrito da seguinte forma:
 
 \begin{equation}\label{eq:fet}
-  \vec{F_{e}}=\sum_{i=1}^{N}{\vec{f_{ie}}}=\sum_{i=1}^{N}{m_i\vec{a_i}} 
+  \vec{F}_{e}=\sum_{i=1}^{N}{\vec{f}_{ie}}=\sum_{i=1}^{N}{m_i\vec{a}_i} 
 \end{equation}
 
 A imagem \ref{fig:translacao_referencial_snider_p15}, representa o vetor posição $\vec{r_{com}}$ de um corpo rígido em relação a origem. A descrição matemática desse vetor pode ser visto na equação \ref{eq:rcom}.
 
 \begin{figure}[H]
-  \caption{Representação de $\vec{r_{com}}$}
+  \caption{Representação de $\vec{r}_{com}$}
   \begin{center}
       \includegraphics[scale=0.5]{referencial/img/translacao_referencial_snider_p15}
   \end{center}
@@ -64,27 +64,27 @@ A imagem \ref{fig:translacao_referencial_snider_p15}, representa o vetor posiç�
 \end{figure}
 
 \begin{equation}\label{eq:rcom}
-  \vec{r_{com}}=\frac{1}{M_T}\sum_{i=1}^{N}{m_i\vec{r_i}} 
+  \vec{r}_{com}=\frac{1}{M_T}\sum_{i=1}^{N}{m_i\vec{r}_i} 
 \end{equation}
 
 Onde, $M_T$ é a massa total do corpo rígido.
 
-Como a aceleração é a derivada segunda da posição, derivamos duas vezes a posição $\vec{r_{com}}$ e multiplicamos pela massa total em ambos os lado da equação \ref{eq:rcom}. Assim temos:
+Como a aceleração é a derivada segunda da posição, derivamos duas vezes a posição $\vec{r}_{com}$ e multiplicamos pela massa total em ambos os lado da equação \ref{eq:rcom}. Assim temos:
 
 \begin{equation}\label{eq:2deriv}
-  M_T\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}}=\sum_{i=1}^{N}{m_i\vec{a_i}}
+  M_T\frac{{d}^{2}}{{d}t^{2}}\vec{r}_{com}=\sum_{i=1}^{N}{m_i\vec{a_i}}
 \end{equation}
 
 Igualando as equações \ref{eq:fet} e \ref{eq:2deriv}, temos a força total sobre um corpo rígido que desempenha movimento de translação. Isso pode ser visto na sequência.
 
 \begin{equation}
-\vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r_{com}} 
+\vec{F_e}=M_{T}\frac{{d}^{2}}{{d}t^{2}}\vec{r}_{com}
 \end{equation}
 
 A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em relação a um ponto. Para descrevermos os movimentos de rotação, devemos conhecer a distribuição de massa do corpo rígido \cite{Snider}. A figura \ref{fig:mass_snider_p16} ilustra a distribuição de massa infinitesimal de um corpo tridimensional. Por definição, o momento de inércia infinitesimal disposto sobre um eixo ($I_{xx}$, $I_{yy}$ e $I_{zz}$) é o produto da massa pela distância do ponto de referência. Se fizermos isso para N partículas, temos:
 
 \begin{figure}[H]
-  \caption{Distribuição de Massa}
+  \caption{Distribuição de massa.}
   \begin{center}
       \includegraphics[scale=0.5]{referencial/img/mass_snider_p16}
   \end{center}
@@ -248,7 +248,7 @@ Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma e
 Uma roda de reação consiste em um dispositivo que é fixado em um eixo de motor, com o objetivo de interferir na posição de um corpo através da variação de velocidade angular das rodas. Quando a roda sofre uma variação da sua velocidade angular, ela exerce um torque em uma determinada direção \cite{BongWie2001}. Esse efeito ocorre devido à conservação do momento angular do corpo, logo, se a roda está sendo desacelerada, o corpo tende se opor a esse movimento. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
 
 \begin{figure}[H]
-  \caption{Representação Simplificada de um Corpo Rígido com rodas de Reação.}
+  \caption{Representação simplificada de um corpo rígido com rodas de reação.}
   \begin{center}
       \includegraphics[scale=0.65]{referencial/img/satellite_controlhand_p1306}
   \end{center}
@@ -256,42 +256,42 @@ Uma roda de reação consiste em um dispositivo que é fixado em um eixo de moto
   \label{fig:satellite_controlhand_p1306}
 \end{figure}
 
-Como já foram descritos nas outras seções, precisamos encontrar uma relação que expresse o torque criado pelas rodas de reação, para que consigamos unir ao modelo do satélite. Para isso, começamos pelo momento angular total $\vec{L_{tot}}$, que pode ser visto na sequência:
+Como já foram descritos nas outras seções, precisamos encontrar uma relação que expresse o torque criado pelas rodas de reação, para que consigamos unir ao modelo do satélite. Para isso, começamos pelo momento angular total $\vec{L}_{total}$, que pode ser visto na sequência:
 
 \begin{equation}\label{eq:ltot}
-\vec{L_{tot}}=\vec{L_s}+\vec{L_{\omega}}=constante 
+\vec{L}_{total}=\vec{L}_s+\vec{L}_{\omega}=constante 
 \end{equation}
 
-Onde $L_s$ representa o momento angular do satélite e $\vec{L_{\omega}}$ o momento angular da roda de reação. Como já vimos na equação \ref{eq:iomega}, o momento angular pode ser descrito da seguinte forma:
+Onde $L_s$ representa o momento angular do satélite e $\vec{L}_{\omega}$ o momento angular da roda de reação. Como já vimos na equação \ref{eq:iomega}, o momento angular pode ser descrito da seguinte forma:
 
 \begin{equation}
-\vec{L_s}=I\vec{\omega}
+\vec{L}_s=I\vec{\omega}
 \end{equation}
 
 E o momento angular nas rodas de ração pode ser escritos da seguinte forma:
 
 \begin{equation}
-\vec {L_{\omega} } =J_{\omega}\vec{\psi_{\omega}} 
+\vec {L}_{\omega} =J_{\omega}\vec{\psi}_{\omega}
 \end{equation}
 
-Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi_{\omega}}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque provido pela roda de reação $\tau_{\omega}$:
+Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi}_{\omega}$ é variação instantânea da posição angular da roda. Com isso, conseguimos encontrar o torque provido pela roda de reação $\tau_{\omega}$:
 
 \begin{equation}\label{eq:torqueedo}
-\vec{\tau_{\omega}}=\dot{\vec{L_{\omega}}}=J_{\omega}\dot{\vec{\psi_{\omega}}}
+\vec{\tau}_{\omega}=\dot{\vec{L}}_{\omega}=J_{\omega}\dot{\vec{\psi}}_{\omega}
 \end{equation}
 
 E por fim, podemos relacionar as velocidades angulares do satélite com o as inércia e as velocidades das rodas da seguinte forma:
 
 \begin{equation}\label{eq:modeloA}
-  \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi_{\omega 1}}}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
+  \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi}}_{\omega 1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
 \end{equation}
 
 \begin{equation}\label{eq:modeloB}
-  \dot{\omega_{2}}=\frac{J_{\omega 2}\dot{\vec{\psi_{\omega 2}}}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
+  \dot{\omega_{2}}=\frac{J_{\omega 2}\dot{\vec{\psi}}_{\omega 2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
 \end{equation},
 
 \begin{equation}\label{eq:modeloC}
-  \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi_{\omega 3}}}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
+  \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi}}_{\omega 3}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
 Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Assim, temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
@@ -310,10 +310,10 @@ Como já temos as equações diferenciais que descrevem o modelo satélite, prec
 
 Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}.
 
-Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
+Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (Delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
 \begin{figure}[H]
-  \caption{Parâmetros de uma Resposta ao Degrau de um sistema de segunda ordem ou superior.}
+  \caption{Parâmetros de uma resposta ao degrau de um sistema de segunda ordem ou superior.}
   \begin{center}
       \includegraphics[scale=0.5]{referencial/img/transient_ogata_p170}
   \end{center}
@@ -339,7 +339,7 @@ Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$}
 Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
 \begin{figure}[H]
-  \caption{Representação do Modelo de Controlador PID com distúrbios.}
+  \caption{Representação do modelo de controlador PID com distúrbios.}
   \begin{center}
       \includegraphics[scale=0.55]{referencial/img/pid_controller_Snider_p35}
   \end{center}
@@ -350,7 +350,7 @@ Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais
 Como alguns sistemas podem admitir grandes e rápidas variações de sinais de referência, exigindo uma grande força de controle e energia no atuador, algumas topologias foram desenvolvidas para limitar a atuação de alguns fatores dos controladores. Um bom exemplo é o \textit{anti-windup}, onde essa topologia limita a saturação do atuador quando o sistema atinge o regime, causado pela ação integral. Essa topologia pode ser vista no modelo da figura \ref{fig:pid_antiwindup_astrom_p83} \cite{Astrom1995}.
 
 \begin{figure}[H]
-  \caption{Modelo de um Controlador PID com Histerese}
+  \caption{Modelo de um controlador PID com histerese.}
   \begin{center}
       \includegraphics[scale=0.55]{referencial/img/pid_antiwindup_astrom_p83}
   \end{center}
@@ -410,7 +410,7 @@ Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o 
 Em um sistema discreto, uma forma de amostrar um sinal analógico é usar um trem de impulsos com amplitude do sinal y(t) nos tempos T e reter esses dados com um ZOH (Zero-Order-Hold - Amostrador de Ordem Zero). A figura \ref{fig:zoh_wie_p155} representa muito bem esse processo.
 
 \begin{figure}[H]
-  \caption{Conversão de um sinal contínuo em discreto}
+  \caption{Conversão de um sinal contínuo em discreto.}
   \begin{center}
       \includegraphics[scale=0.65]{referencial/img/zoh_wie_p155}
   \end{center}
@@ -467,7 +467,7 @@ Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos
 Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
 
 \begin{figure}[H]
-  \caption{Diagrama de Blocos do Filtro de Kalman}
+  \caption{Diagrama de blocos do filtro de Kalman.}
   \begin{center}
       \includegraphics[scale=0.5]{referencial/img/kalman_levine_p591}
   \end{center}
@@ -492,7 +492,7 @@ Como podemos ver no modelo matemático e gráfico dos controladores PID, os valo
 Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
 
 \begin{figure}[H]
-  \caption{Resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a).}
+  \caption{Resposta ao degrau e seus parâmetros.}
   \begin{center}
       \includegraphics[scale=0.75]{referencial/img/ziegler-nichols_astrom_p135}
   \end{center}
@@ -503,7 +503,7 @@ Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e N
 Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K_p$, $T_i$, $T_d$ e $T_p$ com os vistos na figura \ref{fig:ziegler-nichols_astrom_p135}. O outro método de se estimar os valores do controlador, é através de duas características da resposta em frequência: uma delas que é o ganho que deixa o sistema marginalmente estável ($K_u$), e a outra, é o período do sinal de referência que deixa o sistema marginalmente estável ($T_u$). Podemos ver na tabela \ref{tab:Ziegler-Nichols-freq} as relações entre $K_p$, $T_i$, $T_d$, $T_p$ e ($K_u$) e ($T_u$).
 
 \begin{table}
-  \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta ao Degrau}
+  \caption{Parâmetros PID pelo método de Ziegler-Nichols - resposta ao degrau}
   \label{tab:Ziegler-Nichols}
   \centering%
   \begin{minipage}{.42\textwidth}
@@ -521,7 +521,7 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
 
 
 \begin{table}
-  \caption{Parâmetros PID pelo Método de Ziegler-Nichols - Resposta em Frequência}
+  \caption{Parâmetros PID pelo método de Ziegler-Nichols - resposta em frequência}
   \label{tab:Ziegler-Nichols-freq}
   \centering%
   \begin{minipage}{.52\textwidth}
@@ -545,7 +545,7 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
 Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário. Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau, podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
 \begin{figure}[H]
-  \caption{Fluxograma para a escolha do Método de Sintonia.}
+  \caption{Fluxograma para a escolha do método de sintonia.}
   \begin{center}
       \includegraphics[scale=0.55]{referencial/img/escolha_controle_astrom_p236}
   \end{center}
@@ -563,7 +563,7 @@ Uma alternativa possível para sintonia de controladores, é o método do relé,
 Características da resposta em frequência podem ser descobertas se somarmos ao sinal de referência, uma onda retangular ao mesmo tempo em que o controlador PID está desconectado. Esse é o princípio do método de sintonia usando relé, onde o relé desempenha o papel do chaveamento e cria um sinal retangular sobreposto ao sinal de referência \cite{Levine1996}. Na imagem \ref{fig:pid_autotuning_relay_astrom_p239} podemos ver o conceito básico do método do relé. O modelo matemático usado para descrever o comportamento de um relé, pode ser visto na equação \ref{eq:n(a)} que está na sequência.
  
 \begin{figure}[H]
-  \caption{Modelo do Método de Auto Sintonia via Relé.}
+  \caption{Modelo do método de auto sintonia via relé.}
   \begin{center}
       \includegraphics[scale=0.55]{referencial/img/pid_autotuning_relay_astrom_p239}
   \end{center}
@@ -595,7 +595,7 @@ O estado da arte dentro de controle, está na criação de controladores intelig
 
 \subsection{Controle com Redes Neurais Artificiais}  %control hand p1017
 
-Uma \textit{Rede Neural} (RNA) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RN é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de cognição é caracterizado como um comportamento não-linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
+Uma \textit{Rede Neural} (RNA) é um modelo matemático generalizado da cognição humana ou de um organismo biológico. O elemento básico de uma RNA é o neurônio, que associado em camada, forma uma rede de neurônios. Um neurônio pode ter n entradas e p saídas, e dentro de uma mesma camada, todos os neurônios devem ser idênticos. O processo de cognição é caracterizado como um comportamento não-linear, a função ($f_{rn}$) que descreve a excitação um neurônio binário unipolar,  pode ser vista na sequência \cite{Unal2013}. 
 
 \begin{equation} \label{eq:neuron}
 f(rn) \equiv \frac{1}{1+e^{-\lambda_n}}
@@ -610,7 +610,7 @@ f(rn) \equiv sgn(rn) = \begin{Bmatrix}  1, \quad rn>0 \\ 1, \quad rn<0  \end{Bma
 Onde $\lambda_n$ é o ganho do neurônio. Uma representação gráfica de um neurônio natural comparado com um artificial pode ser visto na figura \ref{fig:neuronio_unal_p6}, onde os dendritos são representados pelas entradas $p_1, p_2, ..., p_R$, uma soma dessas entradas que posteriormente é aplicada a função da equação \ref{eq:neuron}, onde obtemos a saída $a$.
 
 \begin{figure}[H]
-  \caption{Célula de um Neurônio Natural e Modelo Matemático Respectivo}
+  \caption{Célula de um neurônio natural e modelo matemático respectivo.}
     \begin{center}
         \includegraphics[scale=0.45]{referencial/img/neuronio_unal_p6}
   \end{center}
@@ -621,7 +621,7 @@ Onde $\lambda_n$ é o ganho do neurônio. Uma representação gráfica de um neu
 Ao paralelizarmos um grupo de neurônios, criamos uma camada de neurônios, cada elemento dessa camada é conectado em todas as entradas, ou em todos os neurônios da camada anterior, ou posterior, ou ainda, nas saídas. Uma representação de uma rede neural pode ser vista na figura \ref{fig:feedforward_neural_astrom_p297}, onde temos 5 entradas ($u_1,...,u_5$) e duas saídas ($y_1 y_2$).
 
 \begin{figure}[H]
-  \caption{Representação de uma Rede Neural.}
+  \caption{Representação de uma rede neural.}
   \begin{center}
       \includegraphics[scale=0.5]{referencial/img/feedforward_neural_astrom_p297}
   \end{center}
@@ -629,10 +629,10 @@ Ao paralelizarmos um grupo de neurônios, criamos uma camada de neurônios, cada
   \label{fig:feedforward_neural_astrom_p297}
 \end{figure}
 
-Em controle, as RN são usadas principalmente em sistemas não lineares, onde existem regiões que a planta não é controlável pelas técnicas de controle clássicas \citeonline{Chen2004}. Nesse caso, a RN recebe os sinais de controle do controlador e da saídas da planta, realiza as operações e encontra os novos parâmetros para o controlador PID. Um bom exemplo dessa topologia pode ser visto na figura \ref{fig:pid_neural_chen_p212}, onde os parâmetros obtidos pela rede neural ainda são linearizados para que sejam utilizados pelo controlador.
+Em controle, as RNAs são usadas principalmente em sistemas não lineares, onde existem regiões que a planta não é controlável pelas técnicas de controle clássicas \citeonline{Chen2004}. Nesse caso, a RNA recebe os sinais de controle do controlador e da saídas da planta, realiza as operações e encontra os novos parâmetros para o controlador PID. Um bom exemplo dessa topologia pode ser visto na figura \ref{fig:pid_neural_chen_p212}, onde os parâmetros obtidos pela rede neural ainda são linearizados para que sejam utilizados pelo controlador.
 
 \begin{figure}[H]
-  \caption{Controlador PID com Rede Neural}
+  \caption{Controlador PID com rede neural.}
   \begin{center}
       \includegraphics[scale=0.55]{referencial/img/pid_neural_chen_p212}
   \end{center}
@@ -650,21 +650,21 @@ Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima 
 Regressão é um método matemático para o ajuste de curva através da otimização de parâmetros que compõem a equação característica do sinal. O caso de interesse, é a regressão para sinais não-lineares, os quais são provenientes da RNA, que precisarão ser otimizados sobre a equação característica do controlador PID (equação \ref{eq:pid_equation}). De forma genérica, a equação que descreve um modelo não-linear pode ser descrita da seguinte forma \cite{robust2019}:
 
 \begin{equation}
- y_i = f(x_i; \theta) + \epsilon_i, \quad\quad i = 1,...,n
+ y_i = f(x_i; \theta_e) + \epsilon_i, \quad\quad i = 1,...,n
 \end{equation}
 
-Onde $y_i$ é a resposta observável, $x_i$ é o vetor k-dimensional com os valores conhecidos e $\theta$ é p-dimensional com valores desconhecidos que influenciam a reposta observável e $\epsilon_i$ é o erro que satisfaz alguma regularidade estocástica. 
+Onde $y_i$ é a resposta observável, $x_i$ é o vetor k-dimensional com os valores conhecidos e $\theta_e$ é p-dimensional com valores desconhecidos que influenciam a reposta observável e $\epsilon_i$ é o erro que satisfaz alguma regularidade estocástica. 
 
 Um dos métodos mais usados para regressão, independente da linearidade do sistema, é o \textit{Método dos mínimos quadrados} (MMQ), que pode ser representado da seguinte forma:
 
 \begin{equation}
- S(\theta) = \sum_{i=1}^{n}[y_i-f(x_i;\theta)]^2 
+ S(\theta_e) = \sum_{i=1}^{n}[y_i-f(x_i;\theta_e)]^2 
 \end{equation}
 
 Esse método por definição, é usado onde as amostras obedecem uma distribuição normal. Quando isso não é verdadeiro, usa-se o método MMQ robusto, onde o erro pode assumir outras distribuições mantando a boa resposta da regressão. Na figura \ref{fig:robust_regression}, podemos ver a comparação entre os métodos MMQ e MMQ Robusto, ficando clara a melhor resposta do MMQ Robusto.
 
 \begin{figure}[H]
-  \caption{Controlador PID com Rede Neural}
+  \caption{Comparação entre os métodos de regressão não-lineares.}
   \begin{center}
       \includegraphics[scale=0.7]{referencial/img/robust_regression}
   \end{center}
