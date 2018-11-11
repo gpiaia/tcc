@@ -402,14 +402,14 @@ Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as 
 
 \subsection{Métodos de Sintonia}
 
-O último passo da implementação do satélite, é a sintonia das malhas de controle, onde diferentes métodos foram utilizados para descobrir os parâmetros \textit{$K_p$}, \textit{$K_i$} e \textit{$K_d$}. Para isso, usamos um método clássico de sintonia, que é o de Ziegler-Nichols em malha fechada, o método do relé e por fim, o método automático usando redes neurais e regressão não-linear. Esses, serão descirtos na sequência. 
+O último passo da implementação do satélite, é a sintonia das malhas de controle, onde diferentes métodos foram utilizados para descobrir os parâmetros \textit{$K_p$}, \textit{$K_i$} e \textit{$K_d$}. Para isso, usamos um método clássico de sintonia, que é o método do relé e por fim, o método automático usando redes neurais e regressão não-linear. Esses, serão descirtos na sequência. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Método de Ziegler-Nichols}
+\subsubsection{Método do Relé}
 
-Como esse é um método heurístico, simplesmente precisamos captar as informações da resposta ao degrau em malha fechada para calcular os parâmetros do controlador. O processo é basicamente encontrar um ganho proporcional no qual a planta apresente um comportamento marginalmente estável, ou seja, possua uma oscilação sustentada na saída, onde conseguimos encontrar o valor do período de oscilação e o K crítico é o próprio ganho até a oscilação sustentada. Após a obtenção desses dois parâmetros, só calcularmos conforma a tabela \ref{tab:Ziegler-Nichols-freq}
+A implementação desse método é simplesmente criarmos uma histerese sobre o erro, onde substituímos o sinal de controle por um valor fixo, fazendo o simulador de satélites oscular ao tentar sair da região de histerese. Após a descoberta dos parâmetros que o levam  à oscilação sustentada, basta usarmos a equação \ref{eq:n(a)} e a tablea \ref{tab:Ziegler-Nichols-freq}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
