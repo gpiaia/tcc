@@ -437,8 +437,8 @@ u(t) = K_c e(t) + \frac{K_c}{T_i}\sum_{n=0}^{N}{e(t)dt}-K_cT_d\frac{P[n]-P[n-1]}
 
 Onde essa equação é análoga as equações do controlador PID discreto, descritas no referencial teórico, onde dt é a diferença de tempo entre as amostras, P é a variável de processo, e(t) é o erro instantâneo. A partir dessa equação, podemos implementar uma função de minimização, que está no script em Python da sequência:
 
-\begin{lstlisting}[caption={Pseudocódigo I: Minimização da função do controlador}]
-funcao(x, n, y_original) :
+\begin{lstlisting}[caption={Minimização da função do controlador PID}]
+funcao(Kp, Ti, Td, n, dados_objetivo, y_original, soma_erro) :
     erro = referencia - dados_objetivo[n]
     se (n>0) :
         soma_erro += erro
@@ -447,7 +447,7 @@ funcao(x, n, y_original) :
     se nao :
         saida_controlador = 0
     n += 1
-    retorna u - y_original
+    retorna saida_controlador - y_original
 \end{lstlisting}
 
-Onde $x[0]$ é \textit{$K_p$}, $x[1]$ é \textit{$T_i$}, $x[2]$ é \textit{$T_d$}, \textit{soma\_erro} é o somatório do erro, \textit{derivada} é a derivada da variável de interesse, \textit{dado\_teste} é o dado proveniente da RNA treinada, \textit{n\_t} é o vetor com o número das amostras, \textit{u} é a saída do controlador, \textit{y} é saída do controlador não sintonizado, \textit{n} é o indexador de cada interação. Com isso, conseguimos extrair os novos parâmetros do controlador.
+Onde \textit{n} é o indexador de cada interação, \textit{erro} é o erro no instante n, \textit{soma\_erro} é o somatório do erro, \textit{derivada} é a derivada da variável de interesse, \textit{dado\_teste} é o dado predito pela da RNA treinada, \textit{n} é o indexador das operações, \textit{saida\_controlador} é o sinal da saída do controlador, \textit{y\_original} é saída do controlador não sintonizado, \textit{dados\_objetivo} é o sinal da resposta objetivo, além dos já conhecidos parâmetros \textit{$K_p$, $T_i$ e $T_d$}. Com isso, conseguimos extrair os novos parâmetros do controlador.
