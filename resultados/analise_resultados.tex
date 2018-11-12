@@ -3,7 +3,7 @@
 % ||||||||||||||||||||||||||||||||||||||||||||||
 \chapter{Análise dos Resultados}
 
-Nesse capítulo são apresentados os principais resultados e as análises sobre eles, onde serão apresentados os resultados pelos métodos clássicos de sintonia, o desenvolvido nesse trabalho e por fim, uma comparação entre todos.
+Nesse capítulo são apresentados os principais resultados e as análises sobre eles, onde serão demostrados os resultados pelos métodos clássicos de sintonia, o desenvolvido nesse trabalho e por fim, uma comparação entre todos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -20,27 +20,25 @@ Dentre eles, se encontram os métodos de sintonia de Ziegler-Nichols em malha fe
   \label{fig:relay}
 \end{figure}
  
-Já na  \ref{fig:relay} (b), podemos ver com maiores detalhes a resposta em regime do sistema, onde encontramos parâmetros do controlador PID, aplicando a equação \ref{eq:n(a)} e tabela \ref{tab:Ziegler-Nichols-freq}. Após encontrar os valores para esse método, o próximo passo é usar o método com RNA e regressão não-linear.
+Já na figura \ref{fig:relay} (b), podemos ver com maiores detalhes a resposta em regime do sistema, onde encontramos parâmetros do controlador PID, aplicando a equação \ref{eq:n(a)} e tabela \ref{tab:Ziegler-Nichols-freq}. Após encontrar os valores para esse método, o próximo passo é usar o método com RNA e regressão não-linear.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Método de Sintonia Automático usando RNA e Regrão Não-Linear Robusta}
 
-Primeiro passo para a sintonia via RNA e regressão é treinar a RNA com dados válidos, onde ela aprende o comportamento do controlador e da planta.. O a criação dos dados para o treinamento foi feito usando um controlador com simplesmente um ganho proporcional unitário, ou seja, a malha foi fechada usando um controlador PID com \textit{P=1}, \textit{I=0} e \textit{D=0}. O sinal usado para treinar a RNA ($\theta_z$ Treinamento) pode ser visto na figura \ref{fig:neural_output} (a), juntamente com o sinal objetivo para a regressão ($\theta_z$ Objetivo)
+Primeiro passo para a sintonia via RNA e regressão, é treina-la com dados válidos, onde ela aprende o comportamento do controlador e da planta. A criação dos dados para o treinamento foi feito usando um controlador com simplesmente um ganho proporcional unitário, ou seja, a malha foi fechada usando um controlador PID com \textit{P=1}, \textit{I=0} e \textit{D=0}. O sinal usado para treinar a RNA ($\theta_z$ Treinamento) pode ser visto na figura \ref{fig:neural_output} (a), juntamente com o sinal objetivo para a regressão ($\theta_z$ Objetivo)
 
 \begin{figure}[H]
   \caption{Saída da RNA treinada e o sinal real.}
   \begin{center}
-      \includegraphics[scale=0.35]{resultados/img/neural_output}
+      \includegraphics[scale=0.34]{resultados/img/neural_output}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:neural_output}
 \end{figure}
 
-Ainda, podemos observar na figura \ref{fig:neural_output} (a) que o satélite oscila durante o regime transitório, como se acabasse retornando um pouco a cada novo avanço, isso é devido à rápida variação do sinal de controle que faz com que os motores perturbem o corpo com um torque contrário ao movimento, pois, a inércia do satélite é baixa e o atrito é desprezível devido ao mancal a ar. 
-
-Já na figura \ref{fig:neural_output} (b), já podemos ver o sinal do controlador predito pela RNA, juntamente com o sinal real amostrado no simulador de satélites. Com esses últimos dados, é possível se calcular o RMSE (Root Mean Square Error - Erro quadrático médio) da seguinte forma:
+Ainda, podemos observar na figura \ref{fig:neural_output} (a), onde podemos ver que o satélite oscila durante o regime transitório, como se acabasse retornando um pouco a cada novo avanço, isso é devido à rápida variação do sinal de controle que faz com que os motores perturbem o corpo com um torque contrário ao movimento, pois, a inércia do satélite é baixa e o atrito é desprezível devido ao mancal a ar. Já na figura \ref{fig:neural_output} (b), podemos ver o sinal do controlador predito pela RNA, juntamente com o sinal real amostrado no simulador de satélites. Com esses últimos dados, é possível se calcular o RMSE (Root Mean Square Error - Erro quadrático médio) da seguinte forma:
 
 \begin{equation}
 RMSE = \sqrt{\frac{\sum_{t=1}^{T}(\hat{y}_t-y_t)^2}{T}}
@@ -52,7 +50,7 @@ Onde T o número de amostras, $\hat{y}_t$ são os valores preditos pela RNA e $y
 RMSE \approx 1.0112
 \end{equation}
 
-O que é muito satisfatório, indicando que a RNA conta com um bom número de neurônio, número de camadas e interações. Após esses passo, podes comparar todos os resultados, para uma análise mais objetiva. 
+O que é muito satisfatório, indicando que a RNA conta com um bom número de neurônio, número de camadas e interações. Após esses passo, podemos comparar todos os resultados, para uma análise mais objetiva. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,7 +68,7 @@ Após todos todos os métodos de sintonia aplicados, com foco no método do rel�
   \label{fig:pid_result}
 \end{figure}
 
-Já na figura \ref{fig:pid_result} (b), podemos ver uma comparação entre o melhor resultado das simulações, ou seja, o controlador PID com Anti-Windup juntamente com a real também com Anti-Windup e sintonizado via RNA e regressão não-linear sem Anti-Windup.
+Já na figura \ref{fig:pid_result} (b), podemos ver uma comparação entre o melhor resultado das simulações, ou seja, o controlador PID com Anti-Windup juntamente com o sinal real, também com Anti-Windup e sintonizado via RNA e regressão não-linear.
 
 Como podemos ver, o sinal proveniente da simulação é mais rápido e com menor sobressinal. O sinal real com Anti-Windup apresentou o pior desempenho entre os três, pois teve o maior tempo de estabilização e sobressinal. O comportamento mais lento, maior sobressinal e mais ruidoso, se justifica pela presença de forças e perturbações que o modelo teórico não leva em consideração. Alguns problemas práticos que fazem o comportamento se desviar em relação ao teórico, são: a não perfeita simetria do simulador de satélites; perturbações pelo fluxo de ar no mancal, vibração excessiva dos motores, o que dificulta a aquisição de dados. Essa última pode ser vista na figura \ref{fig:pid_result_controlller} (a), onde podemos ver a velocidade angular em z da resposta real ao degrau, com um controlador PID com Anti-Windup. Percebe-se a grande presença de ruídos, muito mais do que pode ser visto na figura \ref{fig:bias_correction} (a), onde o simulador está estático.
 
@@ -85,4 +83,4 @@ Como podemos ver, o sinal proveniente da simulação é mais rápido e com menor
 
 Por consequência, o sinal do controlador também apresentará grande quantidade de ruído, o que pode ser visto na figura \ref{fig:pid_result_controlller} (b), o que dificulta muito o controle. Sem a presença do filtro de Kalman devidamente ajustado, o controle não funcionaria de maneira adequada.
 
-Desde o desenvolvimento mecânico, que exigiu a fabricação de todas as peças e além disso, ajustes para o perfeito funcionamento da dinâmica do simulador de satélites, os resultados foram funcionais e satisfatórios. O mancal a ar funcionou perfeitamente, se mostrando promissor para outras aplicações que exijam atrito desprezível. O sistema de controle conseguiu manter uma performance que não influenciou nos resultados, mesmo que executado em um sistema operacional, que possuí escalonamento de tarefas, o que pode tornar a execução das tarefas não periódicas em muitos casos. E por fim, os resultados do método de sintonia desenvolvido usando RNA e regressão não linear, que otimizou de forma também satisfatória a resposta em relação aos métodos clássicos de sintonia.
+Desde o desenvolvimento mecânico, que exigiu a fabricação de todas as peças e além disso, ajustes para o perfeito funcionamento da dinâmica do simulador de satélites, os resultados foram funcionais e satisfatórios. O sistema de controle conseguiu manter uma performance que não influenciou nos resultados, mesmo que executado em um sistema operacional, que possuí escalonamento de tarefas, o que pode tornar a execução das tarefas não periódicas em muitos casos. E por fim, os resultados do método de sintonia desenvolvido usando RNA e regressão não linear, que otimizou de forma também satisfatória a resposta em relação aos métodos clássicos de sintonia.

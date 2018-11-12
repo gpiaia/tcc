@@ -13,4 +13,7 @@
 *.brf
 *.idx
 *.gz
+*.lol
+*.ilg
+*.ind
 draw.io

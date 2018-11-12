@@ -1,13 +1,13 @@
 \chapter{Metodologia}
 
-A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que fazem parte do satélite, entre eles: as rodas de reação, motor DC (Direct Current - corrente contínua), mancal a ar e hastes. Também contempla as especificação dos componentes eletrônicos que constituem o satélite. É na segunda etapa que ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possa fornecer torque para romper a inércia da planta. Já na terceira etapa, são abordados os elementos de software, de rede e supervisão do satélite. Nessa etapa também se encontram as especificações de software, desenvolvimento do software de controle e supervisão.
+A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que fazem parte do satélite, entre eles: as rodas de reação, motor DC (Direct Current - corrente contínua), mancal a ar e hastes. Também contempla as especificação dos componentes eletrônicos que constituem o satélite. É na segunda etapa que ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possa fornecer torque para tirar da inércia a planta. Já na terceira etapa, são abordados os elementos de software, de rede e supervisão do satélite. Nessa etapa também se encontram as especificações de software, desenvolvimento do software de controle e supervisão.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Hardware}
 
-Após a modelagem descrita no referencial teórico, é possível modelar um simulador de satélite de fabricação factível.  O mancal a ar, a base de suporte do simulador do satélite, rodas de reação, motores Brushless (motor de corrente contínua sem escovas) e os outros elementos, podem ser vistos na figura \ref{fig:satelite_completo}.
+Após a modelagem apresentada no referencial teórico, é possível modelar um simulador de satélite de fabricação factível.  O mancal a ar, a base de suporte do simulador do satélite, rodas de reação, motores brushless (motor de corrente contínua sem escovas) e os outros elementos, podem ser vistos na figura \ref{fig:satelite_completo}.
 
 \begin{figure}[H]
   \caption{Desenho mecânico completo do simulador de satélite.}
@@ -25,7 +25,7 @@ Após a modelagem descrita no referencial teórico, é possível modelar um simu
 
 \subsection{Corpo do Simulador de Satélite}
 
-O elemento de dinâmica mais importante que deve ser dimensionado, é o corpo do satélite. É nele que são fixados todos os outros elementos que compõem o simulador de satélites. Para isso, optamos como material, o alumínio, pois possui menor densidade e resistência mecânica adequada ao projeto. Na figura abaixo podemos ver o corpo do simulador.
+O elemento de dinâmica mais importante que deve ser dimensionado, é o corpo do satélite. É nele que são fixados todos os outros elementos que compõem o simulador de satélites. Para isso, optamos como material, o alumínio, pois possui menor densidade e resistência mecânica adequada para o projeto. Na figura abaixo podemos ver o corpo do simulador.
 
 \begin{figure}[H]
   \caption{Corpo do simulador de satélites.}
@@ -37,9 +37,9 @@ O elemento de dinâmica mais importante que deve ser dimensionado, é o corpo do
 \end{figure}
 
 
-Onde \textit{hx} é a haste do motor que atua no eixo x, \textit{hy} é a haste do motor que atua no eixo y, \textit{hz} é a haste do motor que atua no eixo z, \textit{hb} é a haste da bateria e \textit{se} é a semiesfera que é a interface entre o corpo e o mancal a ar. Esse último apresenta explicação na sequência. O projeto leva em consideração a distribuição de massa e os centros de massa, pois o simulador de satélite deve ficar o mais simétrico e em equilíbrio possível, facilitando a atuação do controle que prevê sua simetria.
+Onde \textit{hx} é a haste do motor que atua no eixo x, \textit{hy} é a haste do motor que atua no eixo y, \textit{hz} é a haste do motor que atua no eixo z, \textit{hb} é a haste da bateria e \textit{se} é a semiesfera que é a interface entre o corpo e o mancal a ar. Esse último, apresenta explicação na sequência. O projeto leva em consideração a distribuição de massa e os centros de massa, pois o simulador de satélite deve ficar o mais simétrico e em equilíbrio possível, facilitando a atuação do controle que prevê sua simetria.
 
-Através do software de desenho mecânico, SolidWorks, onde o projeto foi desenvolvido, conseguimos calcular o peso do satélite, que é de aproximadamente $\SI{1.25}{\kg}$, contado com a bateria de polímero de Lítio e outro periféricos. Esse valor é necessário para o dimensionamento das rodas de reação, que também será descrito na sequência. Ainda, com o mesmo software, conseguimos os valores de momento de inércia máximo entre os eixos que é de aproximadamente $\SI{0.5}{\kg\meter\squared}$, o qual é usado para dimensionamento das rodas de reação
+Através do software de desenho mecânico SolidWorks, onde o projeto foi desenvolvido, conseguimos calcular o peso do satélite, que é de aproximadamente $\SI{1.25}{\kg}$, contado com a bateria de polímero de Lítio e outro periféricos. Esse valor é necessário para o dimensionamento das rodas de reação, que também será descrito na sequência. Ainda, com o mesmo software, conseguimos os valores de momento de inércia máximo entre os eixos, que é de aproximadamente $\SI{0.5}{\kg\meter\squared}$, o qual é usado para dimensionamento das rodas de reação.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,7 +57,7 @@ Um dos elementos mais importantes do simulador, é o mancal a ar. Ele possibilit
   \label{fig:base_desenho}
 \end{figure}
 
-O mancal precisou ser usinado, deviso a precisão do encaixe entre a esfera e a região concava, para que a camada de ar seja o mais homogênea possível, evitando turbulências e regiões com atrito maiores que em outras. 
+O mancal precisou ser usinado, devido à precisão do encaixe entre a esfera e a região concava, para que a camada de ar seja o mais homogênea possível, evitando turbulências e regiões com atrito maiores que em outras. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,13 +81,13 @@ Cada roda é responsável por um terço do momento angular total do satélite, c
 \vec{L}_{roda} = \frac{\vec{L}_s}{3}   
 \end{equation}
 
-Onde $I_{sat}$ é o momento de inércia do satélite, $m$ é a massa, $r_{sat}$ é a distância dos motores do centro de massa. Podemos relacionar o momento angular com o momento de inércia das rodas e a velocidade angular, como podemos ver abaixo.
+Onde $I_{sat}$ é o momento de inércia do satélite, $m$ é a massa, $r_{sat}$ é a distância dos motores em relação ao centro de massa. Podemos relacionar o momento angular com o momento de inércia das rodas e a velocidade angular, como podemos ver abaixo.
 
 \begin{equation}
 \vec{L}_{roda} = I_{roda}\vec{\omega}_{roda}
 \end{equation}
 
-Conseguimos dimensionar o momento angular das rodas através da variação do momento de inércia ou rotação das rodas. Com o objetivo de controlar o satélite, varia-se a velocidade angular das rodas com momento de inércia fixo. Na figura \ref{fig:motor_roda_desenho2}, temos o desenho escolhido para o projeto das rodas, pois concentramos mais massa na extremidade, contribuindo assim, para um maior momento de inércia.
+Conseguimos dimensionar o momento angular das rodas através da variação do momento de inércia ou rotação das rodas. Com o objetivo de controlar o satélite, varia-se a velocidade angular das rodas com momento de inércia fixo. Na figura \ref{fig:motor_roda_desenho2}, temos o desenho escolhido para o projeto das rodas, pois, concentramos mais massa na extremidade, contribuindo assim, para um maior momento de inércia.
 
 \begin{figure}[H]
   \caption{Geometria básica para o projeto de rodas de reação.}
@@ -104,11 +104,11 @@ Essa geometria escolhida, possui momento de inércia que pode ser descrito pela 
 \vec{I}_{roda} = \rho \frac{\pi}{2}(h_r(r_{e}^4-r_d^4)+h_dr_d^4) 
 \end{equation}
 
-Onde $\vec{I}_{roda}$ é o momento de inércia da roda, $\rho$ é a densidade do material que compõe a roda, $h_r$ é a espessura da borda, $h_d$ é a espessura do disco, $r_e$ é o raio total da roda e $r_d$ é o raio do disco. Um conjunto de parâmetros que satisfazem as equações a cima descritas à uma velocidade angular de $\SI{230.38}{\radian\per\second}$(2200 RPM), são: 
+Onde $\vec{I}_{roda}$ é o momento de inércia da roda, $\rho$ é a densidade do material que compõe a roda, $h_r$ é a espessura da borda, $h_d$ é a espessura do disco, $r_e$ é o raio total da roda e $r_d$ é o raio do disco. Um conjunto de parâmetros que satisfazem as equações acima descritas à uma velocidade angular de $\SI{230.38}{\radian\per\second}$(2200 RPM) pode ser visto na tabela \ref{tab:react}. 
 
 \begin{table}
   \caption{Dimensões das rodas de reação.}
-  \label{tab:bias_correction}
+  \label{tab:react}
   \centering%
   \begin{minipage}{.42\textwidth}
     \begin{tabular*}{\textwidth}{cc}
@@ -130,7 +130,7 @@ Onde $\vec{I}_{roda}$ é o momento de inércia da roda, $\rho$ é a densidade do
 
 \subsubsection{Escolha dos Motores DC}
 
-O atuador do simulador de satélite é constituido de um conjunto de três motores Brushless dispostos um em cada eixo cartesiano. Juntamente com esses motores, são acopladas rodas de reação, que juntamente com os motores, farão os movimentos de rotação do satélite. Como vimos na imagem \ref{fig:satelite_completo}, os motores e as hastes estão distribuídos de forma simétrica e afastados do centro de massa do satélite, para facilitar a movimentação promovida pelo torque dos motores. O modelo de motor escolhido foi o \textit{Turnigy D2826-6 2200kV}, que é um motor usado em aeromodelos e possui um empuxo de aproximadamente $\SI{960}{\milli\gram}$ e relação de velocidade por de 2200 RPM por Volt. Na imagem \ref{fig:motor_roda_desenho} podemos ver parte da haste, o motor e a roda de reação, todos acoplados. 
+O atuador do simulador de satélite é constituido de um conjunto de três motores Brushless dispostos um em cada eixo cartesiano. Juntamente com esses motores, são acopladas rodas de reação, que farão os movimentos de rotação do satélite. Como vimos na imagem \ref{fig:satelite_completo}, os motores e as hastes estão distribuídos de forma simétrica e afastados do centro de massa do satélite, para facilitar a movimentação promovida pelo torque dos motores. O modelo de motor escolhido foi o \textit{Turnigy D2826-6 2200kV}, que é um motor usado em aeromodelos e possui um empuxo de aproximadamente $\SI{960}{\gram}$ e relação de velocidade por de 2200 RPM por Volt. Na imagem \ref{fig:motor_roda_desenho} podemos ver parte da haste, o motor e a roda de reação, todos acoplados. 
 
 \begin{figure}[H]
   \caption{Desenho mecânico do conjunto motor-roda.}
@@ -141,14 +141,14 @@ O atuador do simulador de satélite é constituido de um conjunto de três motor
   \label{fig:motor_roda_desenho}
 \end{figure}
 
-A roda de reação também foi usinada, pois é necessário uma roda com uma massa e formato específico, para que possa ser acoplar ao motor e o conjunto consiga realizar os movimentos propostos. 
+A roda de reação também foi usinada, pois é necessário uma roda com uma massa e formato específico, para que possa ser acoplar ao motor e o conjunto consiga realizar os movimentos desejados. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Elementos Eletrônicos}
 
-A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade wireless (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}
+A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade wireless (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}.
 
 \begin{figure}[H]
   \caption{Raspberry Pi Zero W.}
@@ -159,7 +159,7 @@ A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi 
   \label{fig:rasp_zero}
 \end{figure}
 
-Um outro elemento que é indispensável, é o acelerômetro, o qual desempenha o pape de sensor de realimentação da posições angulares do satélite. Sua comunicação com a RPi é dada através da interface I2C, que está descrita na seção de software. O acelerômetro informará o modelo da posição angular em graus, através da integral da velocidade instantânea em cada eixo.
+Um outro elemento que é indispensável, é o acelerômetro, o qual desempenha o papel de sensor de realimentação da posições angulares do satélite. Sua comunicação com a RPi é dada através da interface I2C, que está descrita na seção de software. O acelerômetro informará ao modelo a velocidade angular em graus por segundo, e o algoritmo calcula a posição através da integral da velocidade instantânea em cada eixo.
 
 \begin{figure}[H]
   \caption{Placa de Circuito impresso com o acelerômetro e Giroscópio MPU6050.}
@@ -181,7 +181,7 @@ Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electroni
   \label{fig:base_real}
 \end{figure}
 
-Na imagem anterior, podemos ver a base do simulador, feita em madeira, onde se encontra a região concava do mancal e as conexão 
+Na imagem anterior, podemos ver a base do simulador, feita em madeira, onde se encontram a região concava do mancal e as conexão 
 pneumáticas. Já na figura \ref{fig:corpo_real}, podemos ver as partes que compõem o corpo do simulador.
 
 \begin{figure}[H]
@@ -193,7 +193,7 @@ pneumáticas. Já na figura \ref{fig:corpo_real}, podemos ver as partes que comp
   \label{fig:corpo_real}
 \end{figure}
 
-Onde \textit{Rpi} é a Rapberri Pi Zero W, \textit{B} é bateria, \textit{ESC} são os controladores, \textit{Rr} são as rodas de reação, \textit{Cm} são massas para compensação de massa do simulador, \textit{Gr} é o acelerômetro/giroscópio, \textit{Se} é a semiesfera de alumínio que compõe o mancal, \textit{Hb} é a haste de alumínio da bateria, \textit{Hx} é a haste do motor do eixo x, , \textit{Hy} é a haste do motor do eixo y e \textit{Hz} é a haste do motor do eixo z. E por fim, a imagem completa do simulador de satélites, que pode ser vista na figura \ref{fig:simulador_real}.
+Onde \textit{Rpi} é a Rapberri Pi Zero W, \textit{B} é bateria, \textit{ESC} são os dispositivos de acionamento dos motores brushles, \textit{Rr} são as rodas de reação, \textit{Cm} são massas para compensação de massa do simulador, \textit{Gr} é o acelerômetro/giroscópio, \textit{Se} é a semiesfera de alumínio que compõe o mancal, \textit{Hb} é a haste de alumínio da bateria, \textit{Hx} é a haste do motor do eixo x, , \textit{Hy} é a haste do motor do eixo y e \textit{Hz} é a haste do motor do eixo z. E por fim, a imagem completa do simulador de satélites, que pode ser vista na figura \ref{fig:simulador_real}.
 
 \begin{figure}[H]
   \caption{Simulador de satélites prototipado.}
@@ -217,7 +217,7 @@ Após a descrição dos conceitos básicos de controle e do modelo mecânico do 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modelo Motor DC}
 
-Após a escolha do tipo de motor que será utilizado como atuador no controle da atitude do satélite, se faz necessário a modelagem do mesmo, para que consigamos acoplar ao modelo do satélite, o torque que promoverá a variação mo momento angular do satélite, e por consequência, a posição angular. A figura \ref{fig:modelo_motor_dc} representa o modelo elétrico associado ao momento de inércia do rotor $J_{\omega 1}$ ao rotor e a da roda de reação $J_{\omega 2}$
+Após a escolha do tipo de motor que será utilizado como atuador no controle da atitude do satélite, se faz necessário a modelagem do mesmo, para que consigamos acoplar ao modelo do satélite, o torque que promoverá a variação no momento angular do satélite, e por consequência, a posição angular. A figura \ref{fig:modelo_motor_dc} representa o modelo elétrico associado ao momento de inércia do rotor $J_{\omega 1}$ ao rotor e a da roda de reação $J_{\omega 2}$
 
 \begin{figure}[H]
   \caption{Modelo do motor DC.}
@@ -264,7 +264,7 @@ Onde B é o atrito viscoso. Como queremos relacionar a tensão da fonte com a ve
   \frac{\omega(s)}{V_a(s)} = \frac{K_wK_t}{(R_a+ sLa)(s(J_{\omega 1} + J_{\omega 2})+B)+K_wK_t}  
 \end{equation}
 
-Mas como nas equações \ref{eq:modeloA}, \ref{eq:modeloB} e \ref{eq:modeloC} é necessário a a derivada instantânea da velocidade, ou seja, a aceleração do motor, precisamos derivar a equação anterior, e ainda, podemos dizer que a soma dos momentos de inércia é representado somente por $J$, obtemos assim:
+Mas como nas equações \ref{eq:modeloA}, \ref{eq:modeloB} e \ref{eq:modeloC} é necessário a a derivada instantânea da velocidade, ou seja, a aceleração do motor, precisamos derivar a equação anterior, e ainda, podemos dizer que a soma dos momentos de inércia é representado somente por $J$, obtendo assim:
 
 \begin{equation}\label{eq:motor_accel}
   \frac{\dot{\omega}(s)}{V_a(s)} = \frac{K_wK_t s}{(R_a+ Las)(Js+B)+K_wK_t}  
@@ -277,7 +277,7 @@ Com isso, modelamos o atuador do satélite, o próximo passo para a completa mod
 
 \subsection{Modelo Completo do Satélite}
 
-Como em partes, todo o satélite já foi modelado até agora, nessa subseção acoplaremos todos os modelos em um único, que terá como variável de interesse a posição angular tridimensional definida pelos ângulos $\psi, \theta, \phi$. Para a modelagem completa, usamos as equações que descevem o comportamento das rodas de reação, do motor cc e da própria dinâmica do satélite. Essa associação se dá em forma de diagrama de blocos já em malha fechada, que pode ser visto na figura \ref{fig:simulink_modelo_completo_aberto}.
+Como em partes, todo o satélite já foi modelado até agora, nessa subseção acoplaremos todos os modelos em um único, que terá como variável de interesse a posição angular tridimensional definida pelos ângulos $\psi, \theta, \phi$, que são os ângulos em relação aos três eixos cartesianos. Para a modelagem completa, usamos as equações que descrevem o comportamento das rodas de reação, do motor cc e da própria dinâmica do satélite. Essa associação se dá em forma de diagrama de blocos já em malha fechada, que pode ser visto na figura \ref{fig:simulink_modelo_completo_aberto}.
 
 \begin{figure}[H]
   \caption{Diagrama de blocos em malha fechada.}
@@ -288,7 +288,7 @@ Como em partes, todo o satélite já foi modelado até agora, nessa subseção a
   \label{fig:simulink_modelo_completo_aberto}
 \end{figure}
 
-Onde o bloco subsistema Motor x, y e z, é constituído pela função de transferência da equação \ref{eq:motor_accel}, que pode é inserida na ferramenta Matlab da seguinte forma:
+Onde o bloco subsistema Motor x, y e z, é constituído pela função de transferência da equação \ref{eq:motor_accel}, que é inserida na ferramenta Matlab da seguinte forma:
 
 \begin{figure}[H]
   \caption{Função de transferência dos motores.}
@@ -340,14 +340,14 @@ Após a modelagem, devemos implementar o modelo e configurar todas as interfaces
 \end{figure}
 
 
-Após modelada a topologia geral do sistema, é possível dividir a parte de software, onde é descita a implementação de cada etapa, começando com a implementação do controlador e da sua sintonia, que está na sequência.
+Após modelada a topologia geral do sistema, é possível dividir a parte de software, onde é descrita a implementação de cada etapa, começando com a implementação do controlador e da sua sintonia, que está na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Implementação do Controlador PID e Métodos de Sintonia}
 
-Nessa etapa ocorre a implementação usando a linguagem de programação Python, a qual, possui diversas bibliotecas de controle, interfaceamento e protocolos de comunicação. O desenvolvimento foi orientado para o menor tempo possível de atualização das entradas e saídas, pois, como é uma linguagem script sendo executada por um sistema operacional, algumas tarefas poderiam ser executadas em baixa prioridade, criando um comportamento não determinístico do período de amostragem. Uma solução para esse problema, foi a criação de uma interrupção via relógio que chama uma função de atualização das entradas e saídas, além do cálculo do PID e do filtro de Kalman. Na figura \ref{fig:software_model} podemos ver o fluxograma do scritp de controle.
+Nessa etapa, ocorre a implementação usando a linguagem de programação Python, a qual, possui diversas bibliotecas de controle, interfaceamento e protocolos de comunicação. O desenvolvimento foi orientado para o menor tempo possível de atualização das entradas e saídas, pois, como é uma linguagem script sendo executada por um sistema operacional, algumas tarefas poderiam ser executadas em baixa prioridade, criando um comportamento não determinístico do período de amostragem. Uma solução para esse problema, foi a criação de uma interrupção via relógio que chama uma função de atualização das entradas e saídas, além do cálculo do PID e do filtro de Kalman. Na figura \ref{fig:software_model} podemos ver o fluxograma do scritp de controle.
 
 \begin{figure}[H]
   \caption{Fluxograma do software de controle.}
@@ -358,7 +358,7 @@ Nessa etapa ocorre a implementação usando a linguagem de programação Python,
   \label{fig:software_model}
 \end{figure}
 
-Após o desenvolvimento das malhas de controle, e testes preliminares, ficou clara a grande influência dos sinais provenientes do giroscópio no resultado final, necessitando uma análise minuciosa para possibilitar a filtragem pelo filtro de Kalman e por consequência, controlar o simulador de satélites. Isso é abordado na sequência. 
+Após o desenvolvimento das malhas de controle e testes preliminares, ficou clara a grande influência dos sinais provenientes do giroscópio no resultado final, necessitando uma análise minuciosa para possibilitar o perfeito funcionamento do filtro de Kalman e, por consequência, controlar o simulador de satélites. Isso é abordado na sequência. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -376,7 +376,7 @@ Ao fazer os primeiros testes, ficou perceptível o bias (deslocamento em relaç�
   \label{fig:bias_correction}
 \end{figure}
 
-Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal - mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos - o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como bias para as amostras do giroscópio. Os calores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
+Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal - mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos - o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como bias para as amostras do giroscópio. Os valores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
 
 \begin{table}[H]
   \caption{Correção do bias do giroscópio.}
@@ -395,7 +395,7 @@ Como podemos ver, os três sinais possuem uma distribuição caraterística muit
   \end{minipage}
 \end{table}
 
-Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as malhas de controle, isso é descirto na sequência.
+Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as malhas de controle, isso é descrito na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -409,14 +409,14 @@ O último passo da implementação do satélite, é a sintonia das malhas de con
 
 \subsubsection{Método do Relé}
 
-A implementação desse método é simplesmente criarmos uma histerese sobre o erro, onde substituímos o sinal de controle por um valor fixo, fazendo o simulador de satélites oscular ao tentar sair da região de histerese. Após a descoberta dos parâmetros que o levam  à oscilação sustentada, basta usarmos a equação \ref{eq:n(a)} e a tablea \ref{tab:Ziegler-Nichols-freq}.
+A implementação desse método é simplesmente criarmos uma histerese sobre o erro, onde substituímos o sinal de controle por um valor fixo, fazendo o simulador de satélites oscilar ao tentar sair da região de histerese. Após a descoberta dos parâmetros que o levam  à oscilação sustentada, basta usarmos a equação \ref{eq:n(a)} e a tablea \ref{tab:Ziegler-Nichols-freq}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Método via RNA e Regressão Não-Linear}
 
-Por fim, o método proposto pelo presente trabalho, onde diferentes conceitos foram empregados para a sintonia automática de controladores PID. Os dois usados, foram o de Redes Neurais e regressão não-linear robusta, de onde são extraídos os novo valores dos parâmetros. Na figura \ref{fig:neural_regression} podemos ver a topologia usada.
+Por fim, o método proposto pelo presente trabalho, onde diferentes conceitos foram empregados para a sintonia automática de controladores PID. Os dois usados, foram o de RNAs e regressão não-linear robusta, de onde são extraídos os novo valores dos parâmetros. Na figura \ref{fig:neural_regression} podemos ver a topologia usada.
 
 \begin{figure}[H]
   \caption{Diagrama de blocos do sintonizador e otimizador.}
@@ -427,22 +427,22 @@ Por fim, o método proposto pelo presente trabalho, onde diferentes conceitos fo
   \label{fig:neural_regression}
 \end{figure}
 
-O funcionamento dessa topologia é baseado na aprendizagem de máquina, onde uma rede neural aprende o comportamento do satélite, tendo como entradas a posição atual ($\beta$) , o valor de referência ($\beta_{com}$) e o sinal de controle, que nada mais é do que a largura de pulso entregue ao motor. Temos como saída da RNA, o sinal de controle, pois esse na prática, é um sinal modulado contendo a largura de pulso para o motor, onde a rede neural é mais assertiva devido ao comportamento não-linear, também característico de uma RNA. Após o treinamento da rede neural, ela é usada para se criar uma nova base de dados, onde ela recebe como parâmetros um sinal que é uma sugestão de resposta ao degrau (Sinal Objetivo) fornecida pelo usuário, ou ainda, uma representação do sistema em forma de um sistema de primeira ordem, pois esse, apresenta características melhores do que o sistema original. Basicamente, o objetivo de se fornecer esse sinal, é orientar a regressão não-linear ao ponto ótimo ou algo próximo a ele.
+O funcionamento dessa topologia é baseado na aprendizagem de máquina, onde uma RNA aprende o comportamento do satélite, tendo como entradas a posição atual ($\beta$) , o valor de referência ($\beta_{com}$) e o sinal de controle, que nada mais é do que a largura de pulso entregue ao motor. Temos como saída da RNA, o sinal de controle, pois esse na prática, é um sinal modulado contendo a largura de pulso para o motor, onde a rede neural é mais assertiva devido ao comportamento não-linear, também característico de uma RNA. Após o treinamento da RNA, ela é usada para se criar uma nova base de dados, onde ela recebe como parâmetros um sinal que é uma sugestão de resposta ao degrau (Sinal Objetivo) fornecida pelo usuário, ou ainda, uma representação do sistema em forma de um sistema de primeira ordem, pois esse, apresenta características melhores do que o sistema original. Basicamente, o objetivo de se fornecer esse sinal, é orientar a regressão não-linear ao ponto ótimo ou algo próximo a ele.
 
-Por último, é feita e extração do parâmetros do controlador via regressão, onde o antigo sinal de controle é modulado através da variação dos coeficientes do controlador PID discreto até possuir a forma de onda do novo sinal, que foi gerado pela rede neural. Essa regressão é feita usando como função de minimização, o próprio controlador PID discreto, como pode ser visto na equação da sequência:
+Por último, é feita e extração dos parâmetros do controlador via regressão, onde o antigo sinal de controle é modulado através da variação dos coeficientes do controlador PID discreto até possuir a forma de onda do novo sinal, que foi gerado pela rede neural. Essa regressão é feita usando como função de minimização, o próprio controlador PID discreto, como pode ser visto na equação da sequência:
 
 \begin{equation}\label{eq:motor_accel}
 u(t) = K_c e(t) + \frac{K_c}{T_i}\sum_{n=0}^{N}{e(t)dt}-K_cT_d\frac{P[n]-P[n-1]}{dt}
 \end{equation}
 
-Onde essa equação é análoga as equações do controlador PID discreto, descritas no referencial teórico, onde dt é a diferença de tempo entre as amostras, P é a variável de processo, e(t) é o erro instantâneo. A partir dessa equação, podemos implementar uma função de minimização, que está no script em Python da sequência:
+Onde essa equação é análoga as equações do controlador PID discreto, descritas no referencial teórico, onde dt é a diferença de tempo entre as amostras, P é a variável de processo, e(t) é o erro instantâneo. A partir dessa equação, podemos implementar uma função de minimização, que está no código 1.
 
 \begin{lstlisting}[caption={Minimização da função do controlador PID}]
 funcao(Kp, Ti, Td, n, dados_objetivo, y_original, soma_erro) :
     erro = referencia - dados_objetivo[n]
     se (n>0) :
         soma_erro += erro
-        derivada =  (dados_objetivo[n] -  dados_objetivo[n-1]/dt
+        derivada =  ({}dados_objetivo[n] -  dados_objetivo[n-1]/dt
         saida_controlador = Kp * erro + (Kp/Ti)*soma_erro*dt - Kp*Td*derivada
     se nao :
         saida_controlador = 0

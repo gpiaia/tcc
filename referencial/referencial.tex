@@ -40,7 +40,7 @@ Onde $\vec{F}$ é a força, $\vec{p}$ é o momento linear, $\vec{v}$ é a veloci
 \vec{F}_i=\vec{f}_{ie}+\sum_{i\neq j}^{N}{\vec{f}_{ie}} = m_i\vec{a}_i
 \end{equation}
  
- Onde, $\vec{f}_{ie}$ é a força externa e $\vec{f}_{ij}$ é a força interna de carda parte j que compõe o corpo i e $m_i\vec{a}_i$ é a massa e a força resultante no corpo rígido. Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
+ Onde, $\vec{f}_{ie}$ é a força externa e $\vec{f}_{ij}$ é a força interna de cada parte j que compõe o corpo i e $m_i\vec{a}_i$ é a massa e a força resultante no corpo rígido. Ao unirmos N partículas para formar um corpo rígido, estamos somando todas as forças externas e as forças internas de todos os corpos da seguinte forma:
 
 \begin{equation}
   \sum_{i=1}^{N}{\vec{F}_i}=\sum_{i=1}^{N}{\vec{f}_i}+\sum_{i=1}^{N}{\sum_{i\neq j}^{N}{\vec{f}_ij=}}\sum_{i=1}^{N}{m_i\vec{a}_i} 
@@ -52,7 +52,7 @@ Segundo a 3ª Lei de Newton, como o corpo j exerce uma força $\vec{f}_{ji}$ em 
   \vec{F}_{e}=\sum_{i=1}^{N}{\vec{f}_{ie}}=\sum_{i=1}^{N}{m_i\vec{a}_i} 
 \end{equation}
 
-A imagem \ref{fig:translacao_referencial_snider_p15}, representa o vetor posição $\vec{r_{com}}$ de um corpo rígido em relação a origem. A descrição matemática desse vetor pode ser visto na equação \ref{eq:rcom}.
+A imagem \ref{fig:translacao_referencial_snider_p15}, representa o vetor posição $\vec{r}_{com}$ de um corpo rígido em relação a origem. A descrição matemática desse vetor pode ser visto na equação \ref{eq:rcom}.
 
 \begin{figure}[H]
   \caption{Representação de $\vec{r}_{com}$}
@@ -107,7 +107,7 @@ A \textit{dinâmica de rotação} descreve o movimento de um corpo rígido em re
 Já quando as partículas estão dispostas sobre os planos xy, xz e yz, temos:
 
 \begin{equation}
-  I_{xy}=-\sum_{i=1}^{N}{m_ix_iy_i}=I_{xy}
+  I_{xy}=-\sum_{i=1}^{N}{m_ix_iy_i}=I_{yx}
 \end{equation}
 
 \begin{equation}
@@ -136,7 +136,7 @@ Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{y
 \omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}
 \end{equation}
 
-A aceleração angular $\alpha$, nada mais é do que a primeira derivada da velocidade angular:
+A aceleração angular $\alpha$, nada mais é do que a derivada primeira da velocidade angular:
 
 \begin{equation}
 \alpha\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\omega}{\Delta t}=\frac{d\omega}{dt}
@@ -154,7 +154,7 @@ Não menos importante, é a expressão que relaciona a velocidade angular $\omeg
 {\omega}^{2}={\omega_0}^{2}+2\alpha(\beta-\beta_0) 
 \end{equation}
 
-Como foi feito na dinâmica de translação, precisamos relacionar os momentos e a aceleração angular $\alpha$. Para isso vamos começar relacionando o torque $\vec{\tau}$ com a derivada do momento angular $\vec{L}$:
+Agora, precisamos relacionar os momentos e a aceleração angular $\alpha$. Para isso vamos começar relacionando o torque $\vec{\tau}$ com a derivada do momento angular $\vec{L}$:
 
 \begin{equation}
 \vec{\tau}=\dot{\vec{L}}
@@ -184,7 +184,7 @@ Por consequência, descrevemos o torque da seguinte maneira:
 \vec{\tau}=I\dot{\vec{\omega}}+\vec{\omega}\times I \vec{\omega}
 \end{equation}
 
-Como temos o momento de inércia do corpo rígido representado em forma de matriz, precisamos mudar a representação a matricial. Começaremos pela velocidade angular $\vec{\omega}$, que em módulo, pode ser descrita da seguinte forma:
+Como temos o momento de inércia do corpo rígido representado na forma matricial, precisamos mudar a representação a matricial. Começaremos pela velocidade angular $\vec{\omega}$, que em módulo, pode ser descrita da seguinte forma:
 
 \begin{equation}
 \left|\vec{\omega}\right|=\begin{bmatrix}\omega_1\\\omega_2\\\omega_2\end{bmatrix}
@@ -196,7 +196,7 @@ Se fizermos o mesmo com a equação \ref{eq:torque}, temos:
 \begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
 \end{equation}
 
-Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Além disso, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações a seguir.
+Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Além disso, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações a seguir:
 
 \begin{equation}
   \tau_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 
@@ -238,7 +238,7 @@ Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexy
   \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 \end{equation}
 
-Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma expressão que representa a reação em forma de variação de velocidade que um torque provoca.
+Assim, conseguimos a relação da velocidade com o torque aplicado. Essa é uma expressão que representa a reação em forma de variação de velocidade que um torque provoca.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +248,7 @@ Assim conseguimos a relação da velocidade com o torque aplicado. Essa é uma e
 Uma roda de reação consiste em um dispositivo que é fixado em um eixo de motor, com o objetivo de interferir na posição de um corpo através da variação de velocidade angular das rodas. Quando a roda sofre uma variação da sua velocidade angular, ela exerce um torque em uma determinada direção \cite{BongWie2001}. Esse efeito ocorre devido à conservação do momento angular do corpo, logo, se a roda está sendo desacelerada, o corpo tende se opor a esse movimento. Na figura \ref{fig:satellite_controlhand_p1306} podemos ver 3 rodas de reação dispostas nos 3 eixos de um corpo rígido.
 
 \begin{figure}[H]
-  \caption{Representação simplificada de um corpo rígido com rodas de reação.}
+  \caption{Representação de um corpo rígido com rodas de reação.}
   \begin{center}
       \includegraphics[scale=0.65]{referencial/img/satellite_controlhand_p1306}
   \end{center}
@@ -268,7 +268,7 @@ Onde $L_s$ representa o momento angular do satélite e $\vec{L}_{\omega}$ o mome
 \vec{L}_s=I\vec{\omega}
 \end{equation}
 
-E o momento angular nas rodas de ração pode ser escritos da seguinte forma:
+E o momento angular nas rodas de reação pode ser escrito da seguinte forma:
 
 \begin{equation}
 \vec {L}_{\omega} =J_{\omega}\vec{\psi}_{\omega}
@@ -280,7 +280,7 @@ Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi}_{\o
 \vec{\tau}_{\omega}=\dot{\vec{L}}_{\omega}=J_{\omega}\dot{\vec{\psi}}_{\omega}
 \end{equation}
 
-E por fim, podemos relacionar as velocidades angulares do satélite com o as inércia e as velocidades das rodas da seguinte forma:
+E por fim, podemos relacionar as velocidades angulares do satélite com a inércia e as velocidades das rodas, isso se dá da seguinte forma:
 
 \begin{equation}\label{eq:modeloA}
   \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi}}_{\omega 1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
@@ -288,7 +288,7 @@ E por fim, podemos relacionar as velocidades angulares do satélite com o as in�
 
 \begin{equation}\label{eq:modeloB}
   \dot{\omega_{2}}=\frac{J_{\omega 2}\dot{\vec{\psi}}_{\omega 2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
-\end{equation},
+\end{equation}
 
 \begin{equation}\label{eq:modeloC}
   \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi}}_{\omega 3}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
@@ -332,14 +332,14 @@ O controlador proporcional-integral-derivativo é um dos controladores mais util
   u(t) = K\left((e(t)+\frac{1}{T_i}\int_{0}^{t}{e(\tau)}d\tau+T_d\frac{de(t)}{dt}\right) 
 \end{equation}
 
-Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995}.s
+Onde \textit{e(t)} é o erro, \textit{$T_i$} é o tempo integral, \textit{$T_d$} é o tempo derivativo e \textit{K} o ganho proporcional. Uma outra forma de se representar os tempos integral e derivativo, é através dos ganhos \textit{$K_i$} que é o ganho integral e o \textit{$K_d$}, que é o ganho derivativo \cite{Astrom1995}.
 
-Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{err(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
+Na figura \ref{fig:pid_controller_Snider_p35}, podemos ver a configuração mais utilizada do controlador PID, onde $\beta_{com}(S)$ é o valor do sinal de referência no domínio da frequência, \textit{e(S)} o erro, \textit{$K_p$} é o ganho proporcional, \textit{$K_i$} é o ganho integral, \textit{$K_d$} é o ganho derivativo, \textit{D(S)} é um distúrbio, \textit{$G_p(S)$} é a função de transferência da planta e por fim, \textit{$\beta(S)$} que é a variável de interesse \cite{Snider}.
 
 \begin{figure}[H]
   \caption{Representação do modelo paralelo de um controlador PID com distúrbios.}
   \begin{center}
-      \includegraphics[scale=0.55]{referencial/img/pid_controller_Snider_p35}
+      \includegraphics[scale=0.65]{referencial/img/pid_controller_Snider_p35}
   \end{center}
   \fonte{Adaptado de \citeonline{Snider}.} 
   \label{fig:pid_controller_Snider_p35}
@@ -391,7 +391,7 @@ Z = e^{-Ts}
 Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o valor do sinal analógico amostrado no momento k, y(k). Isso pode ser conferido na equação as seguir.
 
 \begin{equation}
-  y(z) \sum_{k=0}^{\infty}{y[k]z^{-k}} = y[0] + y[1]z^{-1}+y[2]z^{-2}...
+  y(z) =  \sum_{k=0}^{\infty}{y[k]z^{-k}} = y[0] + y[1]z^{-1}+y[2]z^{-2}...
  \end{equation} 
 
  Se usarmos os Teoremas da Tradução, Valor Inicial e Valor Final, conseguimos expressar uma função da seguinte forma \cite{BongWie2001}:
@@ -441,7 +441,7 @@ Conseguimos expressar o controlador PID no domínio z da seguinte forma:
   u(t) = -K\left[1 + \frac{1}{T_i}\frac{T}{1-z^{-1}} + T_d\frac{1-z^{-1}}{T} \right]e(t)
 \end{equation}
 
-Com isso, podemos representar de forma discreta o controlador PID, isso pode ser visto na equação da sequência:
+Com isso, podemos representar de forma discreta o controlador PID, que pode ser visto na equação da sequência:
 
 \begin{equation}\label{eq:pid_equation}
   u(t) = -K_p\left[y[k]-\frac{1}{T_i}{\hat{u}[k]}-T_d\frac{y[k]-y[k-1]}{T}\right]
@@ -460,7 +460,7 @@ Desse modo, concluímos a modelagem de um controlador PID, com um conjunto de eq
 
 \subsubsection{Filtro de Kalman}
 
-Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando a instabilidade o sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
+Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois, não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando à instabilidade do sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
 
 Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
 
@@ -473,7 +473,7 @@ Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um 
   \label{fig:kalman_levine_p591}
 \end{figure}
 
-Onde $u(t)$ é o sinal do controlador, $y(t)$ é o sinal amostrado da saída da planta, $\hat {y}(t) $ é a saída estimada, H é o ganho do filtro e A, B e C são as matrizes em espaço de estados da dinâmica da planta.
+Onde $U(S)$ é o sinal do controlador, $Y(S)$ é o sinal amostrado da saída da planta, $\hat {Y}(S)$ é a saída estimada, H é o ganho do filtro e A, B e C são as matrizes em espaço de estados da dinâmica da planta.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -490,7 +490,7 @@ Como podemos ver no modelo matemático e gráfico dos controladores PID, os valo
 Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e Nichols. Esses dois métodos são baseados em características da resposta ao degrau e com a resposta em frequência. Na figura \ref{fig:ziegler-nichols_astrom_p135} podemos ver a resposta ao degrau e os parâmetros de atraso (L) e velocidade da resposta (a), que são usados para o cálculos dos parâmetros do controlador  \cite{Astrom1995}. 
 
 \begin{figure}[H]
-  \caption{Resposta ao degrau e seus parâmetros.}
+  \caption{Parâmetros para a sintonia de controladores PID a partir da resposta ao degrau.}
   \begin{center}
       \includegraphics[scale=0.75]{referencial/img/ziegler-nichols_astrom_p135}
   \end{center}
@@ -498,9 +498,9 @@ Dois métodos clássicos de sintonia foram desenvolvidos em 1942 por Ziegler e N
   \label{fig:ziegler-nichols_astrom_p135}
 \end{figure}
 
-Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K_p$, $T_i$, $T_d$ e $T_p$ com os vistos na figura \ref{fig:ziegler-nichols_astrom_p135}. O outro método de se estimar os valores do controlador, é através de duas características da resposta em frequência: uma delas que é o ganho que deixa o sistema marginalmente estável ($K_u$), e a outra, é o período do sinal de referência que deixa o sistema marginalmente estável ($T_u$). Podemos ver na tabela \ref{tab:Ziegler-Nichols-freq} as relações entre $K_p$, $T_i$, $T_d$, $T_p$ e ($K_u$) e ($T_u$).
+Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K_p$, $T_i$, $T_d$ e $T_p$ com os vistos na figura \ref{fig:ziegler-nichols_astrom_p135}. 
 
-\begin{table}
+\begin{table}[H]
   \caption{Parâmetros PID pelo método de Ziegler-Nichols - resposta ao degrau}
   \label{tab:Ziegler-Nichols}
   \centering%
@@ -517,8 +517,9 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
   \end{minipage}
 \end{table}
 
+O outro método de se estimar os valores do controlador, é através de duas características da resposta em frequência, que us a seguinte tabela para encontrar os coeficientes.
 
-\begin{table}
+\begin{table}[H]
   \caption{Parâmetros PID pelo método de Ziegler-Nichols - resposta em frequência}
   \label{tab:Ziegler-Nichols-freq}
   \centering%
@@ -536,11 +537,14 @@ Na tabela \ref{tab:Ziegler-Nichols} podemos ver as relações dos parâmetros $K
 \end{table}
 
 
+Nessa última, precisamos encontrar dois parâmetros, um é o ganho que deixa o sistema marginalmente estável ($K_u$), e a outro, é o período do sinal de referência que deixa o sistema marginalmente estável ($T_u$). Como podemos ver na tabela \ref{tab:Ziegler-Nichols-freq} as relações entre $K$, $T_i$, $T_d$, $T_p$ com ($K_u$) e ($T_u$). Após a apresentação dos métodos clássicos, precisamos compreender os métodos automáticos.
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Sintonia Automática de Controladores}
 
-Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, ao um simples comando do usuário. Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau, podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
+Como muitos sistemas sofrem variações temporais, distúrbios e o interesse do usuário em modificar constantemente a resposta da planta, cria-se a necessidade de automatizar o processo de sintonia, a um simples comando do usuário. Além da simplicidade do conceito de implementação, os controladores PID são muito utilizados pela possibilidade de auto sintonia e adaptatividade dos controladores, pois a partir do comportamento da resposta ao degrau, podemos calcular os parâmetros do controlador e aplicarmos sem a intervenção humana\cite{Astrom1995}. Na figura \ref{fig:escolha_controle_astrom_p236}, podemos a partir do comportamento da planta, escolher a, ou as técnicas mais adequadas que devemos implementar para controlar de forma satisfatória a planta.
 
 \begin{figure}[H]
   \caption{Fluxograma para a escolha do método de sintonia.}
@@ -573,10 +577,10 @@ Características da resposta em frequência podem ser descobertas se somarmos ao
   N(a)=\frac{4d}{\pi a}\left(\sqrt{1-\left(\frac{\varepsilon}{a}\right)^{2}}-i\frac{\varepsilon}{a}\right) 
 \end{equation}
 
-Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{$a_r$} é a amplitude do sinal de referencia \cite{Levine1996}. Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
+Onde \textit{d} é a amplitude de oscilação do relé (normalmente até 10\% do sinal de referência), \textit{$\varepsilon$} é a histerese do relé e \textit{$a$} é a amplitude de oscilação da saída \cite{Levine1996}. Com isso, podemos calcular os parâmetros intermediários para a sintonia do controlador da seguinte forma:
 
 \begin{equation}
-  K_u \approx \frac{4d}{\pi a_r}
+  K_u \approx \frac{4d}{\pi a}
 \end{equation}
 
 Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses valores, podemos recorrer a tabela do método Ziegler-Nichols em resposta em frequência (Tabela \ref{tab:Ziegler-Nichols-freq}).
@@ -586,7 +590,7 @@ Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses val
 
 \section{Estado da Arte - Controladores Inteligentes}
 
-O estado da arte dentro de controle, está na criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. As duas principais formas de controle inteligente utilizadas na atualidade, são a por \textit{algoritmos genéticos} e \textit{por redes neurais}, onde a por redes neurais será explicada na sequência.
+O estado da arte dentro de controle, está na criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. Uma das principais formas de controle inteligente utilizadas na atualidade, é a por \textit{por redes neurais artificiais}, será explicada na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -638,20 +642,20 @@ Em controle, as RNAs são usadas principalmente em sistemas não lineares, onde 
   \label{fig:pid_neural_chen_p212}
 \end{figure}
 
-Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima Geral) que é usado para extrair os parâmetros $K$ $T_i$ $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
+Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima Geral) que é usado para extrair os parâmetros $K$, $T_i$ e $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
 
 
 %#########################
 
 \subsubsection{Regressão Não-Linear Robusta}
 
-Regressão é um método matemático para o ajuste de curva através da otimização de parâmetros que compõem a equação característica do sinal. O caso de interesse, é a regressão para sinais não-lineares, os quais são provenientes da RNA, que precisarão ser otimizados sobre a equação característica do controlador PID (equação \ref{eq:pid_equation}). De forma genérica, a equação que descreve um modelo não-linear pode ser descrita da seguinte forma \cite{robust2019}:
+Regressão é um método matemático para o ajuste de curvas através da otimização de parâmetros que compõem a equação característica do sinal. O caso de interesse, é a regressão para sinais não-lineares, os quais são provenientes da RNA, que precisarão ser otimizados sobre a equação característica do controlador PID (equação \ref{eq:pid_equation}). De forma genérica, a equação que descreve um modelo não-linear pode ser descrita da seguinte forma \cite{robust2019}:
 
 \begin{equation}
  y_i = f(x_i; \theta_e) + \epsilon_i, \quad\quad i = 1,...,n
 \end{equation}
 
-Onde $y_i$ é a resposta observável, $x_i$ é o vetor k-dimensional com os valores conhecidos e $\theta_e$ é p-dimensional com valores desconhecidos que influenciam a reposta observável e $\epsilon_i$ é o erro que satisfaz alguma regularidade estocástica. 
+Onde $y_i$ é a resposta observável, $x_i$ é o vetor k-dimensional com os valores conhecidos e $\theta_e$ é p-dimensional com valores desconhecidos que influenciam a reposta observável e $\epsilon_i$ é o erro que satisfaz alguma distribuição estocástica. 
 
 Um dos métodos mais usados para regressão, independente da linearidade do sistema, é o \textit{Método dos mínimos quadrados} (MMQ), que pode ser representado da seguinte forma:
 
@@ -659,7 +663,7 @@ Um dos métodos mais usados para regressão, independente da linearidade do sist
  S(\theta_e) = \sum_{i=1}^{n}[y_i-f(x_i;\theta_e)]^2 
 \end{equation}
 
-Esse método por definição, é usado onde as amostras obedecem uma distribuição normal. Quando isso não é verdadeiro, usa-se o método MMQ robusto, onde o erro pode assumir outras distribuições mantando a boa resposta da regressão. Na figura \ref{fig:robust_regression}, podemos ver a comparação entre os métodos MMQ e MMQ Robusto, ficando clara a melhor resposta do MMQ Robusto.
+Esse método por definição, é usado onde as amostras obedecem uma distribuição normal. Quando isso não é verdadeiro, usa-se o método MMQ robusto, onde o erro pode assumir outras distribuições, garantindo uma boa resposta da regressão. Na figura \ref{fig:robust_regression}, podemos ver a comparação entre os métodos MMQ e MMQ Robusto, ficando clara a melhor resposta do MMQ Robusto.
 
 \begin{figure}[H]
   \caption{Comparação entre os métodos de regressão não-lineares.}
@@ -670,4 +674,4 @@ Esse método por definição, é usado onde as amostras obedecem uma distribuiç
   \label{fig:robust_regression}
 \end{figure}
 
-Os últimos itens abordados, apontam algumas das modernas técnicas aplicadas em controle, as quais aplicarei no presente trabalho de forma conjunta, propondo uma técnica afim para a sintonia de controladores. Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.
+Os últimos itens abordados, apontam algumas das modernas técnicas aplicadas em controle, as quais, aplicarei no presente trabalho de forma conjunta, propondo uma técnica afim para a sintonia de controladores. Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.
