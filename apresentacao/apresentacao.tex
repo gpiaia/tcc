@@ -88,77 +88,30 @@ Rodas de Reação}
 \begin{frame}{Introdução}
 	\begin{itemize}
 		\justifying
-		\item O controle acurado da posição é
-necessário para manter o alinhamento com o planeta ou alvo. 
 		\item Uma das formas de se controlar a posição de um satélite é através da variação do momento angular de rodas.
 		\item Diversas técnicas de controle são empregadas para se controlar essa posição. O tipo mais usado é o controlador PID  (Proporcional-Integral-Derivativo).
-		\item Esses controladores necessitam de sintonia para que tenham uma performance satisfatória.
 		\item Este trabalho tem por principal objetivo a implementação em um sistema embarcado
 de um controlador com sintonia automática utilizando conceitos de controle inteligente e testa-lo em um simulador de satélites com rodas de reação.
     \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Referencial Teórico}
-\begin{frame}{Referencial Teórico - Mecânica de corpo rígido}
-	\begin{itemize}
-		\justifying
-		\item Para a modelagem, partimos do princípio do torque ($\vec{\tau}$) gerado pela variação instantânea do momento angular ($\dot{\vec{L}}$):
-    \end{itemize}
-
-	\begin{itemize}
-		\justifying
-		\item Onde o momento angular pode ser descrito da seguinte forma:
-    \end{itemize}
-
-	\begin{equation}\label{eq:iomega}
-		\vec{L}=I\vec{\omega}
-	\end{equation}
-
-	\begin{itemize}
-		\justifying
-		\item Sendo $I$ o momento de inércia e $\vec{\omega}$ o vetor velocidade angular.
-    \end{itemize}
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Referencial Teórico - Mecânica de corpo rígido}
-	\begin{itemize}
-		\justifying
-		\item Após a devida modelagem, conseguimos relacionar os torques ($\tau_{1}$, $\tau_{2}$ e $\tau_{3}$), momentos de inércia em cada eixo (A, B e C) com as derivadas primeiras das velocidades angulares ($\dot{\omega_{1}}$, $\dot{\omega_{2}}$ e $\dot{\omega_{3}}$) 
-    \end{itemize}
-
-	\begin{equation}
-	  \dot{\omega_{1}}=\frac{\tau_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
-	\end{equation}
-	\begin{equation}
-	  \dot{\omega_{2}}=\frac{\tau_{2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
-	\end{equation}
-	\begin{equation}
-	  \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
-	\end{equation}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Referencial Teórico - Rodas de Reação}
+	\begin{columns}
+    \begin{column}{0.50\textwidth}
     \begin{figure}[HT]
 		\begin{center}
 		\captionsetup{justification=centering}
-        \includegraphics[scale=.42]{../referencial/img/satellite_controlhand_p1306}
+        \includegraphics[scale=.35]{../referencial/img/satellite_controlhand_p1306}
         \caption{Representação de um corpo rígido com rodas de reação. \newline
         		 Fonte: Adaptado de \citeonline{Levine1996}.}
 		\label{FIG_ADAPTATIVO}
         \end{center}
 	\end{figure}
-\end{frame}
+    \end{column}
+    \begin{column}{0.5\textwidth}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Referencial Teórico - Rodas de Reação}
 	\begin{itemize}
 		\justifying
 		\item Princípio da conservação do momento angular:
@@ -168,25 +121,21 @@ de um controlador com sintonia automática utilizando conceitos de controle inte
 		\vec{L}_{total}=\vec{L}_s+\vec{L}_{\omega}=constante 
 	\end{equation}
 
-		\begin{itemize}
-		\justifying
-		\item E se substituirmos o torque pela seguinte relação:
-    \end{itemize}
-       \begin{equation}
-		\vec{\tau}=\dot{\vec{L}}
-	\end{equation}
-
-	\begin{itemize}
-		\justifying
-		\item No próximo slide temos a relação mais apropriada para a modelagem.
-    \end{itemize}
+	\end{column}
+\end{columns}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Referencial Teórico - Rodas de Reação}
+\begin{frame}{Referencial Teórico - Modelo}
 
-	\begin{equation}\label{eq:modeloA}
+ \begin{columns}
+    \begin{column}{0.50\textwidth}
+	\begin{itemize}
+		\justifying
+		\item Na sequência, temos a relação mais apropriada para a modelagem:
+    \end{itemize}
+    	\begin{equation}\label{eq:modeloA}
 	  \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi}}_{\omega 1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
 	\end{equation}
 
@@ -197,26 +146,16 @@ de um controlador com sintonia automática utilizando conceitos de controle inte
 	\begin{equation}\label{eq:modeloC}
 	  \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi}}_{\omega 3}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
 	\end{equation}
+    \end{column}
+    \begin{column}{0.5\textwidth}
 
 	\begin{itemize}
 		\justifying
-		\item Assim, conseguimos relacionar o momento angular das rodas ($J_{\omega 1}$, $J_{\omega 2}$ e $J_{\omega 3}$) com a derivada da velocidade das mesmas ($\dot{\vec{\psi}}_{\omega 1}$, $\dot{\vec{\psi}}_{\omega 2}$ e $\dot{\vec{\psi}}_{\omega 3}$).
+		\item Onde  $J_{\omega 1}$, $J_{\omega 2}$ e $J_{\omega 3}$ são os momentos angulares das rodas, $\dot{\vec{\psi}}_{\omega 1}$, $\dot{\vec{\psi}}_{\omega 2}$, $\dot{\vec{\psi}}_{\omega 3}$ são as derivadas das velocidades das mesmas, $\dot{\omega_1}$, $\dot{\omega_2}$ e $\dot{\omega_3}$ são as derivadas das velocidades nos eixos cartesianos do satélite e A, B, C são os momentos de inércia do satélite nos respectivos eixos.
     \end{itemize}
+	\end{column}
+\end{columns}
 
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Referencial Teórico - Controle}
-    \begin{figure}[HT]
-		\begin{center}
-		\captionsetup{justification=centering}
-        \includegraphics[scale=.35]{../referencial/img/transient_ogata_p170}
-        \caption{Parâmetros de uma resposta ao degrau de um sistema de segunda ordem ou superior. \newline
-        		 Fonte: Adaptado de \citeonline{Ogata}.}
-		\label{FIG_ADAPTATIVO}
-        \end{center}
-	\end{figure}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -269,20 +208,6 @@ de um controlador com sintonia automática utilizando conceitos de controle inte
     \begin{figure}[HT]
 		\begin{center}
 		\captionsetup{justification=centering}
-        \includegraphics[scale=.35]{../referencial/img/neuronio_unal_p6}
-        \caption{Célula de um neurônio natural e modelo matemático respectivo. \newline
-        		 Fonte: Adaptado de  \citeonline{Unal2013}.}
-		\label{FIG_ADAPTATIVO}
-        \end{center}
-	\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Referencial Teórico - Estado da Arte}
-    \begin{figure}[HT]
-		\begin{center}
-		\captionsetup{justification=centering}
         \includegraphics[scale=.42]{../referencial/img/pid_neural_chen_p212}
         \caption{Controlador PID com rede neural. \newline
         		 Fonte: Adaptado de \citeonline{Chen2004}.}
@@ -292,6 +217,7 @@ de um controlador com sintonia automática utilizando conceitos de controle inte
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Metodologia}
 \begin{frame}{Metodologia - Hardware}
 
@@ -589,8 +515,8 @@ RMSE \approx 1.0112
     \begin{itemize}
         \justifying
 		\item Substituição do inercial simples por um absoluto com processamento integrado. 
-		\item Criação de um interface gráfica para o usuário.
-		\item Essa interface ser didática, auxiliando o ensino da teoria de controle.  
+		\item Criação de uma interface gráfica para o usuário.
+		\item Essa interface será didática, auxiliando o ensino da teoria de controle.  
 		\item Disponibilizar todos os códigos fonte no GitHub e Bitbucket.
 		\end{itemize}
 \end{frame}
