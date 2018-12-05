@@ -1,13 +1,13 @@
 \chapter{Metodologia}
 
-A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que fazem parte do satélite, entre eles: as rodas de reação, motor DC (Direct Current - corrente contínua), mancal a ar e hastes. Também contempla as especificação dos componentes eletrônicos que constituem o satélite. É na segunda etapa que ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possa fornecer torque para tirar da inércia a planta. Já na terceira etapa, são abordados os elementos de software, de rede e supervisão do satélite. Nessa etapa também se encontram as especificações de software, desenvolvimento do software de controle e supervisão.
+A metodologia do presente trabalho é dividida em três principais partes. A primeira é a etapa de projeto dos componentes mecânicos que fazem parte do satélite, entre eles: as rodas de reação, motor DC (\textit{Direct Current} - corrente contínua), mancal a ar e hastes. Também contempla as especificação dos componentes eletrônicos que constituem o satélite. É na segunda etapa que ocorre a modelagem completa do sistema e especificações das limitações de movimentação do satélite, juntamente com a elaboração dos diagramas de blocos do controle. Nessa etapa também é feita a modelagem do motor DC, para que possa fornecer torque para tirar da inércia a planta. Já na terceira etapa, são abordados os elementos de \textit{software}, de rede e supervisão do satélite. Nessa etapa também se encontram as especificações e o desenvolvimento do \textit{software} de controle e supervisão.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Hardware}
 
-Após a modelagem apresentada no referencial teórico, é possível modelar um simulador de satélite de fabricação factível.  O mancal a ar, a base de suporte do simulador do satélite, rodas de reação, motores brushless (motor de corrente contínua sem escovas) e os outros elementos, podem ser vistos na figura \ref{fig:satelite_completo}.
+Após a modelagem apresentada no referencial teórico, é possível modelar um simulador de satélite de fabricação factível.  O mancal a ar, a base de suporte do simulador do satélite, rodas de reação, motores \textit{Brushless} (motor de corrente contínua sem escovas) e os outros elementos, podem ser vistos na figura \ref{fig:satelite_completo}.
 
 \begin{figure}[H]
   \caption{Desenho mecânico completo do simulador de satélite.}
@@ -39,7 +39,7 @@ O elemento de dinâmica mais importante que deve ser dimensionado, é o corpo do
 
 Onde \textit{hx} é a haste do motor que atua no eixo x, \textit{hy} é a haste do motor que atua no eixo y, \textit{hz} é a haste do motor que atua no eixo z, \textit{hb} é a haste da bateria e \textit{se} é a semiesfera que é a interface entre o corpo e o mancal a ar. Esse último, apresenta explicação na sequência. O projeto leva em consideração a distribuição de massa e os centros de massa, pois o simulador de satélite deve ficar o mais simétrico e em equilíbrio possível, facilitando a atuação do controle que prevê sua simetria.
 
-Através do software de desenho mecânico SolidWorks, onde o projeto foi desenvolvido, conseguimos calcular o peso do satélite, que é de aproximadamente $\SI{1.25}{\kg}$, contado com a bateria de polímero de Lítio e outro periféricos. Esse valor é necessário para o dimensionamento das rodas de reação, que também será descrito na sequência. Ainda, com o mesmo software, conseguimos os valores de momento de inércia máximo entre os eixos, que é de aproximadamente $\SI{0.5}{\kg\meter\squared}$, o qual é usado para dimensionamento das rodas de reação.
+Através do \textit{software} de desenho mecânico SolidWorks\copyright, onde o projeto foi desenvolvido, conseguimos calcular o peso do satélite, que é de aproximadamente $\SI{1,25}{\kg}$, contado com a bateria de polímero de Lítio e outro periféricos. Esse valor é necessário para o dimensionamento das rodas de reação, que também será descrito na sequência. Ainda, com o mesmo \textit{software}, conseguimos os valores de momento de inércia máximo entre os eixos, que é de aproximadamente $\SI{0,5}{\kg\meter\squared}$, o qual é usado para dimensionamento das rodas de reação.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,7 +51,7 @@ Um dos elementos mais importantes do simulador, é o mancal a ar. Ele possibilit
 \begin{figure}[H]
   \caption{Desenho mecânico do mancal a ar.}
   \begin{center}
-      \includegraphics[scale=.45]{metodologia/img/base_desenho}
+      \includegraphics[scale=.4]{metodologia/img/base_desenho}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:base_desenho}
@@ -106,7 +106,7 @@ Essa geometria escolhida, possui momento de inércia que pode ser descrito pela 
 
 Onde $\vec{I}_{roda}$ é o momento de inércia da roda, $\rho$ é a densidade do material que compõe a roda, $h_r$ é a espessura da borda, $h_d$ é a espessura do disco, $r_e$ é o raio total da roda e $r_d$ é o raio do disco. Um conjunto de parâmetros que satisfazem as equações acima descritas à uma velocidade angular de $\SI{230.38}{\radian\per\second}$(2200 RPM) pode ser visto na tabela \ref{tab:react}. 
 
-\begin{table}
+\begin{table}[H]
   \caption{Dimensões das rodas de reação.}
   \label{tab:react}
   \centering%
@@ -125,12 +125,14 @@ Onde $\vec{I}_{roda}$ é o momento de inércia da roda, $\rho$ é a densidade do
   \end{minipage}
 \end{table}
 
+Com isso, concluímos o projeto da roda de reação, agora, passamos para a etapa do projeto do motor, que está na sequência.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Escolha dos Motores DC}
 
-O atuador do simulador de satélite é constituido de um conjunto de três motores Brushless dispostos um em cada eixo cartesiano. Juntamente com esses motores, são acopladas rodas de reação, que farão os movimentos de rotação do satélite. Como vimos na imagem \ref{fig:satelite_completo}, os motores e as hastes estão distribuídos de forma simétrica e afastados do centro de massa do satélite, para facilitar a movimentação promovida pelo torque dos motores. O modelo de motor escolhido foi o \textit{Turnigy D2826-6 2200kV}, que é um motor usado em aeromodelos e possui um empuxo de aproximadamente $\SI{960}{\gram}$ e relação de velocidade por de 2200 RPM por Volt. Na imagem \ref{fig:motor_roda_desenho} podemos ver parte da haste, o motor e a roda de reação, todos acoplados. 
+O atuador do simulador de satélite é constituído de um conjunto de três motores \textit{Brushless} dispostos um em cada eixo cartesiano. Juntamente com esses motores, são acopladas rodas de reação, que farão os movimentos de rotação do satélite. Como exibido na imagem \ref{fig:satelite_completo}, os motores e as hastes estão distribuídos de forma simétrica e afastados do centro de massa do satélite, para facilitar a movimentação promovida pelo torque dos motores. O modelo de motor escolhido foi o \textit{Turnigy D2826-6 2200kV}, que é um motor usado em aeromodelos que possui relação de velocidade de 2200 RPM por Volt. Na imagem \ref{fig:motor_roda_desenho} podemos ver parte da haste, o motor e a roda de reação, todos acoplados. 
 
 \begin{figure}[H]
   \caption{Desenho mecânico do conjunto motor-roda.}
@@ -148,29 +150,31 @@ A roda de reação também foi usinada, pois é necessário uma roda com uma mas
 
 \subsection{Elementos Eletrônicos}
 
-A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade wireless (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de software e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento. Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}.
+A placa de desenvolvimento e prototipação de sistemas embarcados Raspberry Pi Zero W (RPi) foi a escolhida, pois ela conta com os elementos mínimos de interfaceamento com os atuadores e outros periféricos. Além disso, ela possui conectividade \textit{wireless} (sem fio), possibilitando a supervisão e controle do satélite sem fio. Como o trabalho terá o seu desenvolvimento baseado em desenvolvimento de \textit{software} e adaptações do sistema operacional, uma placa com suporte, boa documentação e comunidade ativa, facilita o desenvolvimento. 
 
-\begin{figure}[H]
-  \caption{Raspberry Pi Zero W.}
-  \begin{center}
-      \includegraphics[scale=.55]{metodologia/img/rasp_zero}
-  \end{center}
-  \fonte{Adaptado de \citeonline{Molloy2016}} 
-  \label{fig:rasp_zero}
-\end{figure}
+% Uma representação dessa placa pode ser vista na figura \ref{fig:rasp_zero}.
 
-Um outro elemento que é indispensável, é o acelerômetro, o qual desempenha o papel de sensor de realimentação da posições angulares do satélite. Sua comunicação com a RPi é dada através da interface I2C, que está descrita na seção de software. O acelerômetro informará ao modelo a velocidade angular em graus por segundo, e o algoritmo calcula a posição através da integral da velocidade instantânea em cada eixo.
+% \begin{figure}[H]
+%   \caption{Raspberry Pi Zero W.}
+%   \begin{center}
+%       \includegraphics[scale=.55]{metodologia/img/rasp_zero}
+%   \end{center}
+%   \fonte{Adaptado de \citeonline{Molloy2016}} 
+%   \label{fig:rasp_zero}
+% \end{figure}
 
-\begin{figure}[H]
-  \caption{Placa de Circuito impresso com o acelerômetro e Giroscópio MPU6050.}
-  \begin{center}
-      \includegraphics[scale=.4]{metodologia/img/pci_acelerometro_calache_p22}
-  \end{center}
-  \fonte{Adaptado de \citeonline{mpu}} 
-  \label{fig:pci_acelerometro_calache_p22}
-\end{figure}
+Um outro elemento que é indispensável, é o acelerômetro, o qual desempenha o papel de sensor de realimentação da posições angulares do satélite. Sua comunicação com a RPi é dada através da interface I2C, que está descrita na seção de \textit{software}. O giroscópio informará ao modelo a velocidade angular em graus por segundo, e o algoritmo calcula a posição através da integral da velocidade instantânea em cada eixo. Para isso, escolhemos o giroscópio MPU6050.
 
-Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electronic-Speed-Control - Controlador eletrônico de velocidade) que serão conectados com a bateria, os motores e a RPi. Após a conclusão do dimensionamento e escolha dos materiais, foi possível fazer a fabricação mecânica e montagem do simulador satélite, o qual pode ser visto nas figuras \ref{fig:base_real}, \ref{fig:corpo_real} e \ref{fig:simulador_real}.
+% \begin{figure}[H]
+%   \caption{Placa de Circuito impresso com o acelerômetro e Giroscópio MPU6050.}
+%   \begin{center}
+%       \includegraphics[scale=.35]{metodologia/img/pci_acelerometro_calache_p22}
+%   \end{center}
+%   \fonte{Adaptado de \citeonline{mpu}} 
+%   \label{fig:pci_acelerometro_calache_p22}
+% \end{figure}
+
+Ainda, para o acionamento dos motores \textit{Brushless} serão utilizados ESC (\textit{Electronic-Speed-Control} - Controlador eletrônico de velocidade) que serão conectados com a bateria, os motores e a RPi. Após a conclusão do dimensionamento e escolha dos materiais, foi possível fazer a fabricação mecânica e montagem do simulador satélite, o qual pode ser visto nas figuras \ref{fig:base_real}, \ref{fig:corpo_real} e \ref{fig:simulador_real}.
 
 \begin{figure}[H]
   \caption{Base do simulador de satélites prototipado.}
@@ -181,13 +185,13 @@ Ainda, para o acionamento dos motores Brushless serão utilizados ESC (Electroni
   \label{fig:base_real}
 \end{figure}
 
-Na imagem anterior, podemos ver a base do simulador, feita em madeira, onde se encontram a região concava do mancal e as conexão 
+Na imagem anterior, pode-se ver a base do simulador, feita em madeira, onde se encontram a região concava do mancal e as conexão 
 pneumáticas. Já na figura \ref{fig:corpo_real}, podemos ver as partes que compõem o corpo do simulador.
 
 \begin{figure}[H]
   \caption{Corpo do simulador de satélites prototipado.}
   \begin{center}
-      \includegraphics[scale=.65]{metodologia/img/corpo_real}
+      \includegraphics[scale=.7]{metodologia/img/corpo_real}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:corpo_real}
@@ -288,12 +292,12 @@ Como em partes, todo o satélite já foi modelado até agora, nessa subseção a
   \label{fig:simulink_modelo_completo_aberto}
 \end{figure}
 
-Onde o bloco subsistema Motor x, y e z, é constituído pela função de transferência da equação \ref{eq:motor_accel}, que é inserida na ferramenta Matlab da seguinte forma:
+Onde o bloco subsistema Motor x, y e z, é constituído pela função de transferência da equação \ref{eq:motor_accel}, que é inserida na ferramenta Matlab\copyright da seguinte forma:
 
 \begin{figure}[H]
   \caption{Função de transferência dos motores.}
   \begin{center}
-      \includegraphics[scale=.45]{metodologia/img/modelo_satelite_motor}
+      \includegraphics[scale=.6]{metodologia/img/modelo_satelite_motor}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:modelo_satelite_motor}
@@ -315,42 +319,42 @@ Onde o bloco subsistema PID é constituído pelos seguintes blocos:
 \begin{figure}[H]
   \caption{Digrama de blocos do controlador PID com Anti-Windup.}
   \begin{center}
-      \includegraphics[scale=.45]{metodologia/img/matlab_pid_antiwindup}
+      \includegraphics[scale=.55]{metodologia/img/matlab_pid_antiwindup}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:simulink_modelo_completo_aberto}
 \end{figure}
 
-Esse último diagrama é usado para o desenvolvimento do controle em software, onde os parâmetros do controlador são estimados pelos diferentes tipos de sintonia descritos na revisão bibliográfica. Na sequência, serão descritos os métodos que serão utilizados para implementar esse modelo em Python e embarcar isso na RPi.
+Esse último diagrama é usado para o desenvolvimento do controle em \textit{software}, onde os parâmetros do controlador são estimados pelos diferentes tipos de sintonia descritos na revisão bibliográfica. Na sequência, serão descritos os métodos que serão utilizados para implementar esse modelo em Python e embarcar-lo na RPi.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Software}
+\section{\textit{Software}}
 
-Após a modelagem, devemos implementar o modelo e configurar todas as interfaces com os atuadores e sistema supervisório. A figura \ref{fig:comunicacao_projeto} descreve muito bem a forma que se dá a comunicação entre os periféricos, através da interface I2C para a RPi se comunicar com o acelerômetro/giroscópio, PWMs (Pulse Width Modulation - Modulação por Largura de Pulso) para a comunicação com os ESC e o protocolo SSH (Secure Shell) para a comunicação com o usuário.
+Após a modelagem, devemos implementar o modelo e configurar todas as interfaces com os atuadores e sistema supervisório. A figura \ref{fig:comunicacao_projeto} descreve a forma que se dá a comunicação entre os periféricos, através da interface I2C para a RPi se comunicar com o acelerômetro/giroscópio, PWMs (\textit{Pulse Width Modulation} - Modulação por Largura de Pulso) para a comunicação com os ESC e o protocolo SSH (\textit{Secure Shell}) para a comunicação com o usuário.
 
 \begin{figure}[H]
   \caption{Representação geral do sistema.}
   \begin{center}
-      \includegraphics[scale=.65]{metodologia/img/comunicacao_projeto}
+      \includegraphics[scale=.75]{metodologia/img/comunicacao_projeto}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:comunicacao_projeto}
 \end{figure}
 
 
-Após modelada a topologia geral do sistema, é possível dividir a parte de software, onde é descrita a implementação de cada etapa, começando com a implementação do controlador e da sua sintonia, que está na sequência.
+Após modelada a topologia geral do sistema, é possível dividir a parte de \textit{software}, onde é descrita a implementação de cada etapa, começando com a implementação do controlador e da sua sintonia, que está na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Implementação do Controlador PID e Métodos de Sintonia}
 
-Nessa etapa, ocorre a implementação usando a linguagem de programação Python, a qual, possui diversas bibliotecas de controle, interfaceamento e protocolos de comunicação. O desenvolvimento foi orientado para o menor tempo possível de atualização das entradas e saídas, pois, como é uma linguagem script sendo executada por um sistema operacional, algumas tarefas poderiam ser executadas em baixa prioridade, criando um comportamento não determinístico do período de amostragem. Uma solução para esse problema, foi a criação de uma interrupção via relógio que chama uma função de atualização das entradas e saídas, além do cálculo do PID e do filtro de Kalman. Na figura \ref{fig:software_model} podemos ver o fluxograma do scritp de controle.
+Nessa etapa, ocorre a implementação usando a linguagem de programação Python, a qual, possui diversas bibliotecas de controle, interfaceamento e protocolos de comunicação. O desenvolvimento foi orientado para o menor tempo possível de atualização das entradas e saídas, pois, como é uma linguagem \textit{script} sendo executada por um sistema operacional, algumas tarefas poderiam ser executadas em baixa prioridade, criando um comportamento não determinístico do período de amostragem. Uma solução para esse problema, foi a criação de uma interrupção via relógio que chama uma função de atualização das entradas e saídas, além do cálculo do PID e do filtro de Kalman. Na figura \ref{fig:software_model} podemos ver o fluxograma do \textit{script} de controle.
 
 \begin{figure}[H]
-  \caption{Fluxograma do software de controle.}
+  \caption{Fluxograma do \textit{software} de controle.}
   \begin{center}
       \includegraphics[scale=.65]{metodologia/img/software_model}
   \end{center}
@@ -365,7 +369,7 @@ Após o desenvolvimento das malhas de controle e testes preliminares, ficou clar
 
 \subsection{Análise dos Sinais e Filtragem}
 
-Ao fazer os primeiros testes, ficou perceptível o bias (deslocamento em relação ao zero) e a gama de ruídos que compõem os sinais amostrados, isso pode ser visto na figura \ref{fig:bias_correction} (a), onde temos mais de 100.000 amostras nos três eixos. Já nas imagens \ref{fig:bias_correction} (b), (c) e (d), podemos ver o histograma dos mesmos sinais.
+Ao fazer os primeiros testes, ficou perceptível o \textit{bias} (deslocamento em relação ao zero) e a gama de ruídos que compõem os sinais amostrados, isso pode ser visto na figura \ref{fig:bias_correction} (a), onde temos mais de 100.000 amostras nos três eixos. Já nas imagens \ref{fig:bias_correction} (b), (c) e (d), podemos ver o histograma dos mesmos sinais.
 
 \begin{figure}[H]
   \caption{Características dos sinais amostrados pelo giroscópio.}
@@ -376,10 +380,10 @@ Ao fazer os primeiros testes, ficou perceptível o bias (deslocamento em relaç�
   \label{fig:bias_correction}
 \end{figure}
 
-Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal - mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos - o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como bias para as amostras do giroscópio. Os valores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
+Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal, mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos, o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como \textit{bias} para as amostras do giroscópio. Os valores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
 
 \begin{table}[H]
-  \caption{Correção do bias do giroscópio.}
+  \caption{Correção do \textit{bias} do giroscópio.}
   \label{tab:bias_correction}
   \centering%
   \begin{minipage}{.42\textwidth}
@@ -409,7 +413,7 @@ O último passo da implementação do satélite, é a sintonia das malhas de con
 
 \subsubsection{Método do Relé}
 
-A implementação desse método é simplesmente criarmos uma histerese sobre o erro, onde substituímos o sinal de controle por um valor fixo, fazendo o simulador de satélites oscilar ao tentar sair da região de histerese. Após a descoberta dos parâmetros que o levam  à oscilação sustentada, basta usarmos a equação \ref{eq:n(a)} e a tablea \ref{tab:Ziegler-Nichols-freq}.
+A implementação desse método é simplesmente criarmos uma histerese sobre o erro, onde substituímos o sinal de controle por um valor fixo, fazendo o simulador de satélites oscilar ao tentar sair da região de histerese. Após a descoberta dos parâmetros que o levam  à oscilação sustentada, basta usarmos a equação \ref{eq:n(a)} e a tabela \ref{tab:Ziegler-Nichols-freq}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -3,7 +3,7 @@
 % ||||||||||||||||||||||||||||||||||||||||||||||
 \chapter{Análise dos Resultados}
 
-Nesse capítulo são apresentados os principais resultados e as análises sobre eles, onde serão demostrados os resultados pelos métodos clássicos de sintonia, o desenvolvido nesse trabalho e por fim, uma comparação entre todos.
+Nesse capítulo apresenta-se os principais resultados e as análises sobre eles, onde serão demostrados os resultados pelos métodos clássicos de sintonia, o desenvolvido nesse trabalho e por fim, uma comparação entre todos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,7 +27,7 @@ Já na figura \ref{fig:relay} (b), podemos ver com maiores detalhes a resposta e
 
 \subsection{Método de Sintonia Automático usando RNA e Regrão Não-Linear Robusta}
 
-Primeiro passo para a sintonia via RNA e regressão, é treina-la com dados válidos, onde ela aprende o comportamento do controlador e da planta. A criação dos dados para o treinamento foi feito usando um controlador com simplesmente um ganho proporcional unitário, ou seja, a malha foi fechada usando um controlador PID com \textit{P=1}, \textit{I=0} e \textit{D=0}. O sinal usado para treinar a RNA ($\theta_z$ Treinamento) pode ser visto na figura \ref{fig:neural_output} (a), juntamente com o sinal objetivo para a regressão ($\theta_z$ Objetivo)
+Primeiro passo para a sintonia via RNA e regressão, é treina-la com dados válidos, onde ela aprende o comportamento do controlador e da planta. A criação dos dados para o treinamento foi realizado usando um controlador com simplesmente um ganho proporcional unitário, ou seja, a malha foi fechada usando um controlador PID com \textit{P=1}, \textit{I=0} e \textit{D=0}. O sinal usado para treinar a RNA ($\theta_z$ Treinamento) pode ser visto na figura \ref{fig:neural_output} (a), juntamente com o sinal objetivo para a regressão ($\theta_z$ Objetivo)
 
 \begin{figure}[H]
   \caption{Saída da RNA treinada e o sinal real.}
@@ -38,7 +38,7 @@ Primeiro passo para a sintonia via RNA e regressão, é treina-la com dados vál
   \label{fig:neural_output}
 \end{figure}
 
-Ainda, podemos observar na figura \ref{fig:neural_output} (a), onde podemos ver que o satélite oscila durante o regime transitório, como se acabasse retornando um pouco a cada novo avanço, isso é devido à rápida variação do sinal de controle que faz com que os motores perturbem o corpo com um torque contrário ao movimento, pois, a inércia do satélite é baixa e o atrito é desprezível devido ao mancal a ar. Já na figura \ref{fig:neural_output} (b), podemos ver o sinal do controlador predito pela RNA, juntamente com o sinal real amostrado no simulador de satélites. Com esses últimos dados, é possível se calcular o RMSE (Root Mean Square Error - Erro quadrático médio) da seguinte forma:
+Ainda, podemos observar na figura \ref{fig:neural_output} (a), onde podemos ver que o satélite oscila durante o regime transitório, como se acabasse retornando um pouco a cada novo avanço, isso é devido à rápida variação do sinal de controle que faz com que os motores perturbem o corpo com um torque contrário ao movimento, pois, a inércia do satélite é baixa e o atrito é desprezível devido ao mancal a ar. Já na figura \ref{fig:neural_output} (b), podemos ver o sinal do controlador predito pela RNA, juntamente com o sinal real amostrado no simulador de satélites. Com esses últimos dados, é possível se calcular o RMSE (\textit{Root Mean Square Error} - Erro quadrático médio) da seguinte forma:
 
 \begin{equation}
 RMSE = \sqrt{\frac{\sum_{t=1}^{T}(\hat{y}_t-y_t)^2}{T}}
@@ -57,7 +57,7 @@ O que é muito satisfatório, indicando que a RNA conta com um bom número de ne
 
 \subsection{Respostas ao degrau}
 
-Após todos todos os métodos de sintonia aplicados, com foco no método do relé e no desenvolvido nesse trabalho, podemos comparar as respostas ao degrau. A figura \ref{fig:pid_result} (a) representa os resultados das simulações feitas na ferramenta Simulink, onde podemos ver os resultados da sintonia do controlador PID simples e com Anti-Windup.
+Após todos os métodos de sintonia aplicados, com foco no método do relé e no desenvolvido nesse trabalho, podemos comparar as respostas ao degrau. A figura \ref{fig:pid_result} (a) representa os resultados das simulações feitas na ferramenta Simulink, onde podemos ver os resultados da sintonia do controlador PID simples e com Anti-Windup.
 
 \begin{figure}[H]
   \caption{Respostas ao degrau com sintonia via método do relé.}

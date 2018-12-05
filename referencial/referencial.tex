@@ -308,12 +308,12 @@ Como já temos as equações diferenciais que descrevem o modelo satélite, prec
 
 \subsection{Resposta ao Degrau do um Sistema}
 
-Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}. Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (maximum overshoot) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (Delay Time) é o tempo atraso de transporte, \textit{$t_r$} (rise time) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (peak time) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
+Um problema fundamental em engenharia, é prever e modelar sistemas naturais ou artificias para tirarmos o melhor proveito de suas características. Para isso, muitas técnicas foram desenvolvidas para se conseguir controlar essas variáveis de interesse \cite{Levine1996}. Uma forma clássica de representar uma resposta de uma variável de interesse, é através da resposta ao degrau. Essa pode ser vista na figura \ref{fig:transient_ogata_p170}, onde temos as principais características da resposta ao degrau de um sistema de segunda ordem ou superior. Onde \textit{$M_p$} (\textit{maximum overshoot}) é o sobressinal da variável de interesse em percentual, \textit{$t_d$} (\textit{Delay Time}) é o tempo atraso de transporte, \textit{$t_r$} (\textit{rise time}) é o tempo necessário para atingir o valor do sinal de referência, \textit{$t_p$} é o tempo de pico (\textit{peak time}) e \textit{$t_s$} (settling time) é o tempo para o sistema entrar em regime, observando um critério de erro em regime \cite{Ogata}.
 
 \begin{figure}[H]
   \caption{Parâmetros de uma resposta ao degrau de um sistema de segunda ordem ou superior.}
   \begin{center}
-      \includegraphics[scale=0.5]{referencial/img/transient_ogata_p170}
+      \includegraphics[scale=0.4]{referencial/img/transient_ogata_p170}
   \end{center}
   \fonte{Adaptado de \citeonline{Ogata}.} 
   \label{fig:transient_ogata_p170}
@@ -350,13 +350,13 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
 \begin{figure}[H]
   \caption{Modelo de um controlador PID com histerese.}
   \begin{center}
-      \includegraphics[scale=0.55]{referencial/img/pid_antiwindup_astrom_p83}
+      \includegraphics[scale=0.45]{referencial/img/pid_antiwindup_astrom_p83}
   \end{center}
   \fonte{Adaptado de \citeonline{Astrom1995}.} 
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
 
-Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a acão integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. 
+Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a ação integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -429,7 +429,7 @@ Essa expressão é de suma importância para a aquisição das variáveis que qu
 
 \subsubsection{Controlador PID Digital}
 
-Agora, desejamos descrever a representação do controlador PID da equação \ref{eq:PID} de forma discreta, para isso devemos usar a aproximação de Euler:
+Agora, dese-se descrever a representação do controlador PID da equação \ref{eq:PID} de forma discreta, para isso devemos usar a aproximação de Euler:
 
 \begin{equation}
   s = \frac{1-z^{-1}}{T}
@@ -462,7 +462,7 @@ Desse modo, concluímos a modelagem de um controlador PID, com um conjunto de eq
 
 Quando se trabalha na aquisição de grandezas físicas, encontramos ruídos nos sinais amostrados. Esses ruídos podem inviabilizar o controle de uma planta, pois, não informam o verdadeiro estado do sinal amostrado, fazendo com que o atuador atue de forma equivocada, levando à instabilidade do sistema. Uma forma de minimizar esse efeito, é utilizando o filtro de Kalman.
 
-Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico do dos sinais para estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
+Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um sistema, sujeito a ruídos estocásticos. Esse algoritmo relaciona as informações sobre a dinâmica da planta e informações sobre o comportamento estocástico dos sinais com o objetivo de estimar variáveis de estados da planta \cite{Levine1996}. Na figura \ref{fig:kalman_levine_p591}, temos a representação em diagrama de blocos do filtro de Kalman.
 
 \begin{figure}[H]
   \caption{Diagrama de blocos do filtro de Kalman.}
@@ -480,7 +480,7 @@ Onde $U(S)$ é o sinal do controlador, $Y(S)$ é o sinal amostrado da saída da 
 
 \section{Sintonia de Controladores}
 
-Como podemos ver no modelo matemático e gráfico dos controladores PID, os valores de ajuste $K_p$, $T_i$ e $T_d$  podem assumir infinitos valores, sendo necessário a escolha do melhor conjunto desses valores para que a planta desempenhe o comportamento esperado \cite{Ogata}.
+Como podemos ver na equação \ref{eq:PID}, os valores de ajuste $K_p$, $T_i$ e $T_d$  podem assumir infinitos valores, sendo necessário a escolha do melhor conjunto desses valores para que a planta desempenhe o comportamento esperado \cite{Ogata}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -590,7 +590,7 @@ Onde $T_u$ é o período de oscilação do sinal de interesse. Munido desses val
 
 \section{Estado da Arte - Controladores Inteligentes}
 
-O estado da arte dentro de controle, está na criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. Uma das principais formas de controle inteligente utilizadas na atualidade, é a por \textit{por redes neurais artificiais}, será explicada na sequência.
+O estado da arte dentro de controle, está na criação de controladores inteligentes. Controle inteligente implementa conceitos de inteligência de organismos biológicos em forma de algoritmos. Esses algoritmos são usados para automatizar os processos de sintonia, promover a adaptação do controle perante as mudanças que a planta possa apresentar ou otimizar os parâmetros atuais. Uma das principais formas de controle inteligente utilizadas na atualidade, é a por \textit{redes neurais artificiais}, será explicada na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -642,7 +642,7 @@ Em controle, as RNAs são usadas principalmente em sistemas não lineares, onde 
   \label{fig:pid_neural_chen_p212}
 \end{figure}
 
-Na imagem anterior, existe o GMV (General Minimum Variance - Variância Mínima Geral) que é usado para extrair os parâmetros $K$, $T_i$ e $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
+Na imagem anterior, existe o GMV (\textit{General Minimum Variance} - Variância Mínima Geral) que é usado para extrair os parâmetros $K$, $T_i$ e $T_d$ do modelo da rede neural linearizada \citeonline{Chen2004}.
 
 
 %#########################
@@ -668,10 +668,10 @@ Esse método por definição, é usado onde as amostras obedecem uma distribuiç
 \begin{figure}[H]
   \caption{Comparação entre os métodos de regressão não-lineares.}
   \begin{center}
-      \includegraphics[scale=0.7]{referencial/img/robust_regression}
+      \includegraphics[scale=0.55]{referencial/img/robust_regression}
   \end{center}
   \fonte{Adaptado de \citeonline{RegressionPython}.} 
   \label{fig:robust_regression}
 \end{figure}
 
-Os últimos itens abordados, apontam algumas das modernas técnicas aplicadas em controle, as quais, aplicarei no presente trabalho de forma conjunta, propondo uma técnica afim para a sintonia de controladores. Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.
+Os últimos itens abordados, apontam algumas das modernas técnicas aplicadas em controle, as quais, foram aplicadas no presente trabalho de forma conjunta, propondo uma técnica afim para a sintonia de controladores. Após elucidados os conceitos básicos para a realização do trabalho, todos os passos para a implementação da mecânica, do software e o sistema de controle serão descritos no próximo capítulo.
