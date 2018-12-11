@@ -14,7 +14,7 @@ Dentre eles, se encontram os métodos de sintonia de Ziegler-Nichols em malha fe
 \begin{figure}[H]
   \caption{Resultados do método do relé.}
   \begin{center}
-      \includegraphics[scale=0.35]{resultados/img/relay}
+      \includegraphics[width=\textwidth]{resultados/img/relay}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:relay}
@@ -32,7 +32,7 @@ Primeiro passo para a sintonia via RNA e regressão, é treina-la com dados vál
 \begin{figure}[H]
   \caption{Saída da RNA treinada e o sinal real.}
   \begin{center}
-      \includegraphics[scale=0.34]{resultados/img/neural_output}
+      \includegraphics[width=\textwidth]{resultados/img/neural_output}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:neural_output}
@@ -62,25 +62,41 @@ Após todos os métodos de sintonia aplicados, com foco no método do relé e no
 \begin{figure}[H]
   \caption{Respostas ao degrau com sintonia via método do relé.}
   \begin{center}
-      \includegraphics[scale=0.25]{resultados/img/pid_result}
+      \includegraphics[width=\textwidth]{resultados/img/pid_result}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:pid_result}
 \end{figure}
 
-Já na figura \ref{fig:pid_result} (b), podemos ver uma comparação entre o melhor resultado das simulações, ou seja, o controlador PID com Anti-Windup juntamente com o sinal real, também com Anti-Windup e sintonizado via RNA e regressão não-linear.
+Já na figura \ref{fig:pid_result} (b), podemos ver uma comparação entre o melhor resultado das simulações, ou seja, o controlador PID com Anti-Windup juntamente com o sinal real, também com Anti-Windup e sintonizado via RNA e regressão não-linear. Já a tabela \ref{tab:PIDParameters}, representa os valores dos parâmetros do controlador das respostas da figura \ref{fig:pid_result}, anteriormente apresentada.
 
-Como podemos ver, o sinal proveniente da simulação é mais rápido e com menor sobressinal. O sinal real com Anti-Windup apresentou o pior desempenho entre os três, pois teve o maior tempo de estabilização e sobressinal. O comportamento mais lento, maior sobressinal e mais ruidoso, se justifica pela presença de forças e perturbações que o modelo teórico não leva em consideração. Alguns problemas práticos que fazem o comportamento se desviar em relação ao teórico, são: a não perfeita simetria do simulador de satélites; perturbações pelo fluxo de ar no mancal, vibração excessiva dos motores, o que dificulta a aquisição de dados. Essa última pode ser vista na figura \ref{fig:pid_result_controlller} (a), onde podemos ver a velocidade angular em z da resposta real ao degrau, com um controlador PID com Anti-Windup. Percebe-se a grande presença de ruídos, muito mais do que pode ser visto na figura \ref{fig:bias_correction} (a), onde o simulador está estático.
+\begin{table}[H]
+  \caption{Parâmetros dos Controladores}
+  \label{tab:PIDParameters}
+  \centering%
+  \begin{minipage}{.55\textwidth}
+    \begin{tabular*}{\textwidth}{cccc}
+      \hline
+      Método                       & $K_p$ & $K_i$ & $K_d$\\ \hline
+      \hline
+      Método do Relé               & 1.2 & 10 & 2.5 \\ 
+      RNA + Regressão Não-Linear   & 1.2 & 2 & 0.25 \\ \hline
+    \end{tabular*}
+    \fonte{Elaborado pelo Autor.} 
+  \end{minipage}
+\end{table}
+
+Como podemos ver, o sinal proveniente da simulação é mais rápido e com menor sobressinal. O sinal real com Anti-Windup apresentou o pior desempenho entre os três, pois teve o maior tempo de estabilização e sobressinal. O comportamento mais lento, maior sobressinal e mais ruidoso, se justifica pela presença de forças e perturbações que o modelo teórico não prevê. Alguns problemas práticos que fazem o comportamento se desviar em relação ao teórico, são: a não perfeita simetria do simulador de satélites; perturbações pelo fluxo de ar no mancal, vibração excessiva dos motores, o que dificulta a aquisição de dados. Essa última pode ser vista na figura \ref{fig:pid_result_controlller} (a), onde podemos ver a velocidade angular em z da resposta real ao degrau, com um controlador PID com Anti-Windup. Percebe-se a grande presença de ruídos, muito mais do que pode ser visto na figura \ref{fig:bias_correction} (a), onde o simulador está estático.
 
 \begin{figure}[H]
   \caption{Velocidade angular instantânea e sinal de controle.}
   \begin{center}
-      \includegraphics[scale=0.26]{resultados/img/pid_result_controller}
+      \includegraphics[width=\textwidth]{resultados/img/pid_result_controller}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:pid_result_controlller}
 \end{figure}
 
-Por consequência, o sinal do controlador também apresentará grande quantidade de ruído, o que pode ser visto na figura \ref{fig:pid_result_controlller} (b), o que dificulta muito o controle. Sem a presença do filtro de Kalman devidamente ajustado, o controle não funcionaria de maneira adequada.
+Por consequência, o sinal do controlador também apresentará grande quantidade de ruído, o que pode ser visto na figura \ref{fig:pid_result_controlller} (b), o que dificulta muito o controle. Sem a presença do filtro de Kalman, o controle não funcionaria de maneira adequada.
 
 Desde o desenvolvimento mecânico, que exigiu a fabricação de todas as peças e além disso, ajustes para o perfeito funcionamento da dinâmica do simulador de satélites, os resultados foram funcionais e satisfatórios. O sistema de controle conseguiu manter uma performance que não influenciou nos resultados, mesmo que executado em um sistema operacional, que possuí escalonamento de tarefas, o que pode tornar a execução das tarefas não periódicas em muitos casos. E por fim, os resultados do método de sintonia desenvolvido usando RNA e regressão não linear, que otimizou de forma também satisfatória a resposta em relação aos métodos clássicos de sintonia.

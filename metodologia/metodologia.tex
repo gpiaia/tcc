@@ -191,7 +191,7 @@ pneumáticas. Já na figura \ref{fig:corpo_real}, podemos ver as partes que comp
 \begin{figure}[H]
   \caption{Corpo do simulador de satélites prototipado.}
   \begin{center}
-      \includegraphics[scale=.7]{metodologia/img/corpo_real}
+      \includegraphics[scale=.75]{metodologia/img/corpo_real}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:corpo_real}
@@ -337,7 +337,7 @@ Após a modelagem, devemos implementar o modelo e configurar todas as interfaces
 \begin{figure}[H]
   \caption{Representação geral do sistema.}
   \begin{center}
-      \includegraphics[scale=.75]{metodologia/img/comunicacao_projeto}
+      \includegraphics[scale=.55]{metodologia/img/comunicacao_projeto}
   \end{center}
   \fonte{Elaborado pelo Autor.} 
   \label{fig:comunicacao_projeto}
@@ -369,18 +369,7 @@ Após o desenvolvimento das malhas de controle e testes preliminares, ficou clar
 
 \subsection{Análise dos Sinais e Filtragem}
 
-Ao fazer os primeiros testes, ficou perceptível o \textit{bias} (deslocamento em relação ao zero) e a gama de ruídos que compõem os sinais amostrados, isso pode ser visto na figura \ref{fig:bias_correction} (a), onde temos mais de 100.000 amostras nos três eixos. Já nas imagens \ref{fig:bias_correction} (b), (c) e (d), podemos ver o histograma dos mesmos sinais.
-
-\begin{figure}[H]
-  \caption{Características dos sinais amostrados pelo giroscópio.}
-  %\begin{center}
-      \includegraphics[scale=.4]{metodologia/img/bias_correction}
-  %\end{center}
-  \fonte{Elaborado pelo Autor.} 
-  \label{fig:bias_correction}
-\end{figure}
-
-Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal, mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos, o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como \textit{bias} para as amostras do giroscópio. Os valores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
+Ao fazer os primeiros testes, ficou perceptível o \textit{bias} (deslocamento em relação ao zero) e a gama de ruídos que compõem os sinais amostrados. Para solucionar esse problema, e se os sinais possuem uma distribuição gaussiana, podemos usar a média aritmética de cada velocidade como \textit{bias}. Os valores calculados pode ser vistos na tabela \ref{tab:bias_correction} 
 
 \begin{table}[H]
   \caption{Correção do \textit{bias} do giroscópio.}
@@ -399,7 +388,18 @@ Como podemos ver, os três sinais possuem uma distribuição caraterística muit
   \end{minipage}
 \end{table}
 
-Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as malhas de controle, isso é descrito na sequência.
+Os sinais estão representados na figura \ref{fig:bias_correction} (a), onde temos mais de 100.000 amostras nos três eixos. Já nas imagens \ref{fig:bias_correction} (b), (c) e (d), podemos ver o histograma dos mesmos sinais.
+
+\begin{figure}[H]
+  \caption{Características dos sinais amostrados pelo giroscópio.}
+  %\begin{center}
+      \includegraphics[scale=.4]{metodologia/img/bias_correction}
+  %\end{center}
+  \fonte{Elaborado pelo Autor.} 
+  \label{fig:bias_correction}
+\end{figure}
+
+Como podemos ver, os três sinais possuem uma distribuição caraterística muito próxima de uma normal, mesmo que no eixo z exista ruídos espúrios maiores que nos demais eixos, o que valida o uso do Filtro de Kalman e a escolha da média aritmética das amostras como \textit{bias} para as amostras do giroscópio. Essa etapa corrigiu os problemas enfrentados, o próximo passo é sintonizar as malhas de controle, isso é descrito na sequência.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -431,7 +431,26 @@ Por fim, o método proposto pelo presente trabalho, onde diferentes conceitos fo
   \label{fig:neural_regression}
 \end{figure}
 
-O funcionamento dessa topologia é baseado na aprendizagem de máquina, onde uma RNA aprende o comportamento do satélite, tendo como entradas a posição atual ($\beta$) , o valor de referência ($\beta_{com}$) e o sinal de controle, que nada mais é do que a largura de pulso entregue ao motor. Temos como saída da RNA, o sinal de controle, pois esse na prática, é um sinal modulado contendo a largura de pulso para o motor, onde a rede neural é mais assertiva devido ao comportamento não-linear, também característico de uma RNA. Após o treinamento da RNA, ela é usada para se criar uma nova base de dados, onde ela recebe como parâmetros um sinal que é uma sugestão de resposta ao degrau (Sinal Objetivo) fornecida pelo usuário, ou ainda, uma representação do sistema em forma de um sistema de primeira ordem, pois esse, apresenta características melhores do que o sistema original. Basicamente, o objetivo de se fornecer esse sinal, é orientar a regressão não-linear ao ponto ótimo ou algo próximo a ele.
+O funcionamento dessa topologia é baseado na aprendizagem de máquina, onde uma RNA aprende o comportamento do satélite, tendo como entradas a posição atual ($\beta$) , o valor de referência ($\beta_{com}$) e o sinal de controle, que nada mais é do que a largura de pulso entregue ao motor. Temos como saída da RNA, o sinal de controle, pois esse na prática, é um sinal modulado contendo a largura de pulso para o motor, onde a rede neural é mais assertiva devido ao comportamento não-linear, também característico de uma RNA. Após o treinamento da RNA, ela é usada para se criar uma nova base de dados, onde ela recebe como parâmetros um sinal que é uma sugestão de resposta ao degrau (Sinal Objetivo) fornecida pelo usuário, ou ainda, uma representação do sistema em forma de um sistema de primeira ordem, pois esse, apresenta características melhores do que o sistema original. Basicamente, o objetivo de se fornecer esse sinal e usar como condições iniciais obtidas via método do relé, é orientar a regressão não-linear ao ponto ótimo ou algo próximo a ele. Os parâmetros usados na NRA podem ser vistos na tabela \ref{tab:rna}.
+
+\begin{table}[H]
+  \caption{Parâmetros da RNA.}
+  \label{tab:rna}
+  \centering%
+  \begin{minipage}{.55\textwidth}
+    \begin{tabular*}{\textwidth}{cc}
+      \hline
+      Elemento & Característica \\ \hline
+      \hline
+      Número de Neurônios          & 70 \\ 
+      Número de Camadas            & 1 \\
+      Tipo de RNA                  & Classificação \\
+      Número máximo de interações  & 400 \\
+      Função de ativação           & tanh \\ \hline
+    \end{tabular*}
+    \fonte{Elaborado pelo Autor.} 
+  \end{minipage}
+\end{table}
 
 Por último, é feita e extração dos parâmetros do controlador via regressão, onde o antigo sinal de controle é modulado através da variação dos coeficientes do controlador PID discreto até possuir a forma de onda do novo sinal, que foi gerado pela rede neural. Essa regressão é feita usando como função de minimização, o próprio controlador PID discreto, como pode ser visto na equação da sequência:
 
@@ -454,4 +473,4 @@ funcao(Kp, Ti, Td, n, dados_objetivo, y_original, soma_erro) :
     retorna saida_controlador - y_original
 \end{lstlisting}
 
-Onde \textit{n} é o indexador de cada interação, \textit{erro} é o erro no instante n, \textit{soma\_erro} é o somatório do erro, \textit{derivada} é a derivada da variável de interesse, \textit{dado\_teste} é o dado predito pela da RNA treinada, \textit{n} é o indexador das operações, \textit{saida\_controlador} é o sinal da saída do controlador, \textit{y\_original} é saída do controlador não sintonizado, \textit{dados\_objetivo} é o sinal da resposta objetivo, além dos já conhecidos parâmetros \textit{$K_p$, $T_i$ e $T_d$}. Com isso, conseguimos extrair os novos parâmetros do controlador.
+Onde \textit{n} indexa as interações, \textit{dado\_teste} é o valor pela da RNA, \textit{y\_original} é saída do controlador não sintonizado, \textit{dados\_objetivo} é o sinal da resposta objetivo. Com isso, conseguimos extrair os novos parâmetros do controlador.

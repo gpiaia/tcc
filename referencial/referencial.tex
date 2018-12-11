@@ -127,10 +127,10 @@ I=\begin{bmatrix}I_{xx}&I_{xy}&I_{xz}\\I_{yx}&I_{yy}&I_{yz}\\I_{zx}&I_{zy}&I_{zz
 Caso o satélite seja simétrico, os momentos de inércia nos planos xy, xz e yz são de mesmo módulo só que com sinal oposto aos momentos de inércia dos planos xy, zx e zy, anulando todos esses termos. Isso pode ser visto na seguinte matriz diagonal:
 
 \begin{equation}
-I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{bmatrix}=\begin{bmatrix} A & 0 & 0 \\ 0 & B & 0 \\ 0 & 0 & C \end{bmatrix}
+I=\begin{bmatrix} I_{ xx } & 0 & 0 \\ 0 & I_{ yy } & 0 \\ 0 & 0 & I_{ zz } \end{bmatrix}=\begin{bmatrix} IA & 0 & 0 \\ 0 & IB & 0 \\ 0 & 0 & IC \end{bmatrix}
 \end{equation}
 
-Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{yy}$ e $I_{zz}$ serão descritos como A, B e C respectivamente. Após a descrição matemática do momento de inércia, podemos começar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
+Para facilitar a escrita das equações, os momentos de inércia $I_{xx}$, $I_{yy}$ e $I_{zz}$ serão descritos como IA, IB e IC respectivamente. Após a descrição matemática do momento de inércia, podemos começar a analisar o movimento de rotação do corpo rígido. Vamos começar pela velocidade angular instantânea $\omega$, que pode ser descrita como a derivada primeira da posição $\beta$ angular, segundo o teorema fundamental do cálculo:
 
 \begin{equation}
 \omega\equiv\lim_{\Delta t\rightarrow 0}\frac{\Delta\beta}{\Delta t}=\frac{d\beta}{dt}
@@ -193,21 +193,21 @@ Como temos o momento de inércia do corpo rígido representado na forma matricia
 Se fizermos o mesmo com a equação \ref{eq:torque}, temos:
 
 \begin{equation}
-\begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}A\dot{\omega}_{1}\\B\dot{\omega}_{2}\\C\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}A\omega_{1}\\B\omega_{2}\\C\omega_{3}\end{bmatrix}
+\begin{bmatrix}\tau_{1}\\\tau_{2}\\\tau_{3}\end{bmatrix}=\begin{bmatrix}IA\dot{\omega}_{1}\\IB\dot{\omega}_{2}\\IC\dot{\omega}_{3}\end{bmatrix}+\begin{bmatrix}\omega_{1}\\\omega_{2}\\\omega_{3}\end{bmatrix}\times\begin{bmatrix}IA\omega_{1}\\IB\omega_{2}\\IC\omega_{3}\end{bmatrix}
 \end{equation}
 
 Como podemos ver, já conseguimos relacionar os momentos de inércia do corpo rígido simétrico com as demais variáveis de interesse. Além disso, podemos sair da forma matricial e apresentarmos os torques da forma algébrica, isso pode ser visto nas 3 equações a seguir:
 
 \begin{equation}
-  \tau_1=A\dot{\omega_1}-(B-C)\omega_2\omega_3 
+  \tau_1=IA\dot{\omega_1}-(IB-IC)\omega_2\omega_3 
 \end{equation}
 
 \begin{equation}
-  \tau_2=B\dot{\omega_2}-(C-A)\omega_1\omega_3 
+  \tau_2=IB\dot{\omega_2}-(IC-IA)\omega_1\omega_3 
 \end{equation}
 
 \begin{equation}
-  \tau_3=C\dot{\omega_3}-(A-B)\omega_1\omega_2
+  \tau_3=IC\dot{\omega_3}-(IA-IB)\omega_1\omega_2
 \end{equation}
 
 Se utilizarmos um corpo não simétrico, podemos recorrer a matriz da equação \ref{eq:nsimetrico}, e obteremos as 3 seguintes equações para descrever o torque:
@@ -227,15 +227,15 @@ Se utilizarmos um corpo não simétrico, podemos recorrer a matriz da equação 
 Se isolarmos a derivada da velocidade angular na nas equações \ref{eq:torquexyz}, \ref{eq:torquexyz2} e \ref{eq:torquexyz3}, temos:
 
 \begin{equation}
-  \dot{\omega_{1}}=\frac{\tau_{1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
+  \dot{\omega_{1}}=\frac{\tau_{1}}{IA}+\left(\frac{IB-IC}{IA}\right)\omega_{2}\omega_{3}
 \end{equation}
 
 \begin{equation}
-  \dot{\omega_{2}}=\frac{\tau_{2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
-\end{equation},
+  \dot{\omega_{2}}=\frac{\tau_{2}}{IB}+\left(\frac{IC-IA}{IB}\right)\omega_{1}\omega_{3}
+\end{equation}
 
 \begin{equation}
-  \dot{\omega_{3}}=\frac{\tau_{2}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
+  \dot{\omega_{3}}=\frac{\tau_{2}}{IC}+\left(\frac{IA-IB}{IC}\right)\omega_{1}\omega_{2}
 \end{equation}
 
 Assim, conseguimos a relação da velocidade com o torque aplicado. Essa é uma expressão que representa a reação em forma de variação de velocidade que um torque provoca.
@@ -283,15 +283,15 @@ Onde $J_{\omega}$ é o momento de inércia da roda de reação e $\vec{\psi}_{\o
 E por fim, podemos relacionar as velocidades angulares do satélite com a inércia e as velocidades das rodas, isso se dá da seguinte forma:
 
 \begin{equation}\label{eq:modeloA}
-  \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi}}_{\omega 1}}{A}+\left(\frac{B-C}{A}\right)\omega_{2}\omega_{3}
+  \dot{\omega_{1}}=\frac{J_{\omega 1}\dot{\vec{\psi}}_{\omega 1}}{IA}+\left(\frac{IB-IC}{IA}\right)\omega_{2}\omega_{3}
 \end{equation}
 
 \begin{equation}\label{eq:modeloB}
-  \dot{\omega_{2}}=\frac{J_{\omega 2}\dot{\vec{\psi}}_{\omega 2}}{B}+\left(\frac{C-A}{B}\right)\omega_{1}\omega_{3}
+  \dot{\omega_{2}}=\frac{J_{\omega 2}\dot{\vec{\psi}}_{\omega 2}}{IB}+\left(\frac{IC-IA}{IB}\right)\omega_{1}\omega_{3}
 \end{equation}
 
 \begin{equation}\label{eq:modeloC}
-  \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi}}_{\omega 3}}{C}+\left(\frac{A-B}{C}\right)\omega_{1}\omega_{2}
+  \dot{\omega_{3}}=\frac{J_{\omega 3}\dot{\vec{\psi}}_{\omega 3}}{IC}+\left(\frac{IA-IB}{IC}\right)\omega_{1}\omega_{2}
 \end{equation}
 
 Para isso é usada a equação \ref{eq:ltot} e a relação entre torque e momento angular da equação \ref{eq:torqueedo}. Assim, temos a última equação que faltava para descrever toda a dinâmica de um satélite artificial simétrico. 
@@ -356,7 +356,7 @@ Como alguns sistemas podem admitir grandes e rápidas variações de sinais de r
   \label{fig:pid_antiwindup_astrom_p83}
 \end{figure}
 
-Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a ação integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações. 
+Existem muitas combinações de controladores PID, cada uma com suas peculiaridades e vantagens de uso. Uma combinação muito usada é a PI, onde a ação integral de zerar o erro em regime e uma boa resposta transitória já satisfazem as especificações  \cite{Astrom1995}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -405,7 +405,7 @@ Por definição, a transformada z é um somatório do produto de $z^{-k}$ com o 
 
 \subsubsection{Amostragem}
 
-Em um sistema discreto, uma forma de amostrar um sinal analógico é usar um trem de impulsos com amplitude do sinal y(t) nos tempos T e reter esses dados com um ZOH (Zero-Order-Hold - Amostrador de Ordem Zero). A figura \ref{fig:zoh_wie_p155} representa muito bem esse processo.
+Em um sistema discreto, uma forma de amostrar um sinal analógico é usar um trem de impulsos com amplitude do sinal y(t) nos tempos T e reter esses dados com um ZOH (Zero-Order-Hold - Amostrador de Ordem Zero) \cite{BongWie2001}. A figura \ref{fig:zoh_wie_p155} representa muito bem esse processo.
 
 \begin{figure}[H]
   \caption{Conversão de um sinal contínuo em discreto.}
@@ -441,7 +441,7 @@ Conseguimos expressar o controlador PID no domínio z da seguinte forma:
   u(t) = -K\left[1 + \frac{1}{T_i}\frac{T}{1-z^{-1}} + T_d\frac{1-z^{-1}}{T} \right]e(t)
 \end{equation}
 
-Com isso, podemos representar de forma discreta o controlador PID, que pode ser visto na equação da sequência:
+Com isso, podemos representar de forma discreta o controlador PID, que pode ser visto na equação da sequência \cite{BongWie2001}:
 
 \begin{equation}\label{eq:pid_equation}
   u(t) = -K_p\left[y[k]-\frac{1}{T_i}{\hat{u}[k]}-T_d\frac{y[k]-y[k-1]}{T}\right]
@@ -467,13 +467,13 @@ Filtro de Kalman é um algoritmo usado para estimar estados de variáveis de um 
 \begin{figure}[H]
   \caption{Diagrama de blocos do filtro de Kalman.}
   \begin{center}
-      \includegraphics[scale=0.5]{referencial/img/kalman_levine_p591}
+      \includegraphics[scale=0.4]{referencial/img/kalman_levine_p591}
   \end{center}
   \fonte{Adaptado de \citeonline{Levine1996}.} 
   \label{fig:kalman_levine_p591}
 \end{figure}
 
-Onde $U(S)$ é o sinal do controlador, $Y(S)$ é o sinal amostrado da saída da planta, $\hat {Y}(S)$ é a saída estimada, H é o ganho do filtro e A, B e C são as matrizes em espaço de estados da dinâmica da planta.
+Onde $U(S)$ é o sinal do controlador, $Y(S)$ é o sinal amostrado da saída da planta, $\hat {Y}(S)$ é a saída estimada, H é o ganho do filtro e $M_A$, $M_B$ e $M_C$ são as matrizes em espaço de estados da dinâmica da planta.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -663,12 +663,12 @@ Um dos métodos mais usados para regressão, independente da linearidade do sist
  S(\theta_e) = \sum_{i=1}^{n}[y_i-f(x_i;\theta_e)]^2 
 \end{equation}
 
-Esse método por definição, é usado onde as amostras obedecem uma distribuição normal. Quando isso não é verdadeiro, usa-se o método MMQ robusto, onde o erro pode assumir outras distribuições, garantindo uma boa resposta da regressão. Na figura \ref{fig:robust_regression}, podemos ver a comparação entre os métodos MMQ e MMQ Robusto, ficando clara a melhor resposta do MMQ Robusto.
+Esse método por definição, é usado onde as amostras obedecem uma distribuição normal. Quando isso não é verdadeiro, usa-se o método MMQ robusto, onde o erro pode assumir outras distribuições, garantindo uma boa resposta da regressão. Na figura \ref{fig:robust_regression}, podemos ver a comparação entre os métodos MMQ e MMQ Robusto, ficando clara a melhor resposta do MMQ Robusto\cite{RegressionPython}.
 
 \begin{figure}[H]
   \caption{Comparação entre os métodos de regressão não-lineares.}
   \begin{center}
-      \includegraphics[scale=0.55]{referencial/img/robust_regression}
+      \includegraphics[scale=0.65]{referencial/img/robust_regression}
   \end{center}
   \fonte{Adaptado de \citeonline{RegressionPython}.} 
   \label{fig:robust_regression}
